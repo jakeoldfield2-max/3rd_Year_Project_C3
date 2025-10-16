@@ -1,0 +1,22 @@
+Char source: Mulberry Wood
+Optimal Pyrolysis Temp: 350 C
+Yields: 37.5% Char
+    Ash: 7.52%
+    Carbon: 67.9%
+    Hydrogen 4.53%
+    Nitrogen 2.16%
+    Sulfer 0.2%
+    Oxygen 25.2%
+
+Bio-Oil content 43.56% (Roughly)
+
+
+
+
+Things We need
+- Bio Oil Data
+- Bio Gas Data
+- Adsorption Rate of Mulberry Wood Char
+
+
+- ASPEN of Mulberry Wood Pyrolysis for details
