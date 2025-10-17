@@ -14,9 +14,7 @@ Bio-Oil content 43.56% (Roughly)
 
 
 Things We need
-- Bio Oil Data
-- Bio Gas Data
 - Adsorption Rate of Mulberry Wood Char
-
-
 - ASPEN of Mulberry Wood Pyrolysis for details
+    -  Bio Oil Data
+    - Bio Gas Data
