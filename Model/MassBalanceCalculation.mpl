@@ -1,29 +1,26 @@
 # ============================================================================
 # AUTO-GENERATED VARIABLES - DO NOT EDIT THIS SECTION MANUALLY
 # Generated from MATLAB System Composer
-# Date: 16-Oct-2025 14:16:19
+# Date: 17-Oct-2025 14:01:26
 # ============================================================================
 
 # Connector: [01]
-VolumeFlowRate__[01] := 1; # L/s
-CHxConcentration__[01] := 1; # mg/L
+CHxConcentration__[01] := 3; # mg/L
 H2OConcentration__[01] := 999999; # mg/L
 
 # Connector: [02]
-VolumeFlowRate__[02] := 1; # L/s
-CHxConcentration__[02] := 1; # mg/L
-H2OConcentration__[02] := 999999; # mg/L
+CHxConcentration__[02] := CHxConcentration__[02]; # mg/L (blank)
+H2OConcentration__[02] := H2OConcentration__[02]; # mg/L (blank)
 
 # Connector: [03]
-VolumeFlowRate__[03] := VolumeFlowRate__[03]; # L/s (blank)
 CHxConcentration__[03] := 0.01; # mg/L
 H2OConcentration__[03] := H2OConcentration__[03]; # mg/L (blank)
 
 # Connector: [04]
 TotMassFlowRate__[04] := TotMassFlowRate__[04]; # kg/s (blank)
 Type__[04] := Type__[04]; # (blank)
-MassFraction_CHx__[04] := MassFraction_CHx__[04]; # % (blank)
-MassFraction_H2O__[04] := MassFraction_H2O__[04]; # % (blank)
+MassFraction_CHx__[04] := 0.5; # %
+MassFraction_H2O__[04] := 3; # %
 MassFraction_Char__[04] := MassFraction_Char__[04]; # % (blank)
 
 # Connector: [05]
@@ -192,6 +189,30 @@ MassFraction_Gas1__[26] := MassFraction_Gas1__[26]; # % (blank)
 MassFraction_H20__[26] := MassFraction_H20__[26]; # % (blank)
 MassFraction_Char__[26] := MassFraction_Char__[26]; # % (blank)
 MassFraction_Gas2__[26] := MassFraction_Gas2__[26]; # % (blank)
+
+### END OF AUTO-GENERATED VARIABLES ###
+# Add your equations below this line
+# This section will be preserved when variables are regenerated
+
+### END OF AUTO-GENERATED VARIABLES ###
+# Add your equations below this line
+# This section will be preserved when variables are regenerated
+
+### END OF AUTO-GENERATED VARIABLES ###
+# Add your equations below this line
+# This section will be preserved when variables are regenerated
+
+### END OF AUTO-GENERATED VARIABLES ###
+# Add your equations below this line
+# This section will be preserved when variables are regenerated
+
+### END OF AUTO-GENERATED VARIABLES ###
+# Add your equations below this line
+# This section will be preserved when variables are regenerated
+
+### END OF AUTO-GENERATED VARIABLES ###
+# Add your equations below this line
+# This section will be preserved when variables are regenerated
 
 ### END OF AUTO-GENERATED VARIABLES ###
 # Add your equations below this line

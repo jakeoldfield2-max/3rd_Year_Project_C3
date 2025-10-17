@@ -1,20 +1,35 @@
 % VariableList.m
-% Define variables to search for in the model
+% Key Independant variables for mass balance
 % Add one variable per line in the cell array below
 % please format within '' and write the variable with the same format
 % For adding our sources, please use % followed by the URL.
 
-variableNames = {
-% Key Independant variables for mass balance
+% Format: {'Variable Name', Expected Value}
+% to leave value empty, write ('')
+variableList = {
+%=============================================================%
+%WRITE AFTER THIS POINT%
+%=============================================================%
+%   Variable Name              Value
 
-    '[01]VolumeFlowRate'
-    % Url Test
-    'H2OConcentration__(2)'
-    % Url test
+'[01]VolumeFlowRate',       1
+% Replace here with source 
+'H2OConcentration__(1)',    999999
+% Replace here with source 
+'CHxConcentration__(1)',    3 
+% Replace here with source 
+'CHxConcentration__(3)',    0.01
+% Replace here with source 
+'MassFraction_H2O__(4)',    3 
+% Replace here with source 
+'MassFraction_CHx__(4)',    0.5
+% Replace here with source 
 
-   '[05]VolumeFlowRate'
-    % https://www.youtube.com/watch?v=sqqIxWlCfd0
-    'H2OConcentration__(7)'
-    % Url test
-    % Add more variables here
+
+
+
+
+
+%=============================================================%
+%=============================================================%
 };
