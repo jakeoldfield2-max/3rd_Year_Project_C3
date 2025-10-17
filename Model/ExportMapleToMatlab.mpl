@@ -14,9 +14,6 @@ fd := fopen(outputFile, WRITE);
 fprintf(fd, "%% ============================================================================\n");
 fprintf(fd, "%% AUTO-GENERATED FROM MAPLE - Calculated Mass Balance Variables\n");
 fprintf(fd, "%% ============================================================================\n\n");
-fprintf(fd, "clear MapleVars; %% Clear previous Maple variables structure\n\n");
-fprintf(fd, "%% Create structure to hold all Maple calculated values\n");
-fprintf(fd, "MapleVars = struct();\n\n");
 
 # Get all user-defined names
 allNames := [anames('user')];
@@ -56,15 +53,15 @@ for varName in allNames do
                         idxStr := StringTools[SubstituteAll](idxStr, "]", "");
 
                         # Write to MATLAB format
-                        # Use structure: MapleVars.PropertyName(ConnectorNum) = value;
-                        fprintf(fd, "MapleVars.%s(%s) = %.15g;\n",
+                        # Export as: PropertyName(ConnectorNum) = value;
+                        fprintf(fd, "%s(%s) = %.15g;\n",
                                 varNameStr, idxStr, evalf(indexedVal));
                         exportCount := exportCount + 1;
                     end if;
                 end do;
             elif type(varValue, 'numeric') then
                 # This is a simple numeric variable (no subscript)
-                fprintf(fd, "MapleVars.%s = %.15g;\n", varNameStr, evalf(varValue));
+                fprintf(fd, "%s = %.15g;\n", varNameStr, evalf(varValue));
                 exportCount := exportCount + 1;
             end if;
         catch:

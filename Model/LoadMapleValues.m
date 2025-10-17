@@ -5,7 +5,6 @@
 % ============================================================================
 
 % --- SCRIPT CONFIGURATION ---
-clear MapleVars; % Clear previous Maple variables
 clc;   % Clear command window
 
 % --- LOAD MAPLE CALCULATED VALUES ---
@@ -17,55 +16,66 @@ end
 
 fprintf('Loading Maple calculated values from %s...\n\n', mapleDataFile);
 
+% Get current workspace variables before loading
+varsBefore = who;
+
 % Execute the Maple-generated MATLAB file
 run(mapleDataFile);
 
-% Check if MapleVars exists
-if ~exist('MapleVars', 'var')
-    error('MapleVars structure not found in the Maple export file.');
-end
+% Get workspace variables after loading
+varsAfter = who;
 
-% --- DISPLAY SUMMARY ---
-propertyNames = fieldnames(MapleVars);
-numProperties = length(propertyNames);
+% Find new variables (those added by the Maple file)
+newVars = setdiff(varsAfter, varsBefore);
+% Remove script variables from the list
+scriptVars = {'mapleDataFile', 'varsBefore', 'varsAfter', 'ans'};
+newVars = setdiff(newVars, scriptVars);
+
+numProperties = length(newVars);
 
 fprintf('============================================================================\n');
-fprintf('Loaded %d property types from Maple\n', numProperties);
+fprintf('Loaded %d variables from Maple\n', numProperties);
 fprintf('============================================================================\n\n');
 
-% Display each property and its values
+% Display each variable and its values/size
 totalValues = 0;
-for p = 1:length(propertyNames)
-    propName = propertyNames{p};
-    propValues = MapleVars.(propName);
+for p = 1:length(newVars)
+    varName = newVars{p};
+    varValue = eval(varName);
 
-    if isnumeric(propValues)
-        % Find non-zero, non-NaN values
-        validIndices = find(~isnan(propValues) & propValues ~= 0);
-        numValues = length(validIndices);
-        totalValues = totalValues + numValues;
+    fprintf('Variable: %s\n', varName);
 
-        fprintf('Property: %s\n', propName);
-        fprintf('  Number of connectors with values: %d\n', numValues);
+    if isnumeric(varValue)
+        if isscalar(varValue)
+            fprintf('  Value: %.6g\n', varValue);
+            totalValues = totalValues + 1;
+        else
+            % Array/vector
+            validIndices = find(~isnan(varValue) & varValue ~= 0);
+            numValues = length(validIndices);
+            totalValues = totalValues + numValues;
 
-        % Show first few values as examples
-        numToShow = min(3, numValues);
-        for i = 1:numToShow
-            idx = validIndices(i);
-            fprintf('    [%02d] = %.6g\n', idx, propValues(idx));
+            fprintf('  Number of connectors with values: %d\n', numValues);
+
+            % Show first few values as examples
+            numToShow = min(3, numValues);
+            for i = 1:numToShow
+                idx = validIndices(i);
+                fprintf('    (%d) = %.6g\n', idx, varValue(idx));
+            end
+
+            if numValues > 3
+                fprintf('    ... and %d more\n', numValues - 3);
+            end
         end
-
-        if numValues > 3
-            fprintf('    ... and %d more\n', numValues - 3);
-        end
-        fprintf('\n');
     end
+    fprintf('\n');
 end
 
 fprintf('============================================================================\n');
 fprintf('Total values loaded: %d\n', totalValues);
 fprintf('============================================================================\n\n');
 
-fprintf('The structure "MapleVars" is now available in your workspace.\n');
-fprintf('Access values using: MapleVars.PropertyName__(ConnectorNumber)\n');
-fprintf('Example: MapleVars.CHxConcentration__(1)\n');
+fprintf('Variables are now available directly in your workspace.\n');
+fprintf('Access values using: PropertyName__(ConnectorNumber)\n');
+fprintf('Example: CHxConcentration__(1)\n');
