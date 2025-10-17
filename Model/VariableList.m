@@ -22,7 +22,7 @@ variableList = {
 % Replace here with source 
 'MassFraction_H2O__(4)',    3 
 % Replace here with source 
-'MassFraction_CHx__(4)',    0.5
+'MassFraction_CHx__(4)',    0.9
 % Replace here with source 
 
 
