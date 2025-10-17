@@ -11,22 +11,24 @@ clear; clc;
 import systemcomposer.query.*
 
 % --- USER INPUT VARIABLES ---
-% Read variables from Excel file
-excelFile = 'VariableList.xlsx';
+% Load variables from VariableList.m
+variableListFile = 'VariableList.m';
 
-if ~isfile(excelFile)
-    error('Variable list file not found: %s\nPlease run CreateVariableListTemplate.m first or create the Excel file.', excelFile);
+if ~isfile(variableListFile)
+    error('Variable list file not found: %s\nPlease create VariableList.m with your variable names.', variableListFile);
 end
 
-fprintf('Reading variables from: %s\n', excelFile);
-varTable = readtable(excelFile, 'Sheet', 'Variables');
+fprintf('Reading variables from: %s\n', variableListFile);
 
-% Extract variable names from first column and remove empty rows
-variableNames = varTable.Variable;
-variableNames = variableNames(~cellfun(@isempty, variableNames));
-variableNames = variableNames(~strcmp(variableNames, ''));
+% Run the variable list file to load variableNames
+run(variableListFile);
 
-fprintf('Found %d variables in Excel file\n', length(variableNames));
+% Check if variableNames was defined
+if ~exist('variableNames', 'var')
+    error('variableNames not found in %s. Please define variableNames as a cell array.', variableListFile);
+end
+
+fprintf('Found %d variables in list\n', length(variableNames));
 
 fprintf('=== Linking Variables to Model Properties ===\n\n');
 
