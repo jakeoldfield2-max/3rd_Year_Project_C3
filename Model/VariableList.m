@@ -13,9 +13,9 @@ variableList = {
 %   Variable Name              Value
 
 '[01]VolumeFlowRate',       1
-% Replace here with source 
+% m3/sReplace here with source 
 'H2OConcentration__(1)',    999999
-% Replace here with source 
+% mg/LReplace here with source 
 'CHxConcentration__(1)',    3 
 % Replace here with source 
 'CHxConcentration__(3)',    0.01
