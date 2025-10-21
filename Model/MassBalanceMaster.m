@@ -2,7 +2,7 @@
 % Master script for mass balance workflow automation
 %
 % This script orchestrates the complete mass balance process:
-% 1. Clears all M_ stereotype properties in connectors
+% 1. Clears all M_  stereotype properties in connectors
 % 2. Writes initial values from VariableList.m into the model
 % 3. Exports model data to Maple format (ExportToMaple.m)
 % 4. Runs Maple calculations (MassBalanceCalculation.mpl)
@@ -533,6 +533,13 @@ if ~isfile(mapleScript)
     error('Maple script not found: %s', mapleScript);
 end
 
+% Delete old Maple output file to ensure fresh run
+mapleOutputFile = 'MapleExportedVariables.m';
+if isfile(mapleOutputFile)
+    fprintf('Deleting old Maple output file...\n');
+    delete(mapleOutputFile);
+end
+
 % Try to find and run Maple automatically
 fprintf('Searching for Maple installation...\n');
 
@@ -541,6 +548,8 @@ maplePaths = {};
 
 % Try common installation paths on Windows (both maple.exe and cmaple.exe)
 commonPaths = {
+    'C:\Program Files\Maple 2025\bin.X86_64_WINDOWS\cmaple.exe'
+    'C:\Program Files\Maple 2025\bin.X86_64_WINDOWS\maple.exe'
     'C:\Program Files\Maple 2024\bin.X86_64_WINDOWS\cmaple.exe'
     'C:\Program Files\Maple 2024\bin.X86_64_WINDOWS\maple.exe'
     'C:\Program Files\Maple 2023\bin.X86_64_WINDOWS\cmaple.exe'
@@ -579,43 +588,40 @@ if ~isempty(maplePaths)
         % Get absolute path to the Maple script
         mapleScriptPath = fullfile(pwd, mapleScript);
 
-        % Run Maple in batch mode
-        % Use -q for quiet mode, -c for script execution
-        cmd = sprintf('"%s" "%s" -c "read `%s`; quit;"', mapleExe, mapleScriptPath, mapleScriptPath);
+        % Run Maple in batch mode - try different command formats
+        if contains(mapleExe, 'cmaple')
+            % For command-line Maple, use stdin redirection
+            cmd = sprintf('"%s" < "%s"', mapleExe, mapleScriptPath);
+        else
+            % For regular Maple executable
+            cmd = sprintf('"%s" "%s"', mapleExe, mapleScriptPath);
+        end
 
-        % Try simpler command if Maple supports it
+        fprintf('Executing command: %s\n', cmd);
         [status, cmdout] = system(cmd);
 
         fprintf('Maple output:\n%s\n', cmdout);
 
-        if status == 0 || contains(cmdout, 'exported') || isfile('MapleExportedVariables.m')
+        % Check if output file was created (this is the definitive test)
+        pause(0.5); % Brief pause to ensure file system updates
+        if isfile(mapleOutputFile)
             fprintf('✓ Maple calculations completed successfully\n');
+            fprintf('✓ Output file created: %s\n', mapleOutputFile);
             mapleFound = true;
             break;
+        else
+            fprintf('Output file not created, trying next method...\n');
         end
     end
 end
 
-% If still not found, try one more approach with cmaple directly
-if ~mapleFound && ~isempty(maplePaths)
-    fprintf('Trying alternative Maple execution method...\n');
-    for p = 1:length(maplePaths)
-        if contains(maplePaths{p}, 'cmaple')
-            mapleExe = maplePaths{p};
-            fprintf('Trying cmaple at: %s\n', mapleExe);
-
-            % For cmaple, we can just pass the script file
-            cmd = sprintf('"%s" < "%s"', mapleExe, fullfile(pwd, mapleScript));
-            [status, cmdout] = system(cmd);
-
-            fprintf('Maple output:\n%s\n', cmdout);
-
-            if status == 0 || isfile('MapleExportedVariables.m')
-                fprintf('✓ Maple calculations completed successfully\n');
-                mapleFound = true;
-                break;
-            end
-        end
+% If still not found, verification check
+if ~mapleFound
+    fprintf('\n⚠ Automatic Maple execution failed\n');
+    fprintf('Checking if output file exists anyway...\n');
+    if isfile(mapleOutputFile)
+        fprintf('✓ Output file found - Maple may have run successfully despite error\n');
+        mapleFound = true;
     end
 end
 

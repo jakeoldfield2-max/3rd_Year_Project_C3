@@ -12,7 +12,7 @@ variableList = {
 %=============================================================%
 %   Variable Name              Value
 
-'[01]VolumeFlowRate',       1
+'VolumeFlowRate__(1)',       1
 % Replace here with source 
 'H2OConcentration__(1)',    999999
 % Replace here with source 
