@@ -12,12 +12,12 @@ variableList = {
 %=============================================================%
 %   Variable Name              Value
 
-'VolumeFlowRate__(1)',       1
-% Replace here with source 
+'[01]VolumeFlowRate',       1
+% m3/sReplace here with source 
 'H2OConcentration__(1)',    999999
-% Replace here with source 
-'CHxConcentration__(1)',    3 
-% Replace here with source 
+% mg/LReplace here with source 
+'CHxConcentration__(1)',    1.0125 
+% https://onlinelibrary.wiley.com/doi/abs/10.1002/bms.1200110502
 'CHxConcentration__(3)',    0.01
 % Replace here with source 
 'MassFraction_H2O__(4)',    3 
