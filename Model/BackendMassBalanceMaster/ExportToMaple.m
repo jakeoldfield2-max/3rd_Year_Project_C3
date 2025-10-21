@@ -4,13 +4,13 @@ clc;   % Clear command window
 import systemcomposer.query.*
 
 % --- LOAD MODEL ---
-modelName = 'Hospital_Context.slx';
+modelName = fullfile('..', 'Hospital_Context.slx');
 model = systemcomposer.loadModel(modelName);
 arch = get(model, "Architecture");
 
 % --- PARSE UNIT PROFILE XML ---
 fprintf('Parsing unitProfile.xml to extract stereotype definitions...\n');
-xmlFile = 'unitProfile.xml';
+xmlFile = fullfile('..', 'unitProfile.xml'); % In parent folder (same as model)
 xDoc = xmlread(xmlFile);
 
 % Create maps to store stereotype info
@@ -173,39 +173,21 @@ fprintf('Extracted %d stereotypes from profile\n\n', stereotypeAllPropertiesMap.
 connectors = arch.Connectors;
 numConnectors = width(connectors);
 
-fprintf('Extracting properties from %d connectors...\n\n', numConnectors);
+fprintf('Extracting M_ stereotype properties from %d connectors...\n', numConnectors);
+fprintf('(Only properties from stereotypes starting with M_ will be exported)\n\n');
 
-% Open Maple file for reading (to preserve equations section)
-mapleFileName = 'MassBalanceCalculation.mpl';
-equationsSection = '';
-markerFound = false;
-
-% Check if file exists and read equations section
-if isfile(mapleFileName)
-    fid_read = fopen(mapleFileName, 'r');
-    fileContent = fread(fid_read, '*char')';
-    fclose(fid_read);
-
-    % Look for the marker that separates variables from equations
-    marker = '### END OF AUTO-GENERATED VARIABLES ###';
-    markerPos = strfind(fileContent, marker);
-
-    if ~isempty(markerPos)
-        % Preserve everything after the marker (use first occurrence)
-        equationsSection = fileContent(markerPos(1):end);
-        markerFound = true;
-        fprintf('Found existing equations section, preserving...\n');
-    end
-end
+% Open Maple variables file for writing (separate from .mw file)
+mapleFileName = fullfile('..', 'MassBalanceVariables.mpl');
 
 % Open Maple file for writing
 fid = fopen(mapleFileName, 'w');
 
 % Write header
 fprintf(fid, '# ============================================================================\n');
-fprintf(fid, '# AUTO-GENERATED VARIABLES - DO NOT EDIT THIS SECTION MANUALLY\n');
+fprintf(fid, '# AUTO-GENERATED MASS BALANCE VARIABLES (M_ Stereotypes Only)\n');
 fprintf(fid, '# Generated from MATLAB System Composer\n');
 fprintf(fid, '# Date: %s\n', datestr(now));
+fprintf(fid, '# Only properties from stereotypes starting with M_ are included\n');
 fprintf(fid, '# ============================================================================\n\n');
 
 % Extract and write properties for each connector
@@ -234,6 +216,12 @@ for i = 1:numConnectors
         % Loop through each stereotype
         for s = 1:length(stereotypes)
             stereotype = stereotypes{s};
+
+            % ONLY process M_ stereotypes (mass balance stereotypes)
+            stereoName = strrep(stereotype, 'unitProfile.', '');
+            if ~startsWith(stereoName, 'M_')
+                continue; % Skip non-M_ stereotypes
+            end
 
             % Look up property info from the parsed XML (including inherited properties)
             if isKey(stereotypeAllPropertiesMap, stereotype)
@@ -273,15 +261,10 @@ for i = 1:numConnectors
                             isBlank = true;
                         end
 
-                        % If it's blank/default, write as self-reference
+                        % If it's blank/default, skip it (don't write self-reference as it breaks Maple tables)
                         if isBlank
-                            fprintf(fid, '%s__[%s] := %s__[%s];', propName, cleanConnName, propName, cleanConnName);
-                            if ~isempty(propUnits)
-                                fprintf(fid, ' # %s (blank)', propUnits);
-                            else
-                                fprintf(fid, ' # (blank)');
-                            end
-                            fprintf(fid, '\n');
+                            % Skip blank values - do not write anything
+                            % Self-referential assignments like X__[1] := X__[1] mess up Maple's table handling
                         else
                             % Convert to string for output
                             if isnumeric(propValue)
@@ -304,8 +287,8 @@ for i = 1:numConnectors
                         end
 
                     catch ME
-                        % Property not set, write as self-reference
-                        fprintf(fid, '%s__[%s] := %s__[%s]; # NOT SET\n', propName, cleanConnName, propName, cleanConnName);
+                        % Property not set - skip it (don't write self-reference)
+                        % Self-referential assignments break Maple's table handling
                     end
                 end
             end
@@ -315,27 +298,9 @@ for i = 1:numConnectors
     fprintf(fid, '\n'); % Blank line between connectors
 end
 
-% Write the marker
-fprintf(fid, '### END OF AUTO-GENERATED VARIABLES ###\n');
-fprintf(fid, '# Add your equations below this line\n');
-fprintf(fid, '# This section will be preserved when variables are regenerated\n\n');
-
-% If there was an existing equations section, write it back
-if markerFound
-    fprintf(fid, '%s', equationsSection);
-    fprintf('Preserved existing equations section\n');
-else
-    % First time creating the file - add template
-    fprintf(fid, '# ============================================================================\n');
-    fprintf(fid, '# YOUR MASS BALANCE EQUATIONS GO HERE\n');
-    fprintf(fid, '# ============================================================================\n\n');
-    fprintf(fid, '# Example:\n');
-    fprintf(fid, '# eq1 := CHxConcentration__[01] + CHxConcentration__[02] = TotalCHx;\n\n');
-end
-
 % Close the file
 fclose(fid);
 
 fprintf('\nSuccessfully exported %d connectors to %s\n', numConnectors, mapleFileName);
 fprintf('Maple variables use format: PropertyName__[ConnectorNumber] := value;\n');
-fprintf('Your equations section has been preserved below the marker line.\n');
+fprintf('These variables are ready to be read into your MassBalanceCalculation.mw file.\n');

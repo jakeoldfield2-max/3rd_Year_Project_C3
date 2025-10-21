@@ -4,8 +4,8 @@
 # to a MATLAB .m file that can be executed to load the calculated values
 # ============================================================================
 
-# Get the output file path
-outputFile := "MapleExportedVariables.m";
+# Get the output file path (in BackendMassBalanceMaster folder)
+outputFile := "BackendMassBalanceMaster/MapleExportedVariables.m";
 
 # Open file for writing
 fd := fopen(outputFile, WRITE);
@@ -14,6 +14,19 @@ fd := fopen(outputFile, WRITE);
 fprintf(fd, "%% ============================================================================\n");
 fprintf(fd, "%% AUTO-GENERATED FROM MAPLE - Calculated Mass Balance Variables\n");
 fprintf(fd, "%% ============================================================================\n\n");
+
+# Check if user defined EXPORT_VARIABLES list
+useSelectiveExport := false;
+exportList := [];
+
+if assigned(EXPORT_VARIABLES) then
+    printf("Using selective export - only exporting variables in EXPORT_VARIABLES list\n");
+    useSelectiveExport := true;
+    exportList := [EXPORT_VARIABLES];
+    printf("Export list contains %d variable names\n", nops(exportList));
+else
+    printf("No EXPORT_VARIABLES defined - exporting all calculated variables\n");
+end if;
 
 # Get all user-defined names
 allNames := [anames('user')];
@@ -26,6 +39,30 @@ for varName in allNames do
     # Check if this is a base name that has indexed subscripts
     # (ends with __ which is our convention)
     varNameStr := convert(varName, string);
+
+    # If selective export is enabled, check if this variable is in the list
+    if useSelectiveExport then
+        inList := false;
+        for exportVar in exportList do
+            exportVarStr := convert(exportVar, string);
+            # Remove index notation if present [01] or (01)
+            exportVarStr := StringTools[SubstituteAll](exportVarStr, "[", "");
+            exportVarStr := StringTools[SubstituteAll](exportVarStr, "]", "");
+            exportVarStr := StringTools[SubstituteAll](exportVarStr, "(", "");
+            exportVarStr := StringTools[SubstituteAll](exportVarStr, ")", "");
+
+            # Check if the base variable name matches
+            if StringTools[Search](exportVarStr, varNameStr) > 0 or StringTools[Search](varNameStr, exportVarStr) > 0 then
+                inList := true;
+                break;
+            end if;
+        end do;
+
+        # Skip this variable if not in export list
+        if not inList then
+            next;
+        end if;
+    end if;
 
     if StringTools[Search]("__", varNameStr) > 0 then
         # This is likely an indexed variable base name

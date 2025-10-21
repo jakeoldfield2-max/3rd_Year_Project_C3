@@ -2,11 +2,12 @@
 % Master script for mass balance workflow automation
 %
 % This script orchestrates the complete mass balance process:
-% 1. Clears all M_  stereotype properties in connectors
+% 1. Clears all M_ stereotype properties in connectors
 % 2. Writes initial values from VariableList.m into the model
 % 3. Exports model data to Maple format (ExportToMaple.m)
 % 4. Runs Maple calculations (MassBalanceCalculation.mpl)
 % 5. Loads calculated values back into MATLAB (LoadMapleValues.m)
+% 6. Writes calculated values back into the model
 %
 % Format: [ConnectorName]PropertyName or PropertyName__[ConnectorName]
 
@@ -46,6 +47,7 @@ fprintf('  2. Apply values from VariableList.m\n');
 fprintf('  3. Export model to Maple format\n');
 fprintf('  4. Run Maple calculations\n');
 fprintf('  5. Load results back into MATLAB\n');
+fprintf('  6. Write calculated values to model\n');
 fprintf('WARNING: This will modify the model!\n');
 fprintf('================================================\n\n');
 
@@ -57,7 +59,7 @@ arch = get(model, "Architecture");
 
 % --- PARSE UNIT PROFILE XML ---
 fprintf('Parsing unitProfile.xml to extract stereotype definitions...\n');
-xmlFile = 'unitProfile.xml';
+xmlFile = 'unitProfile.xml'; % In same folder as model
 xDoc = xmlread(xmlFile);
 
 % Create maps to store stereotype info
@@ -514,7 +516,7 @@ fprintf('=== STEP 3: Exporting Model to Maple ===\n');
 fprintf('================================================\n');
 
 try
-    run('ExportToMaple.m');
+    run(fullfile('BackendMassBalanceMaster', 'ExportToMaple.m'));
     fprintf('✓ Export to Maple completed successfully\n');
 catch ME
     error('ERROR in ExportToMaple: %s', ME.message);
@@ -527,21 +529,60 @@ fprintf('\n================================================\n');
 fprintf('=== STEP 4: Running Maple Calculations ===\n');
 fprintf('================================================\n');
 
-% Check if Maple script exists
-mapleScript = 'MassBalanceCalculation.mpl';
-if ~isfile(mapleScript)
-    error('Maple script not found: %s', mapleScript);
+% Check if Maple worksheet exists
+mapleWorksheet = 'MassBalanceCalculation.mw';
+mapleScript = 'MassBalanceCalculation.mpl';  % Fallback to .mpl if exists
+
+if isfile(mapleWorksheet)
+    fprintf('Found Maple worksheet: %s\n', mapleWorksheet);
+    fprintf('Note: .mw files must be run in Maple GUI\n');
+    useWorksheet = true;
+elseif isfile(mapleScript)
+    fprintf('Found Maple script: %s\n', mapleScript);
+    useWorksheet = false;
+else
+    error('Maple file not found. Looking for: %s or %s', mapleWorksheet, mapleScript);
 end
 
 % Delete old Maple output file to ensure fresh run
-mapleOutputFile = 'MapleExportedVariables.m';
+mapleOutputFile = fullfile('BackendMassBalanceMaster', 'MapleExportedVariables.m');
 if isfile(mapleOutputFile)
     fprintf('Deleting old Maple output file...\n');
     delete(mapleOutputFile);
 end
 
-% Try to find and run Maple automatically
-fprintf('Searching for Maple installation...\n');
+% Handle .mw vs .mpl files differently
+if useWorksheet
+    % .mw files can only be run in Maple GUI
+    fprintf('\n⚠ MANUAL STEP REQUIRED ⚠\n');
+    fprintf('================================================\n');
+    fprintf('Please follow these steps:\n\n');
+    fprintf('1. Open Maple GUI\n');
+    fprintf('2. Open: %s\n', mapleWorksheet);
+    fprintf('3. Make sure it has these lines:\n');
+    fprintf('   AT TOP: read "MassBalanceVariables.mpl";\n');
+    fprintf('   AT END: read "BackendMassBalanceMaster/ExportMapleToMatlab.mpl";\n');
+    fprintf('4. Run the worksheet (Execute > Execute Worksheet)\n');
+    fprintf('5. Return here and press Enter\n\n');
+    fprintf('================================================\n');
+    fprintf('See README_MassBalance.md for detailed instructions\n');
+    fprintf('================================================\n\n');
+
+    input('Press Enter after running the Maple worksheet...');
+
+    % Check if output was created
+    pause(0.5);
+    if isfile(mapleOutputFile)
+        fprintf('✓ Maple calculations completed successfully\n');
+        mapleFound = true;
+    else
+        warning('Output file not found. Please ensure the worksheet ran completely and included the export command.');
+        input('Press Enter to continue anyway or Ctrl+C to abort...');
+        mapleFound = false;
+    end
+else
+    % Try to run .mpl file automatically
+    fprintf('Searching for Maple installation...\n');
 
 % Try to find Maple executable
 maplePaths = {};
@@ -625,21 +666,22 @@ if ~mapleFound
     end
 end
 
-if ~mapleFound
-    warning('Could not automatically run Maple.');
-    fprintf('\nMaple installation paths checked:\n');
-    for p = 1:length(commonPaths)
-        if isfile(commonPaths{p})
-            fprintf('  %s ✓\n', commonPaths{p});
-        else
-            fprintf('  %s ✗\n', commonPaths{p});
+    if ~mapleFound
+        warning('Could not automatically run Maple.');
+        fprintf('\nMaple installation paths checked:\n');
+        for p = 1:length(commonPaths)
+            if isfile(commonPaths{p})
+                fprintf('  %s ✓\n', commonPaths{p});
+            else
+                fprintf('  %s ✗\n', commonPaths{p});
+            end
         end
+        fprintf('\nPlease either:\n');
+        fprintf('  1. Run %s manually in Maple, then press Enter\n', mapleScript);
+        fprintf('  2. Add Maple to your system PATH\n');
+        input('Press Enter after running Maple calculations...');
     end
-    fprintf('\nPlease either:\n');
-    fprintf('  1. Run %s manually in Maple, then press Enter\n', mapleScript);
-    fprintf('  2. Add Maple to your system PATH\n');
-    input('Press Enter after running Maple calculations...');
-end
+end  % End of if useWorksheet
 
 %% ========================================================================
 %% STEP 5: LOAD MAPLE RESULTS BACK INTO MATLAB
@@ -648,11 +690,159 @@ fprintf('\n================================================\n');
 fprintf('=== STEP 5: Loading Maple Results ===\n');
 fprintf('================================================\n');
 
+% Store workspace variables before loading
+varsBeforeMaple = who;
+
 try
-    run('LoadMapleValues.m');
+    run(fullfile('BackendMassBalanceMaster', 'LoadMapleValues.m'));
     fprintf('✓ Maple values loaded into MATLAB workspace\n');
 catch ME
     error('ERROR in LoadMapleValues: %s', ME.message);
+end
+
+%% ========================================================================
+%% STEP 6: WRITE MAPLE RESULTS BACK TO MODEL
+%% ========================================================================
+fprintf('\n================================================\n');
+fprintf('=== STEP 6: Writing Maple Results to Model ===\n');
+fprintf('================================================\n');
+
+% Get new variables added by Maple (these are the calculated values)
+varsAfterMaple = who;
+mapleVars = setdiff(varsAfterMaple, varsBeforeMaple);
+
+% Remove script variables from the list
+scriptVars = {'varsBeforeMaple', 'varsAfterMaple', 'mapleVars', 'newVars', 'scriptVars', 'ans', ...
+              'variableListFile', 'variableList', 'variableNames', 'expectedValues', 'numVars', ...
+              'resultTable', 'updateTable', 'numSuccess', 'numSkipped', 'numErrors', 'numCleared', ...
+              'mapleScript', 'mapleOutputFile', 'mapleFound', 'mapleExe', 'maplePaths', 'commonPaths', ...
+              'status', 'cmdout', 'cmd'};
+mapleVars = setdiff(mapleVars, scriptVars);
+
+fprintf('Found %d Maple-calculated variables to write to model\n\n', length(mapleVars));
+
+numWritten = 0;
+numFailed = 0;
+
+for v = 1:length(mapleVars)
+    varName = mapleVars{v};
+    varValue = eval(varName);
+
+    % Check if this is an indexed variable (format: PropertyName__(index))
+    pattern = '(.+)__';
+    tokens = regexp(varName, pattern, 'tokens');
+
+    if ~isempty(tokens) && ~isempty(varValue)
+        propertyName = tokens{1}{1};
+
+        % Get all indices that have values
+        if isnumeric(varValue)
+            if isscalar(varValue)
+                % Single value
+                indices = 1;
+                values = varValue;
+            else
+                % Array - find non-zero indices
+                indices = find(varValue ~= 0);
+                values = varValue(indices);
+            end
+
+            % Write each indexed value to the model
+            for i = 1:length(indices)
+                connectorIdx = indices(i);
+                connectorValue = values(i);
+
+                % Format connector name
+                connectorName = sprintf('%02d', connectorIdx);
+
+                fprintf('Processing: %s(%d) = %g\n', propertyName, connectorIdx, connectorValue);
+
+                % Find the connector in the model
+                connectorFound = false;
+                matchedConnector = [];
+
+                for c = 1:numConnectors
+                    conn = connectors(1, c);
+                    % Match by name (handle [XX] or (XX) format)
+                    if strcmp(conn.Name, sprintf('[%s]', connectorName)) || ...
+                       strcmp(conn.Name, sprintf('[%d]', connectorIdx)) || ...
+                       strcmp(conn.Name, sprintf('(%d)', connectorIdx))
+                        connectorFound = true;
+                        matchedConnector = conn;
+                        break;
+                    end
+                end
+
+                if ~connectorFound
+                    fprintf('  WARNING: Connector [%s] not found\n', connectorName);
+                    numFailed = numFailed + 1;
+                    continue;
+                end
+
+                % Find the property in the connector's stereotypes
+                stereotypes = matchedConnector.getStereotypes();
+                propertyFound = false;
+
+                if ~isempty(stereotypes)
+                    if ischar(stereotypes) || isstring(stereotypes)
+                        stereotypes = {char(stereotypes)};
+                    else
+                        stereotypes = cellstr(stereotypes);
+                    end
+
+                    for s = 1:length(stereotypes)
+                        stereotype = stereotypes{s};
+
+                        if isKey(stereotypeAllPropertiesMap, stereotype)
+                            propertyInfo = stereotypeAllPropertiesMap(stereotype);
+
+                            for p = 1:length(propertyInfo)
+                                propName = propertyInfo{p}{1};
+
+                                % Case-insensitive match
+                                if strcmpi(propName, propertyName)
+                                    propertyFound = true;
+                                    fullPropName = append(stereotype, ".", propName);
+
+                                    try
+                                        % Set the property
+                                        setProperty(matchedConnector, fullPropName, num2str(connectorValue));
+                                        fprintf('  ✓ Updated %s: %s = %g\n', matchedConnector.Name, fullPropName, connectorValue);
+                                        numWritten = numWritten + 1;
+                                    catch ME
+                                        fprintf('  ✗ Failed to update: %s\n', ME.message);
+                                        numFailed = numFailed + 1;
+                                    end
+                                    break;
+                                end
+                            end
+                        end
+
+                        if propertyFound
+                            break;
+                        end
+                    end
+                end
+
+                if ~propertyFound
+                    fprintf('  WARNING: Property %s not found in connector\n', propertyName);
+                    numFailed = numFailed + 1;
+                end
+            end
+        end
+    end
+end
+
+fprintf('\n✓ Wrote %d calculated values to model\n', numWritten);
+if numFailed > 0
+    fprintf('⚠ Failed to write %d values\n', numFailed);
+end
+
+% Save the model with calculated values
+if numWritten > 0
+    fprintf('\nSaving model with calculated values...\n');
+    save(model);
+    fprintf('✓ Model saved successfully\n');
 end
 
 %% ========================================================================
@@ -662,9 +852,14 @@ fprintf('\n================================================\n');
 fprintf('=== MASS BALANCE WORKFLOW COMPLETE ===\n');
 fprintf('================================================\n');
 fprintf('Summary:\n');
-fprintf('  ✓ Model updated with initial values\n');
-fprintf('  ✓ Data exported to Maple\n');
-fprintf('  ✓ Maple calculations executed\n');
-fprintf('  ✓ Results loaded back into MATLAB\n');
-fprintf('\nCalculated variables are now available in workspace\n');
+fprintf('  ✓ Step 1: Cleared M_ stereotype properties\n');
+fprintf('  ✓ Step 2: Wrote initial values to model\n');
+fprintf('  ✓ Step 3: Exported model data to Maple\n');
+fprintf('  ✓ Step 4: Executed Maple calculations\n');
+fprintf('  ✓ Step 5: Loaded results into MATLAB\n');
+fprintf('  ✓ Step 6: Wrote calculated values back to model\n');
+fprintf('\nFinal results:\n');
+fprintf('  - Initial values written: %d\n', numSuccess);
+fprintf('  - Calculated values written: %d\n', numWritten);
+fprintf('  - Model saved with all updates\n');
 fprintf('================================================\n');

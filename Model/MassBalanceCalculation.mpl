@@ -1,12 +1,12 @@
 # ============================================================================
 # AUTO-GENERATED VARIABLES - DO NOT EDIT THIS SECTION MANUALLY
 # Generated from MATLAB System Composer
-# Date: 17-Oct-2025 14:32:24
+# Date: 21-Oct-2025 16:23:16
 # ============================================================================
 
 # Connector: [01]
-CHxConcentration__[01] := 3; # mg/L
-H2OConcentration__[01] := 999999; # mg/L
+CHxConcentration__[01] := 1.0125; # mg/L
+H2OConcentration__[01] := H2OConcentration__[01]; # mg/L (blank)
 
 # Connector: [02]
 CHxConcentration__[02] := CHxConcentration__[02]; # mg/L (blank)
@@ -21,7 +21,7 @@ TotMassFlowRate__[04] := TotMassFlowRate__[04]; # kg/s (blank)
 Type__[04] := Type__[04]; # (blank)
 MassFraction_CHx__[04] := 0.9; # %
 MassFraction_H2O__[04] := 3; # %
-MassFraction_Char__[04] := MassFraction_Char__[04]; # % (blank)
+MassFraction_Char__[04] := 96.1; # %
 
 # Connector: [05]
 TotMassFlowRate__[05] := TotMassFlowRate__[05]; # kg/s (blank)
@@ -189,6 +189,10 @@ MassFraction_Gas1__[26] := MassFraction_Gas1__[26]; # % (blank)
 MassFraction_H20__[26] := MassFraction_H20__[26]; # % (blank)
 MassFraction_Char__[26] := MassFraction_Char__[26]; # % (blank)
 MassFraction_Gas2__[26] := MassFraction_Gas2__[26]; # % (blank)
+
+### END OF AUTO-GENERATED VARIABLES ###
+# Add your equations below this line
+# This section will be preserved when variables are regenerated
 
 ### END OF AUTO-GENERATED VARIABLES ###
 # Add your equations below this line
