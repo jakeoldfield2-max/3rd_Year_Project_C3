@@ -1,7 +1,7 @@
 # ============================================================================
 # AUTO-GENERATED MASS BALANCE VARIABLES (M_ Stereotypes Only)
 # Generated from MATLAB System Composer
-# Date: 21-Oct-2025 20:33:19
+# Date: 22-Oct-2025 18:21:02
 # Only properties from stereotypes starting with M_ are included
 # ============================================================================
 
@@ -15,7 +15,6 @@ CHxConcentration__[01] := 1.0125; # mg/L
 
 # Connector: [03]
 Temperature__[03] := 10; # C
-MassFlowRate__[03] := 0.6; # kg/s
 FluidDensity__[03] := 999.7; # kg/m3
 CHxConcentration__[03] := 0.01; # mg/L
 
@@ -45,19 +44,22 @@ FluidDensity__[06] := 180; # kg/m3
 # Connector: [12]
 
 # Connector: [13]
-MassFraction_H2O__[13] := 0.14;
-MassFraction_Char__[13] := 0.35;
 Temperature__[13] := 300; # C
 FluidDensity__[13] := 200; # kg/m3
-MassFraction_Gas1__[13] := 0.2; # %
-MassFraction_Gas2__[13] := 0.14; # %
+CharConversionFraction__[13] := 0.45;
+Gas1ConversionFraction__[13] := 0.25;
+Gas2ConversionFraction__[13] := 0.2;
 
 # Connector: [14]
+InertMassFlowRate__[14] := 0.5; # kg/s
 
 # Connector: [15]
 
 # Connector: [16]
-MassFlowRate__[16] := 1; # kg/s
+MassFraction_H2O__[16] := 0.2; # %
+MassFraction_Chips__[16] := 0.65; # %
+MassFraction_TreatmentChemicals__[16] := 0.15; # %
+ChipMassFlowRate__[16] := 1; # kg/s
 
 # Connector: [17]
 
