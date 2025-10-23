@@ -16,7 +16,7 @@ variableList = {
 
 %======Needed Variables Into Pyrolyzer======
 % ( These  will be reduced as we know more about the plant processes )
- 'ChipMassFlowRate__(16)',        1
+ 'ChipMassFlowRate__(16)',        2
 % Replace here with source (Temporary Input)
  'MassFraction_Chips__(16)',        0.65
 % Replace here with source (Temporary Input)

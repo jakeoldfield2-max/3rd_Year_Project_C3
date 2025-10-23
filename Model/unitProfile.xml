@@ -129,6 +129,8 @@
       <Source type="systemcomposer.services.proxy.ProxySource" uuid="1573b72f-598c-435c-907a-5cacfebe54d7"/>
       <Source type="systemcomposer.services.proxy.ProxySource" uuid="0d70caf9-66ee-4fd7-a96b-5d438e1064ba"/>
       <Source type="systemcomposer.services.proxy.ProxySource" uuid="094ec4f6-6bcb-4c1e-9492-199c570fb0d0"/>
+      <Source type="systemcomposer.services.proxy.ProxySource" uuid="9cf9e513-8e57-46f5-83ab-ae1bde4c8b77"/>
+      <Source type="systemcomposer.services.proxy.ProxySource" uuid="b4aeedca-ee5b-422a-8268-6911cab0c099"/>
       <TargetId>51eb552b-4fc3-43cc-8503-cee9acff3e84</TargetId>
     </Proxies>
     <Proxies type="systemcomposer.services.proxy.BidirectionalProxy" uuid="64541b0f-c0cc-488c-a8ee-42708b83c2e9">
@@ -200,6 +202,10 @@
     <Proxies type="systemcomposer.services.proxy.BidirectionalProxy" uuid="36f536d5-0c52-43f0-83e8-48b14b4a347b">
       <Source type="systemcomposer.services.proxy.ProxySource" uuid="954bfb72-73c1-47be-a615-61321d6ed2b2"/>
       <TargetId>6916c43d-a3cc-48a7-a233-b61ba2121513</TargetId>
+    </Proxies>
+    <Proxies type="systemcomposer.services.proxy.BidirectionalProxy" uuid="4b7d9b6f-7fdc-4979-844e-6a5e243be02c">
+      <Source type="systemcomposer.services.proxy.ProxySource" uuid="a1490cb4-66d2-467c-958a-d9ea395fe03b"/>
+      <TargetId>6a837241-d7e8-4d10-9339-80926be0a47e</TargetId>
     </Proxies>
     <Proxies type="systemcomposer.services.proxy.BidirectionalProxy" uuid="a526a963-7692-4bee-8bf4-4edcff4021fb">
       <Source type="systemcomposer.services.proxy.ProxySource" uuid="4e5acc1f-a41e-42d4-baa9-8022ad4d2350"/>
@@ -277,6 +283,10 @@
       <Source type="systemcomposer.services.proxy.ProxySource" uuid="b5749f4f-f1e1-46f2-8f62-f72e7ccc0c35"/>
       <TargetId>a3d0398f-7c74-4a90-89a8-a4fbe78c83a2</TargetId>
     </Proxies>
+    <Proxies type="systemcomposer.services.proxy.BidirectionalProxy" uuid="813f1bfb-e84b-46cd-82ed-70e8cbafc3d6">
+      <Source type="systemcomposer.services.proxy.ProxySource" uuid="e84c30c9-6dae-4be4-a73b-d004e8460d2c"/>
+      <TargetId>a516c2ad-b72c-49a8-be19-b49435976a9a</TargetId>
+    </Proxies>
     <Proxies type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="f7e746c4-fbae-47d0-8557-4dbb48e8861b">
       <Source type="systemcomposer.services.proxy.ProxySource" uuid="4fe0bb4e-ea6a-4b14-8e9b-d25e7181b52c"/>
       <TargetId>a7837836-084e-4606-b501-46fa46fb96e3</TargetId>
@@ -288,6 +298,10 @@
     <Proxies type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="fc32d29b-a360-4436-8c15-ca8c2e450d8d">
       <Source type="systemcomposer.services.proxy.ProxySource" uuid="9c4b35df-17ce-415b-a83f-4a88f599937f"/>
       <TargetId>aba546c2-ecb6-412a-8c8c-d44e9d17709b</TargetId>
+    </Proxies>
+    <Proxies type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="b59aef23-76a8-49d3-ad33-b577f9fbad62">
+      <Source type="systemcomposer.services.proxy.ProxySource" uuid="d10a6d5c-10f2-4d55-a621-039e3af9acaf"/>
+      <TargetId>b4f47629-fb4d-4fb9-819c-fcf5db0f8a42</TargetId>
     </Proxies>
     <Proxies type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="14a45100-be92-40ec-a114-c866afa7f55f">
       <Source type="systemcomposer.services.proxy.ProxySource" uuid="b1cab363-2140-4de7-9508-9e8297a79f4e"/>
@@ -332,6 +346,10 @@
     <Proxies type="systemcomposer.services.proxy.BidirectionalProxy" uuid="13cbd572-f8fd-4653-bff1-bd7681ea52f2">
       <Source type="systemcomposer.services.proxy.ProxySource" uuid="6166fa9c-7ff2-4b04-8d44-fbe4aaa214b4"/>
       <TargetId>def0763f-89fb-4de6-a485-3d0be09de9e1</TargetId>
+    </Proxies>
+    <Proxies type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="49a41594-e1db-4d01-a997-163810238cbc">
+      <Source type="systemcomposer.services.proxy.ProxySource" uuid="84653428-8d30-41cc-854a-234d6fbada94"/>
+      <TargetId>df11740d-456c-41cb-9d89-9c82cb3fdb9d</TargetId>
     </Proxies>
     <Proxies type="systemcomposer.services.proxy.BidirectionalProxy" uuid="ca041e82-e162-4b65-b5f1-f5de14cb00fa">
       <Source type="systemcomposer.services.proxy.ProxySource" uuid="2eee51b8-228c-4569-8535-effcb09ada6d"/>
@@ -768,10 +786,9 @@
       </parentProxy>
       <propertySet type="systemcomposer.property.PropertySet" uuid="8efbad5d-3095-42a4-896c-4bd4f25ca1be">
         <properties type="systemcomposer.property.PropertyDefinition" uuid="742fbaf5-8647-4359-965c-bba3857caaf7">
-          <currentVersionId>1ce8c1f7-944e-4cca-8fe7-6d315da20228</currentVersionId>
+          <currentVersionId>89cfb4ae-fee5-449c-a79a-3c72e446ecd5</currentVersionId>
           <p_Name>MassFraction_H2O</p_Name>
           <defaultValue type="systemcomposer.property.Value" uuid="42788f01-9f00-4bf3-b556-a5e863a88b20">
-            <units>%</units>
             <valueTypeProxy type="systemcomposer.services.proxy.ProxySource" uuid="ec564bac-e23c-4ab2-8712-2c151275b33f">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="40f5087d-906b-44dc-9cc1-1fda8ce0e2cd"/>
               <realElement type="systemcomposer.property.Value" uuid="42788f01-9f00-4bf3-b556-a5e863a88b20"/>
@@ -779,7 +796,6 @@
           </defaultValue>
           <ownedType type="systemcomposer.property.FloatType" uuid="59ce96a1-7e5c-4b8d-aafe-cea4d2976753">
             <unitChecker type="systemcomposer.property.UnitQueryClientWrapper" uuid="42a88f96-c5e8-44d3-9871-f89aa6d941b9"/>
-            <units>%</units>
             <typeProxy type="systemcomposer.services.proxy.ProxySource" uuid="9c6e8a82-fabc-4994-9807-669ad6b301cc">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="72caa44c-f45d-4ba8-b2f6-1f3a190a5961"/>
               <realElement type="systemcomposer.property.FloatType" uuid="59ce96a1-7e5c-4b8d-aafe-cea4d2976753"/>
@@ -793,11 +809,10 @@
           <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="9bbb82d3-9736-400d-8869-b997890b0f80"/>
         </properties>
         <properties type="systemcomposer.property.PropertyDefinition" uuid="44d7490a-aa3c-421f-bba3-f42315ff4041">
-          <currentVersionId>3d6f0b48-bbb2-4b4b-b05e-c527b24b8398</currentVersionId>
+          <currentVersionId>7a287b1f-5dc6-4043-8abf-3bc1fe4436ae</currentVersionId>
           <p_Index>1</p_Index>
           <p_Name>MassFraction_Chips</p_Name>
           <defaultValue type="systemcomposer.property.Value" uuid="de5f6dca-4ce2-4890-8dc3-9a44ef945594">
-            <units>%</units>
             <valueTypeProxy type="systemcomposer.services.proxy.ProxySource" uuid="7f697a46-a01c-4c58-8594-bdcde28b7606">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="be491edc-f5b7-4679-be04-41d4ed924108"/>
               <realElement type="systemcomposer.property.Value" uuid="de5f6dca-4ce2-4890-8dc3-9a44ef945594"/>
@@ -805,7 +820,6 @@
           </defaultValue>
           <ownedType type="systemcomposer.property.FloatType" uuid="5877e0e8-783d-451e-989d-49f39eb371b9">
             <unitChecker type="systemcomposer.property.UnitQueryClientWrapper" uuid="42a88f96-c5e8-44d3-9871-f89aa6d941b9"/>
-            <units>%</units>
             <typeProxy type="systemcomposer.services.proxy.ProxySource" uuid="32f4f3de-e065-4dc1-8e2b-ce98b836596e">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="72caa44c-f45d-4ba8-b2f6-1f3a190a5961"/>
               <realElement type="systemcomposer.property.FloatType" uuid="5877e0e8-783d-451e-989d-49f39eb371b9"/>
@@ -819,11 +833,10 @@
           <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="ae69f496-3e4e-493d-94a4-415ae38f0af6"/>
         </properties>
         <properties type="systemcomposer.property.PropertyDefinition" uuid="280ead9f-2e55-4c38-b43c-fb4a36e325df">
-          <currentVersionId>c31a5784-2779-4a00-b3c5-397ff7b0269a</currentVersionId>
+          <currentVersionId>9fb95fb5-ff66-4516-bec3-5cd327d586c8</currentVersionId>
           <p_Index>2</p_Index>
           <p_Name>MassFraction_TreatmentChemicals</p_Name>
           <defaultValue type="systemcomposer.property.Value" uuid="104b9bf9-0e07-4ea1-b9b1-1ec03b942d47">
-            <units>%</units>
             <valueTypeProxy type="systemcomposer.services.proxy.ProxySource" uuid="b1cab363-2140-4de7-9508-9e8297a79f4e">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="14a45100-be92-40ec-a114-c866afa7f55f"/>
               <realElement type="systemcomposer.property.Value" uuid="104b9bf9-0e07-4ea1-b9b1-1ec03b942d47"/>
@@ -831,7 +844,6 @@
           </defaultValue>
           <ownedType type="systemcomposer.property.FloatType" uuid="bede6c21-fd45-48b5-9010-8e8f3d0ea510">
             <unitChecker type="systemcomposer.property.UnitQueryClientWrapper" uuid="42a88f96-c5e8-44d3-9871-f89aa6d941b9"/>
-            <units>%</units>
             <typeProxy type="systemcomposer.services.proxy.ProxySource" uuid="baa432db-d51c-4576-b55e-be2fee7756aa">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="72caa44c-f45d-4ba8-b2f6-1f3a190a5961"/>
               <realElement type="systemcomposer.property.FloatType" uuid="bede6c21-fd45-48b5-9010-8e8f3d0ea510"/>
@@ -845,11 +857,10 @@
           <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="31d80b82-b799-4e2f-aa7f-c075d5baa066"/>
         </properties>
         <properties type="systemcomposer.property.PropertyDefinition" uuid="33383fec-d8f7-4dee-89c6-78c596089be7">
-          <currentVersionId>f9a85505-a703-4fbb-9589-80c5a65681a6</currentVersionId>
+          <currentVersionId>e7481165-d2a7-47bf-9e05-d197c232e4e6</currentVersionId>
           <p_Index>3</p_Index>
           <p_Name>MassFraction_Debris</p_Name>
           <defaultValue type="systemcomposer.property.Value" uuid="b78b8aa1-dece-42f3-88ff-5b2caea70044">
-            <units>%</units>
             <valueTypeProxy type="systemcomposer.services.proxy.ProxySource" uuid="1cc554a5-ce25-41d9-b3d4-eeb3f302276f">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="db05fc9a-d657-47b4-8991-6a85048fac30"/>
               <realElement type="systemcomposer.property.Value" uuid="b78b8aa1-dece-42f3-88ff-5b2caea70044"/>
@@ -857,7 +868,6 @@
           </defaultValue>
           <ownedType type="systemcomposer.property.FloatType" uuid="7e1138cd-c1cc-40eb-bccb-39b3bebd1b98">
             <unitChecker type="systemcomposer.property.UnitQueryClientWrapper" uuid="42a88f96-c5e8-44d3-9871-f89aa6d941b9"/>
-            <units>%</units>
             <typeProxy type="systemcomposer.services.proxy.ProxySource" uuid="f812539f-36f4-447c-a801-002ec61680da">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="72caa44c-f45d-4ba8-b2f6-1f3a190a5961"/>
               <realElement type="systemcomposer.property.FloatType" uuid="7e1138cd-c1cc-40eb-bccb-39b3bebd1b98"/>
@@ -1034,10 +1044,9 @@
       </parentProxy>
       <propertySet type="systemcomposer.property.PropertySet" uuid="372ecc17-ba00-49ed-aa1c-ccc4cc183127">
         <properties type="systemcomposer.property.PropertyDefinition" uuid="d14f4ae8-b267-4f19-aea3-1ce6736fee26">
-          <currentVersionId>44a28be7-d47c-4652-bb06-a0edba45b78d</currentVersionId>
+          <currentVersionId>069b2a8b-672c-4025-9d5d-e725e926ac8a</currentVersionId>
           <p_Name>MassFraction_Gas1</p_Name>
           <defaultValue type="systemcomposer.property.Value" uuid="63c6fe2d-8e92-4899-a0ab-0a803edb2cb8">
-            <units>%</units>
             <valueTypeProxy type="systemcomposer.services.proxy.ProxySource" uuid="f6253b6c-3d52-43e5-ab9e-b51d33d51479">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="b0aa4c52-8d2b-4852-834d-4d1030d27e9d"/>
               <realElement type="systemcomposer.property.Value" uuid="63c6fe2d-8e92-4899-a0ab-0a803edb2cb8"/>
@@ -1045,7 +1054,6 @@
           </defaultValue>
           <ownedType type="systemcomposer.property.FloatType" uuid="57305d77-7290-4c72-8714-13cb6e1842d3">
             <unitChecker type="systemcomposer.property.UnitQueryClientWrapper" uuid="42a88f96-c5e8-44d3-9871-f89aa6d941b9"/>
-            <units>%</units>
             <typeProxy type="systemcomposer.services.proxy.ProxySource" uuid="23f7a107-17b2-491a-ac7c-129c6f2e631c">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="72caa44c-f45d-4ba8-b2f6-1f3a190a5961"/>
               <realElement type="systemcomposer.property.FloatType" uuid="57305d77-7290-4c72-8714-13cb6e1842d3"/>
@@ -1059,11 +1067,10 @@
           <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="e6383adb-50a4-40e7-9db4-2d7a58283f25"/>
         </properties>
         <properties type="systemcomposer.property.PropertyDefinition" uuid="553a8daa-0d25-4103-9e28-d03d90fc5f08">
-          <currentVersionId>ee984fa4-e533-4105-b689-524f6fb276cc</currentVersionId>
+          <currentVersionId>d15f6cca-2298-40ac-897d-dfe85181131d</currentVersionId>
           <p_Index>1</p_Index>
-          <p_Name>MassFraction_H20</p_Name>
+          <p_Name>MassFraction_H2O</p_Name>
           <defaultValue type="systemcomposer.property.Value" uuid="1b3fc9a4-2d6a-4bc3-99f3-897345530a01">
-            <units>%</units>
             <valueTypeProxy type="systemcomposer.services.proxy.ProxySource" uuid="800e4b4c-6241-4e2d-9a86-97ba6d1ebbaf">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="794479ac-3718-46a3-aa2f-b376a411560d"/>
               <realElement type="systemcomposer.property.Value" uuid="1b3fc9a4-2d6a-4bc3-99f3-897345530a01"/>
@@ -1071,7 +1078,6 @@
           </defaultValue>
           <ownedType type="systemcomposer.property.FloatType" uuid="653dee32-b4ab-4ab0-a4ec-19354d958fb2">
             <unitChecker type="systemcomposer.property.UnitQueryClientWrapper" uuid="42a88f96-c5e8-44d3-9871-f89aa6d941b9"/>
-            <units>%</units>
             <typeProxy type="systemcomposer.services.proxy.ProxySource" uuid="53d116b4-fc59-4bcc-b2fb-55b5a04ed0a5">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="72caa44c-f45d-4ba8-b2f6-1f3a190a5961"/>
               <realElement type="systemcomposer.property.FloatType" uuid="653dee32-b4ab-4ab0-a4ec-19354d958fb2"/>
@@ -1085,11 +1091,10 @@
           <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="28549e57-a38d-4282-bbc9-31b829a7f0b7"/>
         </properties>
         <properties type="systemcomposer.property.PropertyDefinition" uuid="b94e26be-8144-41cf-9516-bb9d5d612d71">
-          <currentVersionId>ad3caa64-08a9-4dc0-b29f-d18854e86b93</currentVersionId>
+          <currentVersionId>bcc059f9-70a6-432c-bfdd-130117b84db1</currentVersionId>
           <p_Index>2</p_Index>
           <p_Name>MassFraction_Gas2</p_Name>
           <defaultValue type="systemcomposer.property.Value" uuid="d81142f6-d502-47b3-b470-db3078a78468">
-            <units>%</units>
             <valueTypeProxy type="systemcomposer.services.proxy.ProxySource" uuid="0c73cdc6-346d-4ad0-be60-0512909f16e8">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="f4c5865c-c130-4da8-b7ce-0ebd89a8c32e"/>
               <realElement type="systemcomposer.property.Value" uuid="d81142f6-d502-47b3-b470-db3078a78468"/>
@@ -1097,7 +1102,6 @@
           </defaultValue>
           <ownedType type="systemcomposer.property.FloatType" uuid="4d1001bb-a3da-4d7c-94cd-1b4c83e57d01">
             <unitChecker type="systemcomposer.property.UnitQueryClientWrapper" uuid="42a88f96-c5e8-44d3-9871-f89aa6d941b9"/>
-            <units>%</units>
             <typeProxy type="systemcomposer.services.proxy.ProxySource" uuid="cb88fc29-2190-4f30-90d6-631922658a73">
               <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="72caa44c-f45d-4ba8-b2f6-1f3a190a5961"/>
               <realElement type="systemcomposer.property.FloatType" uuid="4d1001bb-a3da-4d7c-94cd-1b4c83e57d01"/>
@@ -1237,6 +1241,56 @@
             <realElement type="systemcomposer.property.PropertyDefinition" uuid="cc62010e-2a59-449e-a658-6c9b6491a412"/>
           </typeProxy>
           <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="4a51b2bc-53f1-4ab5-84ba-86fb3d6ae315"/>
+        </properties>
+        <properties type="systemcomposer.property.PropertyDefinition" uuid="b1c823ba-c266-4ad6-b180-5fc33fb6ef72">
+          <currentVersionId>c5ebe2d1-6174-429a-838e-5ee18a9d0024</currentVersionId>
+          <p_Index>8</p_Index>
+          <p_Name>TreatmentChemicalsMassFlowRate</p_Name>
+          <defaultValue type="systemcomposer.property.Value" uuid="17c75f54-373e-40c6-b473-27e6e10b2e09">
+            <units>kg/s</units>
+            <valueTypeProxy type="systemcomposer.services.proxy.ProxySource" uuid="84653428-8d30-41cc-854a-234d6fbada94">
+              <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="49a41594-e1db-4d01-a997-163810238cbc"/>
+              <realElement type="systemcomposer.property.Value" uuid="17c75f54-373e-40c6-b473-27e6e10b2e09"/>
+            </valueTypeProxy>
+          </defaultValue>
+          <ownedType type="systemcomposer.property.FloatType" uuid="df11740d-456c-41cb-9d89-9c82cb3fdb9d">
+            <unitChecker type="systemcomposer.property.UnitQueryClientWrapper" uuid="42a88f96-c5e8-44d3-9871-f89aa6d941b9"/>
+            <units>kg/s</units>
+            <typeProxy type="systemcomposer.services.proxy.ProxySource" uuid="9cf9e513-8e57-46f5-83ab-ae1bde4c8b77">
+              <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="72caa44c-f45d-4ba8-b2f6-1f3a190a5961"/>
+              <realElement type="systemcomposer.property.FloatType" uuid="df11740d-456c-41cb-9d89-9c82cb3fdb9d"/>
+            </typeProxy>
+            <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="a516c2ad-b72c-49a8-be19-b49435976a9a"/>
+          </ownedType>
+          <typeProxy type="systemcomposer.services.proxy.ProxySource" uuid="e84c30c9-6dae-4be4-a73b-d004e8460d2c">
+            <Proxy type="systemcomposer.services.proxy.BidirectionalProxy" uuid="813f1bfb-e84b-46cd-82ed-70e8cbafc3d6"/>
+            <realElement type="systemcomposer.property.PropertyDefinition" uuid="b1c823ba-c266-4ad6-b180-5fc33fb6ef72"/>
+          </typeProxy>
+          <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="a1251249-a68a-4822-ac13-fc91a3bd52f7"/>
+        </properties>
+        <properties type="systemcomposer.property.PropertyDefinition" uuid="950e2e58-a64d-4fa4-8137-e13b093bcc87">
+          <currentVersionId>a3508763-625b-40f9-8056-56246467d062</currentVersionId>
+          <p_Index>9</p_Index>
+          <p_Name>MassFraction_TreatmentChemicals</p_Name>
+          <defaultValue type="systemcomposer.property.Value" uuid="d53f56ab-a5a3-4755-99a7-e9365542dc74">
+            <valueTypeProxy type="systemcomposer.services.proxy.ProxySource" uuid="d10a6d5c-10f2-4d55-a621-039e3af9acaf">
+              <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="b59aef23-76a8-49d3-ad33-b577f9fbad62"/>
+              <realElement type="systemcomposer.property.Value" uuid="d53f56ab-a5a3-4755-99a7-e9365542dc74"/>
+            </valueTypeProxy>
+          </defaultValue>
+          <ownedType type="systemcomposer.property.FloatType" uuid="b4f47629-fb4d-4fb9-819c-fcf5db0f8a42">
+            <unitChecker type="systemcomposer.property.UnitQueryClientWrapper" uuid="42a88f96-c5e8-44d3-9871-f89aa6d941b9"/>
+            <typeProxy type="systemcomposer.services.proxy.ProxySource" uuid="b4aeedca-ee5b-422a-8268-6911cab0c099">
+              <Proxy type="systemcomposer.services.proxy.UnidirectionalProxy" uuid="72caa44c-f45d-4ba8-b2f6-1f3a190a5961"/>
+              <realElement type="systemcomposer.property.FloatType" uuid="b4f47629-fb4d-4fb9-819c-fcf5db0f8a42"/>
+            </typeProxy>
+            <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="6a837241-d7e8-4d10-9339-80926be0a47e"/>
+          </ownedType>
+          <typeProxy type="systemcomposer.services.proxy.ProxySource" uuid="a1490cb4-66d2-467c-958a-d9ea395fe03b">
+            <Proxy type="systemcomposer.services.proxy.BidirectionalProxy" uuid="4b7d9b6f-7fdc-4979-844e-6a5e243be02c"/>
+            <realElement type="systemcomposer.property.PropertyDefinition" uuid="950e2e58-a64d-4fa4-8137-e13b093bcc87"/>
+          </typeProxy>
+          <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="7ee359a8-b939-434c-b73b-f4c3cac963e0"/>
         </properties>
         <p_Name>M_Pipe_Gas</p_Name>
         <elemProxy type="systemcomposer.services.proxy.ProxyTarget" uuid="d1d3c5f2-aa71-45f2-ba46-f87d826b8ed0"/>
@@ -1765,11 +1819,12 @@
     <URI>unitProfile</URI>
   </systemcomposer.services.proxy.ModelResolver>
   <systemcomposer.property.UnitQueryClientWrapper type="systemcomposer.property.UnitQueryClientWrapper" uuid="42a88f96-c5e8-44d3-9871-f89aa6d941b9"/>
-  <systemcomposer.services.proxy.WorkspaceWrapper type="systemcomposer.services.proxy.WorkspaceWrapper" uuid="6cd1618a-4bee-4e29-a669-d5d3fa6d93c1"/>
   <systemcomposer.services.proxy.WorkspaceWrapper type="systemcomposer.services.proxy.WorkspaceWrapper" uuid="9cbefd9a-8b49-4ad0-932f-58258d387bb6"/>
   <systemcomposer.services.proxy.WorkspaceWrapper type="systemcomposer.services.proxy.WorkspaceWrapper" uuid="9cd34e10-d2ff-4bbf-8be4-be57cc913246"/>
+  <systemcomposer.services.proxy.WorkspaceWrapper type="systemcomposer.services.proxy.WorkspaceWrapper" uuid="6cd1618a-4bee-4e29-a669-d5d3fa6d93c1"/>
   <systemcomposer.services.proxy.WorkspaceWrapper type="systemcomposer.services.proxy.WorkspaceWrapper" uuid="7516ebc9-4eb8-48ed-b74e-c12d961f9e71"/>
   <systemcomposer.services.proxy.WorkspaceWrapper type="systemcomposer.services.proxy.WorkspaceWrapper" uuid="07f8a945-4d04-4810-b685-bd055fb89115"/>
   <systemcomposer.services.proxy.WorkspaceWrapper type="systemcomposer.services.proxy.WorkspaceWrapper" uuid="9a31a192-78a6-4d2c-8af8-0c1377b78f13"/>
   <systemcomposer.services.proxy.WorkspaceWrapper type="systemcomposer.services.proxy.WorkspaceWrapper" uuid="4e1f4ccd-789e-49e8-8c5c-38687c05cd3d"/>
+  <systemcomposer.services.proxy.WorkspaceWrapper type="systemcomposer.services.proxy.WorkspaceWrapper" uuid="2a38b5cd-e835-4e70-be2a-08af0b2db58b"/>
 </MF0>

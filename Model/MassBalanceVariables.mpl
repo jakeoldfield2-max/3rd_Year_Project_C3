@@ -1,7 +1,7 @@
 # ============================================================================
 # AUTO-GENERATED MASS BALANCE VARIABLES (M_ Stereotypes Only)
 # Generated from MATLAB System Composer
-# Date: 22-Oct-2025 18:21:02
+# Date: 23-Oct-2025 18:38:34
 # Only properties from stereotypes starting with M_ are included
 # ============================================================================
 
@@ -56,10 +56,10 @@ InertMassFlowRate__[14] := 0.5; # kg/s
 # Connector: [15]
 
 # Connector: [16]
-MassFraction_H2O__[16] := 0.2; # %
-MassFraction_Chips__[16] := 0.65; # %
-MassFraction_TreatmentChemicals__[16] := 0.15; # %
-ChipMassFlowRate__[16] := 1; # kg/s
+MassFraction_H2O__[16] := 0.2;
+MassFraction_Chips__[16] := 0.65;
+MassFraction_TreatmentChemicals__[16] := 0.15;
+ChipMassFlowRate__[16] := 2; # kg/s
 
 # Connector: [17]
 
