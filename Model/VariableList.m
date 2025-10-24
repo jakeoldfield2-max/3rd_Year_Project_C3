@@ -17,7 +17,7 @@ variableList = {
 %======Needed Variables Into Pyrolyzer======
 % ( These  will be reduced as we know more about the plant processes )
  'ChipMassFlowRate__(16)',        2
-% Replace here with source (Temporary Input)
+% CHANGE to be function of char required
  'MassFraction_Chips__(16)',        0.65
 % Replace here with source (Temporary Input)
  'MassFraction_H2O__(16)',        0.2
@@ -57,9 +57,9 @@ variableList = {
 'MassFraction_CHx__(4)',    0.0833     
 % kg/kg Excel Biochar filter tab average placeholder value
 'MassFraction_Char__(4)',    0.961      
-% Replace here with source (Mass of Char in output of filter)
+% CHANGE TO BE FUNCTION OF [CHX] AND WATER (Mass of Char in output of filter)
 'CHxConcentration__(3)',    0.01
-% Replace here with source (concentration of CHx exiting in grey water)
+% REPLACE with function of adsorption and flow rates to see how much remains (concentration of CHx exiting in grey water)
 
 
 %======Needed Variables Buffer Tank======
