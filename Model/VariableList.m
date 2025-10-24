@@ -54,8 +54,8 @@ variableList = {
 %======Needed Variables PBR======
 'MassFraction_H2O__(4)',    0.03    
 % Replace here with source (How much H2O will be taken by char out of filter)
-'MassFraction_CHx__(4)',    0.009     
-% Replace here with source (How much CHx will be taken by char)
+'MassFraction_CHx__(4)',    0.0833     
+% kg/kg Excel Biochar filter tab average placeholder value
 'MassFraction_Char__(4)',    0.961      
 % Replace here with source (Mass of Char in output of filter)
 'CHxConcentration__(3)',    0.01
