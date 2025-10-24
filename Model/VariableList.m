@@ -30,12 +30,14 @@ variableList = {
 
 
 %======Compounds from Char Pyrolysis======
-'CharConversionFraction__(13)',    0.45      
-% Replace here with source (Fraction of Char Produced from the woodchips)
-'Gas1ConversionFraction__(13)',    0.25      
-% Replace here with source (Fraction of Gas1 Produced from the woodchips)
-'Gas2ConversionFraction__(13)',    0.20      
-% Replace here with source (Fraction of Gas2 Produced from the woodchips)
+'CharConversionFraction__(13)',    0.33      
+% https://pubs.acs.org/doi/10.1021/acssuschemeng.4c01733
+'Gas1ConversionFraction__(13)',    0.41      
+% https://pubs.acs.org/doi/10.1021/acssuschemeng.4c01733
+% bio oil component
+'Gas2ConversionFraction__(13)',    0.25      
+% https://pubs.acs.org/doi/10.1021/acssuschemeng.4c01733
+% NCG component
 % Do we want to add H2O here, currently I am just counting it seperatly
 % from the chips with a seperate wight fraction
 
