@@ -1,0 +1,324 @@
+MM "40.0" FLAVOR "NO" VERSION "40.0" DATETIME "Thu Nov 27 12:00:00 2025"
+MACHINE "WIN-NT/VC"  ;
+startlibrary
+version1
+NumLibs = 4
+Built-In
+ACM Built-In
+ACM Models
+Hybrid Models
+NumCats = 12
+Mixers/Splitters
+active
+Separators
+active
+Exchangers
+active
+Columns
+active
+Reactors
+active
+Pressure Changers
+active
+Manipulators
+active
+Solids
+active
+Solids Separators
+active
+User Models
+active
+Controllers
+active
+Batch Models
+active
+endlibrary
+;
+0
+? SETUP MAIN ? \ "RUN-CLASS" RUN-CLASS = FLOWSHEET \ \ SIMULATE INTERACTIVE = NO
+TFFFILE = "CHEM_M" \ ? SETUP GLOBAL ? \ "IN-UNITS" INSET = METCHEM \ \
+"STREAM-CLASS" SCLASS = MIXNCPSD \ ? SETUP DIAGNOSTICS ? ? SETUP "SIM-OPTIONS"
+? ; "METCHEM_MOLE" ; ? SETUP "UNITS-SET" METCBAR ? \ DESCRIPTION DESCRIPTION
+ = "Metric Units with C, BAR, GCAL/HR, and CUM" \ \ MMLOCAL \ \ UNITSET
+BASESET = MET ( 3 3 3 3 3 3 3 3 3 3 3 7 18 3 3 5 3 3 3 5 3 4 3 3 3 3 1 3 3 3
+4 3 7 3 3 3 1 1 4 4 3 3 3 3 3 3 3 3 3 3 3 3 14 3 3 3 3 3 3 3 3 3 3 4 3 3 3 3
+3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 7 3 3 3 3 3 3 3 3
+3 3 3 3 3 3 3 3 3 ) \ ? SETUP "UNITS-SET" METCHEM ? \ DESCRIPTION DESCRIPTION
+ = "Metric Units for chemical process applications" \ \ MMLOCAL \ \ UNITSET
+BASESET = MET ( 3 3 3 3 3 3 3 3 3 3 3 7 18 3 3 5 3 3 3 5 3 4 3 3 3 3 1 3 3 3
+4 3 7 3 3 3 3 1 4 4 3 3 1 3 3 3 3 3 3 3 3 3 14 3 3 3 3 3 3 3 3 3 3 4 3 3 3 3
+3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 7 3 3 3 3 3 3 3 3
+3 3 3 3 3 3 3 3 3 ) \ ? SETUP "RUN-CONTROL" ? ? SETUP DESCRIPTION ?
+\ DESCRIP DESCRIP = ( "Hospital Pyrolysis System for CHX Removal"
+"Pyrolysis of waste wood to produce biochar for water treatment"
+"C, bar, kg/hr, kmol/hr, Gcal/hr, cum/hr." " " "Property Method: NRTL" " "
+"Stream Class: MIXNCPSD (Mixed with Nonconventional and PSD)" ) \ ?
+ODATABANKS ? \ ODATABANKS AUTO-PARAM = YES \ ? "DATA-SERVICE" ? ? DATABANKS ?
+? COMPONENTS MAIN ? \ COMPONENTS MAIN
+WATER WATER WATER /
+N2 N2 N2 /
+CO CO CO /
+CO2 CO2 CO2 /
+CH4 CH4 CH4 /
+H2 H2 H2 /
+CHX C22H30CL2N10 /
+WOODCHIP * /
+BIOCHAR * /
+\ ? COMPONENTS "ADA/PCS" "LE-PROP-DATA" ? ; "METCHEM_MOLE"
+; ? COMPONENTS "COMP-LIST" GLOBAL ? \ COMPLIST GLOBAL
+WATER N2 CO CO2 CH4 H2 CHX WOODCHIP BIOCHAR \
+? COMPONENTS "NC-COMPS" ? \ "NC-COMPS" NCTYPE = ( WOODCHIP BIOCHAR ) \
+? COMPONENTS "NC-COMPS" WOODCHIP ? \ NCID WOODCHIP ENTMETH = HCOALGEN
+DENMETH = DCOALIGT \ ? COMPONENTS "NC-COMPS" BIOCHAR ? \ NCID BIOCHAR
+ENTMETH = HCOALGEN DENMETH = DCOALIGT \
+? COMPONENTS "UNIFAC-GROUP" ? ? SOLVE ?
+\ "RUN-MODE" MODE = SIM \ ? "DYN-OPTIONS" ? ? "BIO-COMPS" ? ? FLOWSHEET
+GLOBAL ? \ "DEF-STREAM" SCLASS = "MIXNCPSD" \
+? FLOWSHEET GLOBAL ? \ BLOCK DRYER IN = S1 OUT = S2 WATER1 \
+\ BLOCK CRUSHER IN = S2 OUT = S3 \
+\ BLOCK SCREEN IN = S3 OUT = S4 S5 \
+\ BLOCK TORREFAC IN = S4 S5 OUT = S6 S7 \
+\ BLOCK PYROLYZE IN = S7 OUT = S8 \
+\ BLOCK SEPARATE IN = S8 OUT = S9 S15 S16 \
+\ BLOCK FBREACT IN = S9 S10 OUT = S11 S12 \
+\ BLOCK HEATEX1 IN = S11 OUT = S13 \
+\ BLOCK GASBOIL IN = S15 OUT = S17 \
+? PROPERTIES MAIN ? \ GPROPERTIES
+GBASEOPSET = NRTL GOPSETNAME = NRTL PARCON = -1 \ ? PROPERTIES "OPTION-SETS"
+NRTL ? \ PARAM BASE = NRTL \ ? PROPERTIES "NC-PROPS" ? \ "NC-PROPS"
+WOODCHIP ENTMETH = HCOALGEN DENMETH = DCOALIGT /
+BIOCHAR ENTMETH = HCOALGEN DENMETH = DCOALIGT \
+? PROPERTIES "ATTR-COMPS" ? \ "ATTR-COMPS" WOODCHIP PROXANAL ULTANAL SULFANAL /
+BIOCHAR PROXANAL ULTANAL SULFANAL \
+? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "NRTL-1" ? ; "METCHEM_MOLE" ;
+\ PROP-LIST PARAMNAME = NRTL SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL
+ = C BDBANK = ( "APV140 VLE-IG" "APV140 LLE-ASPEN" "APV140 VLE-LIT" ) NEL = 12
+ESTIMATE = YES \
+? PROPERTIES PARAMETERS "PURE-COMP" SCALAR "MW" ? ; "METCHEM_MOLE" ;
+\ PROP-LIST PARAMNAME = MW UNITROW = 0 \
+\ PROP-DATA MW-DATA \ IN-UNITS METCHEM \
+CHX 505.45 \
+? PROPERTIES PARAMETERS "PURE-COMP" SCALAR "TB" ? ; "METCHEM_MOLE" ;
+\ PROP-LIST PARAMNAME = TB UNITROW = 3 UNITLABEL = C \
+\ PROP-DATA TB-DATA \ IN-UNITS METCHEM \
+CHX 641.45 \
+? PROPERTIES PARAMETERS "PURE-COMP" SCALAR "TC" ? ; "METCHEM_MOLE" ;
+\ PROP-LIST PARAMNAME = TC UNITROW = 3 UNITLABEL = C \
+\ PROP-DATA TC-DATA \ IN-UNITS METCHEM \
+CHX 850.0 \
+? PROPERTIES PARAMETERS "PURE-COMP" SCALAR "PC" ? ; "METCHEM_MOLE" ;
+\ PROP-LIST PARAMNAME = PC UNITROW = 20 UNITLABEL = bar \
+\ PROP-DATA PC-DATA \ IN-UNITS METCHEM \
+CHX 15.0 \
+? PROPERTIES PARAMETERS "PURE-COMP" SCALAR "OMEGA" ? ; "METCHEM_MOLE" ;
+\ PROP-LIST PARAMNAME = OMEGA UNITROW = 0 \
+\ PROP-DATA OMEGA-DATA \ IN-UNITS METCHEM \
+CHX 0.8 \
+? PROPERTIES PARAMETERS "PURE-COMP" SCALAR "RHOL" ? ; "METCHEM_MOLE" ;
+\ PROP-LIST PARAMNAME = RHOL UNITROW = 0 \
+\ PROP-DATA RHOL-DATA \ IN-UNITS METCHEM \
+CHX 1155.5 \
+? POLYMERS ? ? "PROP-SET" MAIN
+HXDESIGN ? ; "METCHEM_MOLE" ; \ P1 ID = MASSVFRA \ \ P1 ID = MASSFLMX UNITS
+ = ( "kg/sec" ) \ \ P1 ID = HMX UNITS = ( "J/kg" ) \ \ P1 ID = RHOMX UNITS =
+( "kg/cum" ) \ \ P1 ID = CPMX UNITS = ( "J/kg-K" ) \ \ P1 ID = PCMX UNITS = (
+"N/sqm" ) \ \ P1 ID = MUMX UNITS = ( "N-sec/sqm" ) \ \ P1 ID = KMX UNITS = (
+"Watt/m-K" ) \ \ P1 ID = SIGMAMX UNITS = ( "N/m" ) \ \ P1 ID = MWMX \ \ P2
+PHASE = ( T V L ) SYSPRES = YES \ \ DESCRIPTION DESCRIPTION =
+"Thermal and transport, for heat exchanger design" \
+? "STREAM-NAMES" ? ? "STREAM-GROUP"
+All ? \ DESCRIPTION DESCRIPTION = "All streams" \ ? "STREAM-GROUP" Boundary ?
+\ DESCRIPTION DESCRIPTION = "Boundary streams" \ ? "STREAM-GROUP" Charge ?
+\ DESCRIPTION DESCRIPTION = "Charge streams" \ ? "STREAM-GROUP" Feeds ? \
+DESCRIPTION DESCRIPTION = "Feed streams" \ ? "STREAM-GROUP" Initial ? \
+DESCRIPTION DESCRIPTION = "Streams with user-specified values entered" \ ?
+"STREAM-GROUP" Products ? \ DESCRIPTION DESCRIPTION = "Product streams" \ ?
+"STREAM-GROUP" Tears ? \ DESCRIPTION DESCRIPTION =
+"Tear streams manipulated by the convergence algorithms" \
+? STREAMS S1 ? \ STREAM S1 SUBSTREAM MIXED TEMP = 25.0 PRES = 1.0
+MASS-FLOW = 0.118344 \ MASS-FRAC WATER 0.2 / WOODCHIP 0.8 \
+\ STREAM S1 SUBSTREAM NC COMPS = WOODCHIP MASS-FLOW = 0.0947 \
+\ PROXANAL ( 20.0 17.0 81.5 1.5 ) \
+\ ULTANAL ( 1.5 48.0 6.0 0.2 0.0 0.02 44.28 ) \
+\ SULFANAL ( 0.0 0.0 0.02 ) \
+? STREAMS S10 ? \ STREAM S10 SUBSTREAM MIXED TEMP = 25.0 PRES = 1.0
+MASS-FLOW = 86400.0 \ MASS-FRAC WATER 0.999999 / CHX 0.000001 \
+? STREAMS S20 ? \ STREAM S20 SUBSTREAM MIXED TEMP = 25.0 PRES = 1.0
+MASS-FLOW = 10.7136 \ MASS-FRAC N2 1.0 \
+? BLOCKS DRYER ? \ BLOCK DRYER FLASH2 \ PARAM TEMP = 105.0 PRES = 1.0 \
+? BLOCKS CRUSHER ? \ BLOCK CRUSHER CRUSHER \ PARAM \
+? BLOCKS SCREEN ? \ BLOCK SCREEN SCREEN \ PARAM \
+? BLOCKS TORREFAC ? \ BLOCK TORREFAC RSTOIC \
+PARAM TEMP = 280.0 PRES = 1.0 \
+? BLOCKS PYROLYZE ? \ BLOCK PYROLYZE RYIELD \
+PARAM TEMP = 350.0 PRES = 1.0 \
+\ MASS-YIELD BIOCHAR 0.33 / CO 0.05 / CO2 0.10 / CH4 0.05 / H2 0.05 /
+WATER 0.01 / CHX 0.0 \
+? BLOCKS SEPARATE ? \ BLOCK SEPARATE SEP \
+FRAC STREAM = S9 SUBSTREAM = MIXED COMPS = BIOCHAR FRACS = 1.0 /
+STREAM = S15 SUBSTREAM = MIXED COMPS = CO CO2 CH4 H2 N2 FRACS = 1.0 1.0 1.0 1.0 1.0 /
+STREAM = S16 SUBSTREAM = MIXED COMPS = WATER CHX FRACS = 1.0 1.0 \
+? BLOCKS FBREACT ? \ BLOCK FBREACT SEP \
+PARAM \
+? BLOCKS HEATEX1 ? \ BLOCK HEATEX1 HEATER \
+PARAM TEMP = 50.0 PRES = 1.0 \
+? BLOCKS GASBOIL ? \ BLOCK GASBOIL RSTOIC \
+PARAM TEMP = 800.0 PRES = 1.0 \
+? "EO-VARS" ? ?
+"EO-CONV-OPTI" ? \ DMO-PARAMS MODE = DEFAULT \ \ DMO-PARAMS MODE = SIMULATION
+\ \ DMO-PARAMS MODE = "PARAMETER-ESTIMATION" \ \ DMO-PARAMS MODE =
+RECONCILIATION \ \ DMO-PARAMS MODE = OPTIMIZATION \ \ LSSQP-PARAMS MODE-L =
+DEFAULT \ \ LSSQP-PARAMS MODE-L = SIMULATION \ \ LSSQP-PARAMS MODE-L =
+"PARAMETER-ESTIMATION" \ \ LSSQP-PARAMS MODE-L = RECONCILIATION \ \
+LSSQP-PARAMS MODE-L = OPTIMIZATION \ \ NSOLVE-PARAM NSOLVE-MODE = DEFAULT \
+\ NSOLVE-PARAM NSOLVE-MODE = SIMULATION \ \ NSOLVE-PARAM NSOLVE-MODE =
+"PARAMETER-ESTIMATION" \ \ XSLP-PARAMS XSLP-MODE = DEFAULT \ \ XSLP-PARAMS
+XSLP-MODE = SIMULATION \ \ XSLP-PARAMS XSLP-MODE = "PARAMETER-ESTIMATION" \
+\ XSLP-PARAMS XSLP-MODE = RECONCILIATION \ \ XSLP-PARAMS XSLP-MODE =
+OPTIMIZATION \
+
+ GRAPHICS_BACKUP
+PFS V 5.00
+$CONFIG
+paramdata APV140 ENRTL-RK
+paramdata APV140 VLE-IG
+paramdata APV140 VLE-RK
+paramdata APV140 VLE-HOC
+paramdata APV140 LLE-LIT
+paramdata APV140 LLE-ASPEN
+paramdata APV140 VLE-LIT
+paramdata APV140 BINARY
+paramdata APV140 HENRY-AP
+paramdata APV140 PITZER
+paramdata APV140 EOS-LIT
+paramdata APV140 HENRY-AP
+paramdata APV140 SRK-ASPEN
+paramdata APV140 PC-SAFT
+paramdata APV140 POLYPCSF
+paramdata APV140 HYSYS
+paramdata APESV140 AP-EOS
+paramdata NISTV140 NIST-HOC
+paramdata NISTV140 NIST-IG
+paramdata NISTV140 NIST-RK
+paramdata NISTV140 NIST-EOS
+purebank APV140 PURE40
+purebank APV140 AQUEOUS
+purebank APV140 SOLIDS
+purebank APV140 INORGANIC
+purebank APESV140 AP-EOS
+purebank NISTV140 NIST-TRC
+regdbank 0
+ftn_check 1
+autoblockid 1
+autostreamid 1
+showblockid 1
+showstreamid 1
+autoplacement 1
+grid 2
+gridresolution 0.050000
+scale 0
+streamprefix S
+blockprefix B
+labelscale 1.000000
+3DOn 1
+qwformat %.0f
+wformat %.0f
+tempformat %.0f
+presformat %.0f
+flowformat %.0f
+strmqwformat %.0f
+strmwformat %.0f
+vflowformat %.0f
+mflowformat %.0f
+vfracformat %.2f
+pseudobatch 0
+partial 1
+animation 1
+runanyway 0
+globalqw 0
+globalw 0
+globaltemp 0
+globalpres 0
+globalflow 0
+globalstrmqw 0
+globalstrmw 0
+globalvflow 0
+globalmflow 0
+globalvfrac 0
+globalshowcalcerror 1
+globalshowcalcwarning 1
+globalshowdisabled 1
+tooldrawvisible 0
+browserheight 7530
+browserwidth 10725
+browsertreewidth 2450
+polyplusenabled 1
+dynaplusenabled 1
+bfracenabled 1
+rtfenabled 1
+rspenabled 1
+initializeicarus 0
+pinchenabled 0
+linklimit 5000
+material_color 0
+material_style 0
+material_width 1
+material_termid
+heat_color 0
+heat_style 2
+heat_width 1
+heat_termid Q
+work_color 0
+work_style 1
+work_width 1
+work_termid W
+connections_color 9
+connections_style 3
+connections_width 1
+connections_termid C
+measurements_color 4
+measurements_style 3
+measurements_width 1
+measurements_termid M
+power_color 10
+power_style 5
+power_width 1
+power_termid I
+displayeoconn 0
+displaycalcs 0
+displaytransfers 0
+displaymeas 0
+displaydesignspecs 0
+displaycalccons 0
+displaymeascons 0
+displayothercons 0
+displayeomeas 1
+displayeomeastype 2
+displayothermanipconn 0
+showeoviews 0
+eoautosave 1
+allow_system_userprops 0
+copy_estimation 1
+copy_retrieved 1
+purge_incomp_params 0
+set_default_biparams 0
+set_default_dataset1 0
+set_default_dataset0 1
+bestinput 0
+autosmrun 0
+genallpropset 0
+strmresformdefault 0
+roottype 0
+exchangerfile 1
+streamformat 1
+runsettingfile 1
+usermodelfile 1
+fortranfile 0
+timeout 1000
+auto_evaluate 0
+economics_active 0
+ignoreEOVarNameFixupsOnImport 1
+tpsaupgrade 1
+#
