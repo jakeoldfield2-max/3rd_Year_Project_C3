@@ -1,0 +1,818 @@
+
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + +                                                                         + +
+ + +                      ASPEN PLUS CALCULATION HISTORY                     + +
+ + +                                                                         + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
+ ASPEN PLUS IS A TRADEMARK OF           HOTLINE:
+ ASPEN TECHNOLOGY, INC.                 U.S.A. 888/996-7100
+ 781/221-6400                           EUROPE (44) 1189-226555
+
+ PLATFORM: WIN-X64                                       DECEMBER 17, 2025   
+ VERSION: 40.0   Build 359                               WEDNESDAY   
+ INSTALLATION:                                           4:59:39 P.M.        
+
+ THIS COPY OF ASPEN PLUS LICENSED TO QUEEN MARY UNIVERSITY OF        
+
+
+      ASPEN PLUS (R) IS A PROPRIETARY PRODUCT OF ASPEN TECHNOLOGY, INC.
+      (ASPENTECH), AND MAY BE USED ONLY UNDER AGREEMENT WITH ASPENTECH.
+      RESTRICTED RIGHTS LEGEND:  USE, REPRODUCTION, OR DISCLOSURE BY THE
+      U.S. GOVERNMENT IS SUBJECT TO RESTRICTIONS SET FORTH IN 
+      (i) FAR 52.227-14, Alt. III, (ii) FAR 52.227-19, (iii) DFARS 
+      252.227-7013(c)(1)(ii), or (iv) THE ACCOMPANYING LICENSE AGREEMENT,
+      AS APPLICABLE. FOR PURPOSES OF THE FAR, THIS SOFTWARE SHALL BE DEEMED
+      TO BE "UNPUBLISHED" AND LICENSED WITH DISCLOSURE PROHIBITIONS.
+      CONTRACTOR/SUBCONTRACTOR: ASPEN TECHNOLOGY, INC. 20 CROSBY DRIVE,
+      BEDFORD, MA 01730.
+ *** INPUT SUMMARY ***
+
+ >>CURRENT RUN
+
+   ORIGINAL RUN                           DECEMBER 17, 2025   
+   4:59:39 P.M.                           WEDNESDAY   
+   INPUT FILE: _4510jbq.inm
+   RUN ID : _4510jbq
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 40.0 at 16:59:37 Wed Dec 17, 2025
+          3    ;Directory G:\Documents\Y3 Project\Repo  Runid Y3PROJECT
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
+         11            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=C  &
+         12            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
+         13            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
+         14            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
+         15            PDROP=bar SHORT-LENGTH=mm
+         16
+         17    DEF-STREAMS MIXNCPSD ALL
+         18
+         19    MODEL-OPTION
+         20
+         21    DESCRIPTION "
+         22        Chemical Simulation with English Units :
+         23        F, psi, lb/hr, lbmol/hr, Btu/hr, cuft/hr.
+         24
+         25        Property Method: NRTL
+         26
+         27        Flow basis for input: Mole
+         28
+         29        Stream report composition: Mole flow
+         30        "
+         31
+         32    DATABANKS 'APV140 PURE40' / 'APV140 AQUEOUS' / 'APV140 SOLIDS' &
+         33             / 'APV140 INORGANIC' / 'APESV140 AP-EOS' /  &
+         34            'NISTV140 NIST-TRC' / NOASPENPCD
+         35
+         36    PROP-SOURCES 'APV140 PURE40' / 'APV140 AQUEOUS' /  &
+         37            'APV140 SOLIDS' / 'APV140 INORGANIC' / 'APESV140 AP-EOS' &
+         38             / 'NISTV140 NIST-TRC'
+         39
+         40    COMPONENTS
+         41        WATER H2O /
+         42        N2 N2 /
+         43        O2 O2 /
+         44        CHX C22H30CL2N10 /
+         45        CO CO /
+         46        CO2 CO2 /
+         47        CH4 CH4 /
+         48        H2 H2 /
+         49        C2H4 C2H4 /
+         50        C2H6 C2H6 /
+         51        ACETICAC C2H4O2-1 /
+         52        PHENOL C6H6O /
+         53        GUAIACOL C7H8O2-E1 /
+         54        MULBERRY /
+         55        CHAR /
+         56        ASH /
+         57        ACETOL C3H6O2-D1 /
+         58        C C /
+         59        SO2 O2S /
+         60        HCL HCL /
+         61        DRYMUL
+         62
+         63    SOLVE
+         64        RUN-MODE MODE=SIM
+         65
+         66    FLOWSHEET
+         67        BLOCK PYROLYZE IN=HOTPYFED OUT=HOTPROD
+         68        BLOCK CHARSEP IN=HOTPROD OUT=CHAR VAPORS
+         69        BLOCK CONDENSE IN=VAPORS OUT=GAS OIL
+         70        BLOCK FBSEP IN=WASTEH2O CHAR OUT=CLEANH2O SPNTCHAR
+         71        BLOCK TORSEP IN=WETWOOD OUT=STEAM DRYWOOD
+         72        BLOCK BURNER1 IN=GAS AIR1 OUT=EXHAUST1 HOTFLU
+         73        BLOCK TORHEAT IN=HOTLOOP WOOD OUT=COLDLOOP TORHOT
+         74        BLOCK TOREXCH IN=COLDLOOP OUT=HOTLOOP COLDFLU
+         75        BLOCK PYHEAT IN=HOTLOOP2 DRYWOOD OUT=COLDLOP2 HOTPYFED
+         76        BLOCK PYEXCH IN=COLDLOP2 OUT=HOTLOOP2 COLDFLU2
+         77        BLOCK BURNER2 IN=SPNTCHAR AIR2 OUT=EXHAUST2 HOTFLU2
+         78        BLOCK TORDRYER IN=TORHOT OUT=WETWOOD
+         79
+         80    PROPERTIES NRTL
+         81        PROPERTIES NRTL-RK / PENG-ROB / UNIQUAC
+         82
+         83    NC-COMPS MULBERRY PROXANAL ULTANAL SULFANAL
+         84
+         85    NC-PROPS MULBERRY ENTHALPY HCOALGEN / DENSITY DCOALIGT
+         86
+         87    NC-COMPS CHAR PROXANAL ULTANAL SULFANAL
+         88
+         89    NC-PROPS CHAR ENTHALPY HCOALGEN / DENSITY DCOALIGT
+         90
+         91    NC-COMPS ASH PROXANAL ULTANAL SULFANAL
+         92
+         93    NC-PROPS ASH ENTHALPY HCOALGEN / DENSITY DCOALIGT
+         94
+         95    NC-COMPS DRYMUL PROXANAL ULTANAL SULFANAL
+         96
+         97    NC-PROPS DRYMUL ENTHALPY HCOALGEN / DENSITY DCOALIGT
+         98
+         99    PROP-DATA DHFORM
+        100        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
+        101            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=C  &
+        102            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
+        103            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kJ/kmol'  &
+        104            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
+        105            PDROP=bar SHORT-LENGTH=mm
+        106        PROP-LIST DHFORM / DGFORM
+        107        PVAL CHX 100000 / 200000
+        108
+        109    PROP-DATA PLXANT-1
+        110        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
+        111            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=Pa TEMPERATURE=C  &
+        112            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
+        113            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
+        114            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
+        115            PDROP=bar SHORT-LENGTH=mm
+        116        PROP-LIST PLXANT
+        117        PVAL CHX -1E+20 0.0 0.0 0.0 0.0 0.0 0.0 -273.150000  &
+        118            726.850000
+        119
+        120    PROP-DATA NRTL-1
+        121        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
+        122            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=F  &
+        123            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
+        124            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
+        125            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
+        126            PDROP=bar SHORT-LENGTH=mm
+        127        PROP-LIST NRTL
+        128        BPVAL WATER PHENOL -.5363000000 2542.916880 .3000000000 0.0  &
+        129            0.0 0.0 111.9200000 359.6000000
+        130        BPVAL PHENOL WATER 2.301500000 -1583.461440 .3000000000 0.0  &
+        131            0.0 0.0 111.9200000 359.6000000
+        132
+        133    PROP-DATA PRKBV-1
+        134        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
+        135            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=F  &
+        136            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
+        137            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
+        138            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
+        139            PDROP=bar SHORT-LENGTH=mm
+        140        PROP-LIST PRKBV
+        141        BPVAL WATER CO2 .1200000000 0.0 0.0 -459.6700000  &
+        142            1340.330000
+        143        BPVAL CO2 WATER .1200000000 0.0 0.0 -459.6700000  &
+        144            1340.330000
+        145        BPVAL N2 O2 -.0119000000 0.0 0.0 -459.6700000 1340.330000
+        146        BPVAL O2 N2 -.0119000000 0.0 0.0 -459.6700000 1340.330000
+        147        BPVAL N2 CO .0307000000 0.0 0.0 -459.6700000 1340.330000
+        148        BPVAL CO N2 .0307000000 0.0 0.0 -459.6700000 1340.330000
+        149        BPVAL N2 CO2 -.0170000000 0.0 0.0 -459.6700000 1340.330000
+        150        BPVAL CO2 N2 -.0170000000 0.0 0.0 -459.6700000 1340.330000
+        151        BPVAL N2 CH4 .0311000000 0.0 0.0 -459.6700000 1340.330000
+        152        BPVAL CH4 N2 .0311000000 0.0 0.0 -459.6700000 1340.330000
+        153        BPVAL N2 H2 .1030000000 0.0 0.0 -459.6700000 1340.330000
+        154        BPVAL H2 N2 .1030000000 0.0 0.0 -459.6700000 1340.330000
+        155        BPVAL N2 C2H4 .0856000000 0.0 0.0 -459.6700000 1340.330000
+        156        BPVAL C2H4 N2 .0856000000 0.0 0.0 -459.6700000 1340.330000
+        157        BPVAL N2 C2H6 .0515000000 0.0 0.0 -459.6700000 1340.330000
+        158        BPVAL C2H6 N2 .0515000000 0.0 0.0 -459.6700000 1340.330000
+        159        BPVAL CO CH4 .0300000000 0.0 0.0 -459.6700000 1340.330000
+        160        BPVAL CH4 CO .0300000000 0.0 0.0 -459.6700000 1340.330000
+        161        BPVAL CO H2 .0919000000 0.0 0.0 -459.6700000 1340.330000
+        162        BPVAL H2 CO .0919000000 0.0 0.0 -459.6700000 1340.330000
+        163        BPVAL CO C2H6 -.0226000000 0.0 0.0 -459.6700000  &
+        164            1340.330000
+        165        BPVAL C2H6 CO -.0226000000 0.0 0.0 -459.6700000  &
+        166            1340.330000
+        167        BPVAL CO2 CH4 .0919000000 0.0 0.0 -459.6700000 1340.330000
+        168        BPVAL CH4 CO2 .0919000000 0.0 0.0 -459.6700000 1340.330000
+        169        BPVAL CO2 H2 -.1622000000 0.0 0.0 -459.6700000 1340.330000
+        170        BPVAL H2 CO2 -.1622000000 0.0 0.0 -459.6700000 1340.330000
+        171        BPVAL CO2 C2H4 .0552000000 0.0 0.0 -459.6700000  &
+        172            1340.330000
+        173        BPVAL C2H4 CO2 .0552000000 0.0 0.0 -459.6700000  &
+        174            1340.330000
+        175        BPVAL CO2 C2H6 .1322000000 0.0 0.0 -459.6700000  &
+        176            1340.330000
+        177        BPVAL C2H6 CO2 .1322000000 0.0 0.0 -459.6700000  &
+        178            1340.330000
+        179        BPVAL CH4 H2 .0156000000 0.0 0.0 -459.6700000 1340.330000
+        180        BPVAL H2 CH4 .0156000000 0.0 0.0 -459.6700000 1340.330000
+        181        BPVAL CH4 C2H4 .0215000000 0.0 0.0 -459.6700000  &
+        182            1340.330000
+        183        BPVAL C2H4 CH4 .0215000000 0.0 0.0 -459.6700000  &
+        184            1340.330000
+        185        BPVAL CH4 C2H6 -2.6000000E-3 0.0 0.0 -459.6700000  &
+        186            1340.330000
+        187        BPVAL C2H6 CH4 -2.6000000E-3 0.0 0.0 -459.6700000  &
+        188            1340.330000
+        189        BPVAL H2 C2H4 7.40000000E-3 0.0 0.0 -459.6700000  &
+        190            1340.330000
+        191        BPVAL C2H4 H2 7.40000000E-3 0.0 0.0 -459.6700000  &
+        192            1340.330000
+        193        BPVAL H2 C2H6 -.0667000000 0.0 0.0 -459.6700000  &
+        194            1340.330000
+        195        BPVAL C2H6 H2 -.0667000000 0.0 0.0 -459.6700000  &
+        196            1340.330000
+        197        BPVAL C2H4 C2H6 8.90000000E-3 0.0 0.0 -459.6700000  &
+        198            1340.330000
+        199        BPVAL C2H6 C2H4 8.90000000E-3 0.0 0.0 -459.6700000  &
+        200            1340.330000
+        201        BPVAL N2 SO2 .0800000000 0.0 0.0 -459.6700000 1340.330000
+        202        BPVAL SO2 N2 .0800000000 0.0 0.0 -459.6700000 1340.330000
+        203        BPVAL CH4 SO2 .1356000000 0.0 0.0 -459.6700000 1340.330000
+        204        BPVAL SO2 CH4 .1356000000 0.0 0.0 -459.6700000 1340.330000
+        205
+        206    PROP-DATA UNIQ-1
+        207        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
+        208            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=F  &
+        209            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
+        210            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
+        211            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
+        212            PDROP=bar SHORT-LENGTH=mm
+        213        PROP-LIST UNIQ
+        214        BPVAL WATER ACETICAC 0.0 -132.1992000 0.0 0.0 68.00000000  &
+        215            104.0000000 0.0
+        216        BPVAL ACETICAC WATER 0.0 395.3880000 0.0 0.0 68.00000000  &
+        217            104.0000000 0.0
+        218        BPVAL WATER PHENOL .9562000000 -422.3860200 0.0 0.0  &
+        219            111.9200000 359.6000000 0.0
+        220        BPVAL PHENOL WATER -3.463400000 1774.892340 0.0 0.0  &
+        221            111.9200000 359.6000000 0.0
+        222
+        223    DEF-SUBS-ATTR PSD PSD
+        224        IN-UNITS ENG SHORT-LENGTH=in
+        225        INTERVALS 10
+        226        SIZE-LIMITS 0.0 <mm> / 2. <mm> / 4. <mm> / 6. <mm> /  &
+        227            8. <mm> / 10. <mm> / 12. <mm> / 14. <mm> / 16. <mm> /  &
+        228            18. <mm> / 20. <mm>
+        229
+        230    STREAM AIR1
+        231        SUBSTREAM MIXED TEMP=25. PRES=1. MASS-FLOW=100.
+        232        MOLE-FRAC N2 0.781 / O2 0.21 / CO2 0.008
+        233
+        234    STREAM AIR2
+        235        SUBSTREAM MIXED TEMP=25. PRES=1. MASS-FLOW=100.
+        236        MOLE-FRAC N2 0.781 / O2 0.21 / CO2 0.008
+        237
+        238    STREAM COLDLOOP
+        239        SUBSTREAM MIXED TEMP=200. PRES=1. MOLE-FLOW=0.555
+        240        MOLE-FLOW WATER 1.
+        241
+        242    STREAM COLDLOP2
+        243        SUBSTREAM MIXED TEMP=300. PRES=1. MOLE-FLOW=0.555
+        244        MOLE-FLOW WATER 1.
+        245
+        246    STREAM HOTLOOP
+        247        SUBSTREAM MIXED TEMP=1. PRES=1. MOLE-FLOW=0.555
+        248        MOLE-FLOW WATER 1.
+        249
+        250    STREAM HOTLOOP2
+        251        SUBSTREAM MIXED TEMP=550. PRES=1. MOLE-FLOW=0.555
+        252        MOLE-FLOW WATER 1.
+        253
+        254    STREAM WASTEH2O
+        255        SUBSTREAM MIXED TEMP=25.00000000 PRES=1.000000000  &
+        256            MASS-FLOW=3600.
+        257        MASS-FRAC WATER 0.9999 / CHX 0.0001
+        258
+        259    STREAM WOOD
+        260        SUBSTREAM MIXED TEMP=25.00000000 PRES=1.000000000  &
+        261            FREE-WATER=NO NPHASE=2 PHASE=V
+        262        SUBSTREAM NCPSD TEMP=25.00000000 PRES=1.000000000  &
+        263            MASS-FLOW=43.044
+        264        MASS-FRAC MULBERRY 1.
+        265        COMP-ATTR MULBERRY PROXANAL ( 20. 17. 81.5 1.5 )
+        266        COMP-ATTR MULBERRY ULTANAL ( 1.5 48. 6. 0.2 0. 0.02  &
+        267            44.28 )
+        268        COMP-ATTR MULBERRY SULFANAL ( 0. 0. 0.02 )
+        269        SUBS-ATTR PSD ( * * * * * 1. * * * * )
+        270
+        271    DEF-STREAMS HEAT COLDFLU
+        272
+        273    DEF-STREAMS HEAT COLDFLU2
+        274
+        275    DEF-STREAMS HEAT HOTFLU
+        276
+        277    DEF-STREAMS HEAT HOTFLU2
+        278
+        279    BLOCK CHARSEP SEP
+        280        PARAM
+        281        FRAC STREAM=CHAR SUBSTREAM=NCPSD COMPS=CHAR FRACS=1.
+        282        FLASH-SPECS CHAR TEMP=350.0000000 PRES=1.000000000 NPHASE=1  &
+        283            FREE-WATER=NO PHASE=S
+        284        FLASH-SPECS VAPORS TEMP=350.0000000 PRES=1.000000000
+        285
+        286    BLOCK FBSEP SEP
+        287        PARAM
+        288        FRAC STREAM=CLEANH2O SUBSTREAM=MIXED COMPS=WATER CHX  &
+        289            FRACS=0.99 0.
+        290
+        291    BLOCK PYEXCH HEATER
+        292        PARAM TEMP=550. PRES=1. DPPARMOPT=NO
+        293
+        294    BLOCK TOREXCH HEATER
+        295        PARAM TEMP=350. PRES=1. DPPARMOPT=NO
+        296
+        297    BLOCK CONDENSE FLASH2
+        298        PARAM TEMP=25.00000000 PRES=1.000000000
+        299
+        300    BLOCK TORSEP FLASH2
+        301        PARAM TEMP=250. PRES=1.
+        302
+        303    BLOCK PYHEAT HEATX
+        304        PARAM T-COLD=500.
+        305        FEEDS HOT=HOTLOOP2 COLD=DRYWOOD
+        306        OUTLETS-HOT COLDLOP2
+        307        OUTLETS-COLD HOTPYFED
+        308        HOT-SIDE DPPARMOPT=NO
+        309        COLD-SIDE DPPARMOPT=NO
+        310        TQ-PARAM CURVE=NO
+        311
+        312    BLOCK TORHEAT HEATX
+        313        PARAM T-COLD=250. CALC-TYPE=DESIGN U-OPTION=PHASE  &
+        314            F-OPTION=CONSTANT CALC-METHOD=SHORTCUT
+        315        FEEDS HOT=HOTLOOP COLD=WOOD
+        316        OUTLETS-HOT COLDLOOP
+        317        OUTLETS-COLD TORHOT
+        318        HOT-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
+        319        COLD-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
+        320        TQ-PARAM CURVE=YES
+        321
+        322    BLOCK BURNER1 RSTOIC
+        323        PARAM PRES=10. DUTY=0. COMBUSTION=YES
+        324        STOIC 1 MIXED C2H4 -1. / O2 -3. / CO2 2. / WATER 2.
+        325        STOIC 2 MIXED C2H6 -2. / O2 -7. / CO2 4. / WATER 6.
+        326        CONV 1 MIXED C2H4 1.
+        327        CONV 2 MIXED C2H6 1.
+        328
+        329    BLOCK PYROLYZE RYIELD
+        330        PARAM TEMP=350.0000000 PRES=1.000000000 OPT-PSD=SPEC
+        331        MASS-YIELD MIXED WATER 0.01 / ACETICAC 0.05 / PHENOL  &
+        332            0.05 / GUAIACOL 0.1 / ACETOL 0.21 / CO2 0.09 / CO  &
+        333            0.08 / CH4 0.04 / H2 0.03 / N2 0.01 / NCPSD CHAR  &
+        334            0.33
+        335        COMP-ATTR NCPSD CHAR PROXANAL ( 2. 75. 15. 8. )
+        336        COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
+        337            10.98 )
+        338        COMP-ATTR NCPSD CHAR SULFANAL ( 0. 0. 2. )
+        339        OVALL-ATTR PSDID=PSD VALUE=* * * * * 1. * * * *
+        340
+        341    BLOCK TORDRYER RYIELD
+        342        PARAM TEMP=250. PRES=1.
+        343        MASS-YIELD NCPSD DRYMUL 0.008 / MIXED WATER 0.992
+        344        COMP-ATTR NCPSD DRYMUL PROXANAL ( 0.1 17. 81.5 1.5 )
+        345        COMP-ATTR NCPSD DRYMUL ULTANAL ( 1.5 48. 6. 0.2 0.  &
+        346            0.02 44.28 )
+        347        COMP-ATTR NCPSD DRYMUL SULFANAL ( 0. 0. 0.02 )
+        348
+        349    BLOCK BURNER2 RGIBBS
+        350        PARAM PRES=10. CHEMEQ=YES TAPP=1. MAXIT=50 DUTY=0.
+        351        PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
+        352            V / HCL V
+        353
+        354    EO-CONV-OPTI
+        355
+        356    STREAM-REPOR MOLEFLOW
+        357
+        358    DISABLE
+        359        STREAM AIR1
+        360    ;
+        361    ;
+        362    ;
+        363    ;
+        364    ;
+ *** INPUT TRANSLATOR MESSAGES ***
+
+  *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
+      SQLLOCALDB.APESV140 : (DATAVERSION - 40.0.0.13)                         
+      SQLLOCALDB.APV140 : (DATAVERSION - 40.0.0.13)                           
+      SQLLOCALDB.FACTV140 : (DATAVERSION - 40.0.0.12)                         
+      SQLLOCALDB.NISTV140 : (DATAVERSION - 40.0.0.12)                         
+
+  *   WARNING IN THE "STREAM" PARAGRAPH WHICH BEGINS ON LINE 238                
+      STREAM NAME: COLDLOOP                                    (STSTRM.29)      
+      COMPONENT MOLE FLOWS OF SUBSTREAM: "MIXED"                                
+      ARE NORMALIZED TO THE TOTAL MOLE FLOW VALUE.                              
+
+  *   WARNING IN THE "STREAM" PARAGRAPH WHICH BEGINS ON LINE 242                
+      STREAM NAME: COLDLOP2                                    (STSTRM.29)      
+      COMPONENT MOLE FLOWS OF SUBSTREAM: "MIXED"                                
+      ARE NORMALIZED TO THE TOTAL MOLE FLOW VALUE.                              
+
+  *   WARNING IN THE "STREAM" PARAGRAPH WHICH BEGINS ON LINE 246                
+      STREAM NAME: HOTLOOP                                     (STSTRM.29)      
+      COMPONENT MOLE FLOWS OF SUBSTREAM: "MIXED"                                
+      ARE NORMALIZED TO THE TOTAL MOLE FLOW VALUE.                              
+
+  *   WARNING IN THE "STREAM" PARAGRAPH WHICH BEGINS ON LINE 250                
+      STREAM NAME: HOTLOOP2                                    (STSTRM.29)      
+      COMPONENT MOLE FLOWS OF SUBSTREAM: "MIXED"                                
+      ARE NORMALIZED TO THE TOTAL MOLE FLOW VALUE.                              
+
+
+ 
+ 
+
+ PDF updated                                                                      TIME =      1.30
+
+ *** CALCULATION TRACE ***
+
+
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   WASTEH2O   ----       FBSEP          AIR1       ----       BURNER1 
+   WOOD       ----       TORHEAT        AIR2       ----       BURNER2 
+   HOTPROD    PYROLYZE   CHARSEP        CHAR       CHARSEP    FBSEP   
+   VAPORS     CHARSEP    CONDENSE       GAS        CONDENSE   BURNER1 
+   OIL        CONDENSE   ----           CLEANH2O   FBSEP      ----    
+   SPNTCHAR   FBSEP      BURNER2        STEAM      TORSEP     ----    
+   DRYWOOD    TORSEP     PYHEAT         EXHAUST1   BURNER1    ----    
+   HOTFLU     BURNER1    ----           COLDLOOP   TORHEAT    TOREXCH 
+   TORHOT     TORHEAT    TORDRYER       HOTLOOP    TOREXCH    TORHEAT 
+   COLDFLU    TOREXCH    ----           COLDLOP2   PYHEAT     PYEXCH  
+   HOTPYFED   PYHEAT     PYROLYZE       HOTLOOP2   PYEXCH     PYHEAT  
+   COLDFLU2   PYEXCH     ----           EXHAUST2   BURNER2    ----    
+   HOTFLU2    BURNER2    ----           WETWOOD    TORDRYER   TORSEP  
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   PYROLYZE     HOTPYFED                       HOTPROD                     
+   CHARSEP      HOTPROD                        CHAR VAPORS                 
+   CONDENSE     VAPORS                         GAS OIL                     
+   FBSEP        WASTEH2O CHAR                  CLEANH2O SPNTCHAR           
+   TORSEP       WETWOOD                        STEAM DRYWOOD               
+   BURNER1      GAS AIR1                       EXHAUST1 HOTFLU             
+   TORHEAT      HOTLOOP WOOD                   COLDLOOP TORHOT             
+   TOREXCH      COLDLOOP                       HOTLOOP COLDFLU             
+   PYHEAT       HOTLOOP2 DRYWOOD               COLDLOP2 HOTPYFED           
+   PYEXCH       COLDLOP2                       HOTLOOP2 COLDFLU2           
+   BURNER2      SPNTCHAR AIR2                  EXHAUST2 HOTFLU2            
+   TORDRYER     TORHOT                         WETWOOD                     
+
+      BLOCK $OLVER01 (METHOD: WEGSTEIN) HAS BEEN DEFINED TO CONVERGE
+               STREAMS: COLDLOOP
+
+      BLOCK $OLVER02 (METHOD: WEGSTEIN) HAS BEEN DEFINED TO CONVERGE
+               STREAMS: HOTLOOP2
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      $OLVER01 TOREXCH TORHEAT 
+      (RETURN $OLVER01) 
+      TORDRYER TORSEP 
+      $OLVER02 PYHEAT PYEXCH 
+      (RETURN $OLVER02) 
+      PYROLYZE CHARSEP FBSEP BURNER2 CONDENSE BURNER1 
+
+Calculations begin                                                              time      0.45
+
+
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.45
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.46
+      ITER   0 For Tear Streams: COLDLOOP
+
+      ENTHALPY CALCULATION FOR INLET STREAM COLDLOOP OF BLOCK TOREXCH             TIME =      0.46
+      SUBSTREAM MIXED   
+      KODE = 2  NTRIAL =   1  T = 473.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK TOREXCH  MODEL: HEATER                                            TIME =      0.48
+      KODE = 2  NTRIAL =   1  T =  623.150      P =  100000.      V =  1.00000      Q =  826.919    
+
+      ENTHALPY CALCULATION FOR INLET STREAM WOOD OF BLOCK TORHEAT                 TIME =      0.48
+      SUBSTREAM NCPSD   
+      KODE =    2 T =  298.150     P =  100000.     Q =  0.00000     HNCS =-7.756532E+06
+
+      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.51
+      SPECIFICATION: COLD OUTLET TEMP      523.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  623.15  PIN=0.10000E+06   TOUT=  372.80  POUT=0.10000E+06
+      COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  523.15  POUT=0.10000E+06
+                              DUTY= 6441.8    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.52
+      ITER   1 For Tear Streams: COLDLOOP
+
+  *   WARNING WHILE EXECUTING CONVERGENCE BLOCK: "$OLVER01" (MODEL: "WEGSTEIN") 
+                                                               (WEGSTN2.1)      
+      VALUE IS MISSING FOR VARIABLE   25.                                       
+      THIS MAY BE CAUSED BY A ZERO-FLOW STREAM.                                 
+      THE PREVIOUS VALUE OF THE VARIABLE WILL BE USED.                          
+
+      --FLASH TEAR STREAM COLDLOOP
+      KODE = 1  NTRIAL =   2  T =  372.799      P =  100000.      V = 0.190328      Q =  0.00000    
+
+  LOOP $OLVER01 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL     -1544.3        TIME =      0.55
+
+      UOS BLOCK TOREXCH  MODEL: HEATER                                            TIME =      0.56
+      KODE = 2  NTRIAL =   1  T =  623.150      P =  100000.      V =  1.00000      Q =  6441.78    
+
+      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.56
+      SPECIFICATION: COLD OUTLET TEMP      523.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  623.15  PIN=0.10000E+06   TOUT=  372.80  POUT=0.10000E+06
+      COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  523.15  POUT=0.10000E+06
+                              DUTY= 6441.8    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.58
+      ITER   2 For Tear Streams: COLDLOOP
+
+  LOOP $OLVER01 ITER    2:     *** CONVERGED *** , MAX ERR/TOL    -0.39637E-04    TIME =      0.59
+
+      UOS BLOCK TORDRYER MODEL: RYIELD                                            TIME =      0.59
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "TORDRYER" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     C     N     S                                                       
+      KODE = 2  NTRIAL =   1  T =  523.150      P =  100000.      V =  1.00000      Q = -68318.0    
+
+      UOS BLOCK TORSEP   MODEL: FLASH2                                            TIME =      0.62
+      KODE = 2  NTRIAL =   1  T =  523.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: WEGSTEIN                                TIME =      0.63
+      ITER   0 For Tear Streams: HOTLOOP2
+
+      ENTHALPY CALCULATION FOR INLET STREAM HOTLOOP2 OF BLOCK PYHEAT              TIME =      0.64
+      SUBSTREAM MIXED   
+      KODE = 2  NTRIAL =   1  T = 823.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =      0.65
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  812.18  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  773.15  POUT=0.10000E+06
+                              DUTY= 65.873    
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =      0.66
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  65.8738    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: WEGSTEIN                                TIME =      0.67
+      ITER   1 For Tear Streams: HOTLOOP2
+
+  LOOP $OLVER02 ITER    1:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.68
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =      0.68
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  185.867    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =      0.70
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM WASTEH2O OF BLOCK FBSEP               TIME =      0.73
+      SUBSTREAM MIXED   
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =      0.74
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.154    
+      KODE = 1  NTRIAL =   2  T =  298.154      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.154      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.154      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM AIR2 OF BLOCK BURNER2                 TIME =      0.76
+      SUBSTREAM MIXED   
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =      0.77
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =     5  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK CONDENSE MODEL: FLASH2                                            TIME =      0.79
+      KODE = 2  NTRIAL =   2  T =  298.150      P =  100000.      V = 0.809325      Q = -67.8217    
+
+      ENTHALPY CALCULATION FOR INLET STREAM AIR1 OF BLOCK BURNER1                 TIME =      0.80
+      SUBSTREAM MIXED   
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER1  MODEL: RSTOIC                                            TIME =      0.82
+      NO. TEMP ITER =    4     TEMP =  298.150    
+      KODE = 1  NTRIAL =   4  T =  298.150      P =  100000.      V =  1.00000      Q =  0.00000    
+      NO. TEMP ITER =    4     TEMP =  320.462    
+      KODE = 1  NTRIAL =   2  T =  320.462      P = 1.000000E+06  V =  1.00000      Q =  0.00000    
+
+      GENERATING RESULTS FOR UOS BLOCK TORHEAT  MODEL: HEATX                      TIME =      0.84
+
+  *   WARNING WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "TORHEAT"     
+      (MODEL: "HEATX")                                         (UHE02I.6)       
+      TUBESIDE STREAM HAS ZERO FLOW MIXED SUBSTREAM                             
+      SPECIFIED U-OPTION NOT ALLOWED - CHANGED TO "CONSTANT"                    
+      SPECIFICATION: COLD OUTLET TEMP      523.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  623.15  PIN=0.10000E+06   TOUT=  372.80  POUT=0.10000E+06
+      COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  523.15  POUT=0.10000E+06
+      AREA=0.87403E-01       DUTY= 6441.8           FT=1.00000
+
+      BEGIN HEATX TQ-CURVE CALCULATIONS FOR BLOCK TORHEAT 
+
+      BEGIN COLD-TQCURVE INLET   
+      ITERATION (ARCONS) =     5  TEMPERATURE =  523.1500
+      T =  523.150    
+      ITERATION (ARCONS) =     5  TEMPERATURE =  513.5418
+      T =  513.542    
+      ITERATION (ARCONS) =     5  TEMPERATURE =  503.8451
+      T =  503.845    
+      ITERATION (ARCONS) =     5  TEMPERATURE =  494.0572
+      T =  494.057    
+      ITERATION (ARCONS) =     5  TEMPERATURE =  484.1753
+      T =  484.175    
+      ITERATION (ARCONS) =     5  TEMPERATURE =  474.1965
+      T =  474.196    
+      ITERATION (ARCONS) =     5  TEMPERATURE =  464.1176
+      T =  464.118    
+      ITERATION (ARCONS) =     5  TEMPERATURE =  453.9353
+      T =  453.935    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  443.6499
+      T =  443.650    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  433.2493
+      T =  433.249    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  422.7346
+      T =  422.735    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  412.1017
+      T =  412.102    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  401.3462
+      T =  401.346    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  390.4635
+      T =  390.463    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  379.4486
+      T =  379.449    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  368.2961
+      T =  368.296    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  357.0006
+      T =  357.001    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  345.5559
+      T =  345.556    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  333.9557
+      T =  333.956    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  322.1930
+      T =  322.193    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  310.2604
+      T =  310.260    
+      ITERATION (ARCONS) =     4  TEMPERATURE =  298.1500
+      T =  298.150    
+
+      BEGIN HOT-TQCURVE  INLET   
+      NO. TEMP ITER =    5     TEMP =  623.150    
+      KODE = 1  NTRIAL =   2  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  568.318    
+      KODE = 1  NTRIAL =   2  T =  568.318      P =  100000.      V =  1.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  512.531    
+      KODE = 1  NTRIAL =   2  T =  512.531      P =  100000.      V =  1.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  455.782    
+      KODE = 1  NTRIAL =   2  T =  455.782      P =  100000.      V =  1.00000      Q =  0.00000    
+      NO. TEMP ITER =    4     TEMP =  398.097    
+      KODE = 1  NTRIAL =   2  T =  398.097      P =  100000.      V =  1.00000      Q =  0.00000    
+      KODE = 1  NTRIAL =   3  T =  372.799      P =  100000.      V = 0.972331      Q =  0.00000    
+      KODE = 3  NTRIAL =   2  T =  372.799      P =  100000.      V =  1.00000      Q = -1360.10    
+      KODE = 1  NTRIAL =   2  T =  372.799      P =  100000.      V = 0.972331      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.923456      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.874581      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.825705      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.776830      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.727955      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.679080      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.630205      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.581329      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.532454      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.483579      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.434704      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.385828      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.336953      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.288078      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.239203      Q =  0.00000    
+      KODE = 1  NTRIAL =   1  T =  372.799      P =  100000.      V = 0.190327      Q =  0.00000    
+
+      BEGIN COLD-TQCURVE INLET   
+      ITERATION (ARCONS) =     5  TEMPERATURE =  479.8577
+      T =  479.858    
+
+      BEGIN HOT-TQCURVE  INLET   
+      END HEATX TQ-CURVE CALCULATIONS FOR BLOCK TORHEAT 
+
+  *   WARNING WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "TORHEAT"     
+      (MODEL: "HEATX")                                         (HXTQCRV.1)      
+      TEMPERATURE CROSS DETECTED IN TQ-CURVE INLET                              
+
+      GENERATING RESULTS FOR UOS BLOCK PYHEAT   MODEL: HEATX                      TIME =      1.09
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  812.18  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  773.15  POUT=0.10000E+06
+      AREA=0.56885E-03       DUTY= 65.873           FT=1.00000
+
+      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
+
+      BEGIN COLD-TQCURVE INLET   
+
+      BEGIN HOT-TQCURVE  INLET   
+      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
+
+ Report Writer entered                                                            Time =    196.55
+
+      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
+
+      BEGIN COLD-TQCURVE INLET   
+
+      BEGIN HOT-TQCURVE  INLET   
+      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
+
+ Results generated                                                                Time =    196.63
+
+ Report Writer entered                                                            Time =    197.84
+
+      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
+
+      BEGIN COLD-TQCURVE INLET   
+
+      BEGIN HOT-TQCURVE  INLET   
+      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
+
+ Results generated                                                                Time =    197.92
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         1
+        WARNINGS      0        0         5
+
+ Report Writer entered                                                            Time =    226.37
+
+      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
+
+      BEGIN COLD-TQCURVE INLET   
+
+      BEGIN HOT-TQCURVE  INLET   
+      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
+
+ Results generated                                                                Time =    226.44
+
+ Report Writer entered                                                            Time =    227.60
+
+      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
+
+      BEGIN COLD-TQCURVE INLET   
+
+      BEGIN HOT-TQCURVE  INLET   
+      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
+
+ Results generated                                                                Time =    229.06
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         1
+        WARNINGS      0        0         5
+
+ *** CALCULATION TRACE ***
+
+
+<set objective = None>

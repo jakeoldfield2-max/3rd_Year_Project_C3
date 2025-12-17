@@ -1,0 +1,11 @@
+SLAVE:
+INPUT: _2124ilh.inm
+MODNAME: apmain
+RUNID: _2124ilh
+NEW_RUNID: _2124ilh
+OLD_RUNID: _2124ilh
+PDF: _2124ilh.appdf
+USERNAME: ex23441
+XMOD: C:\Program Files\AspenTech\Aspen Plus V14.0\Engine\xeq\apmain
+SPONLY:
+DBCONN: _2124ilh
