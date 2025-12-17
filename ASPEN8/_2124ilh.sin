@@ -1,10 +1,10 @@
  >>ORIGINAL RUN                           DECEMBER 17, 2025   
-   10:53:47 P.M.                          WEDNESDAY   
+   11:26:46 P.M.                          WEDNESDAY   
    INPUT FILE: _2124ilh.inm
    RUN ID : _2124ilh
           1    ;
-          2    ;Input file created by Aspen Plus Rel. 40.0 at 22:53:46 Wed Dec 17, 2025
-          3    ;Directory G:\Documents\Y3 Project\Repo\ASPEN8  Runid y3project
+          2    ;Input file created by Aspen Plus Rel. 40.0 at 23:26:44 Wed Dec 17, 2025
+          3    ;Directory G:\Documents\Y3 Project\Repo\ASPEN8  Runid Y3PROJECT
           4    ;
           5
           6
@@ -73,299 +73,277 @@
          69        BLOCK CONDENSE IN=VAPORS OUT=GAS OIL
          70        BLOCK FBSEP IN=WASTEH2O CHAR OUT=CLEANH2O SPNTCHAR
          71        BLOCK TORSEP IN=WETWOOD OUT=STEAM DRYWOOD
-         72        BLOCK BURNER1 IN=GAS AIR1 OUT=EXHAUST1 HOTFLU
-         73        BLOCK TORHEAT IN=HOTLOOP WOOD OUT=COLDLOOP TORHOT
-         74        BLOCK TOREXCH IN=COLDLOOP OUT=HOTLOOP COLDFLU
-         75        BLOCK PYHEAT IN=HOTLOOP2 DRYWOOD OUT=COLDLOP2 HOTPYFED
-         76        BLOCK PYEXCH IN=COLDLOP2 OUT=HOTLOOP2 COLDFLU2
-         77        BLOCK BURNER2 IN=SPNTCHAR AIR2 OUT=EXHAUST2 HOTFLU2
-         78        BLOCK TORDRYER IN=TORHOT OUT=WETWOOD
-         79
-         80    PROPERTIES NRTL
-         81        PROPERTIES NRTL-RK / PENG-ROB / UNIQUAC
+         72        BLOCK BURNER1 IN=GAS AIR1 OUT=EXHAUST1
+         73        BLOCK TORHEAT IN=EXHAUST1 WOOD OUT=COLDFLU1 TORHOT
+         74        BLOCK PYHEAT IN=EXHAUST2 DRYWOOD OUT=COLDFLU2 HOTPYFED
+         75        BLOCK BURNER2 IN=SPNTCHAR AIR2 OUT=EXHAUST2
+         76        BLOCK TORDRYER IN=TORHOT OUT=WETWOOD
+         77
+         78    PROPERTIES NRTL
+         79        PROPERTIES NRTL-RK / PENG-ROB / UNIQUAC
+         80
+         81    NC-COMPS MULBERRY PROXANAL ULTANAL SULFANAL
          82
-         83    NC-COMPS MULBERRY PROXANAL ULTANAL SULFANAL
+         83    NC-PROPS MULBERRY ENTHALPY HCOALGEN / DENSITY DCOALIGT
          84
-         85    NC-PROPS MULBERRY ENTHALPY HCOALGEN / DENSITY DCOALIGT
+         85    NC-COMPS CHAR PROXANAL ULTANAL SULFANAL
          86
-         87    NC-COMPS CHAR PROXANAL ULTANAL SULFANAL
+         87    NC-PROPS CHAR ENTHALPY HCOALGEN / DENSITY DCOALIGT
          88
-         89    NC-PROPS CHAR ENTHALPY HCOALGEN / DENSITY DCOALIGT
+         89    NC-COMPS ASH PROXANAL ULTANAL SULFANAL
          90
-         91    NC-COMPS ASH PROXANAL ULTANAL SULFANAL
+         91    NC-PROPS ASH ENTHALPY HCOALGEN / DENSITY DCOALIGT
          92
-         93    NC-PROPS ASH ENTHALPY HCOALGEN / DENSITY DCOALIGT
+         93    NC-COMPS DRYMUL PROXANAL ULTANAL SULFANAL
          94
-         95    NC-COMPS DRYMUL PROXANAL ULTANAL SULFANAL
+         95    NC-PROPS DRYMUL ENTHALPY HCOALGEN / DENSITY DCOALIGT
          96
-         97    NC-PROPS DRYMUL ENTHALPY HCOALGEN / DENSITY DCOALIGT
-         98
-         99    PROP-DATA DHFORM
-        100        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
-        101            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=C  &
-        102            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
-        103            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kJ/kmol'  &
-        104            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
-        105            PDROP=bar SHORT-LENGTH=mm
-        106        PROP-LIST DHFORM / DGFORM
-        107        PVAL CHX 100000 / 200000
-        108
-        109    PROP-DATA PLXANT-1
-        110        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
-        111            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=Pa TEMPERATURE=C  &
-        112            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
-        113            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
-        114            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
-        115            PDROP=bar SHORT-LENGTH=mm
-        116        PROP-LIST PLXANT
-        117        PVAL CHX -1E+20 0.0 0.0 0.0 0.0 0.0 0.0 -273.150000  &
-        118            726.850000
-        119
-        120    PROP-DATA NRTL-1
-        121        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
-        122            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=F  &
-        123            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
-        124            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
-        125            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
-        126            PDROP=bar SHORT-LENGTH=mm
-        127        PROP-LIST NRTL
-        128        BPVAL WATER PHENOL -.5363000000 2542.916880 .3000000000 0.0  &
+         97    PROP-DATA DHFORM
+         98        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
+         99            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=C  &
+        100            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
+        101            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kJ/kmol'  &
+        102            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
+        103            PDROP=bar SHORT-LENGTH=mm
+        104        PROP-LIST DHFORM / DGFORM
+        105        PVAL CHX 100000 / 200000
+        106
+        107    PROP-DATA PLXANT-1
+        108        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
+        109            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=Pa TEMPERATURE=C  &
+        110            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
+        111            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
+        112            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
+        113            PDROP=bar SHORT-LENGTH=mm
+        114        PROP-LIST PLXANT
+        115        PVAL CHX -1E+20 0.0 0.0 0.0 0.0 0.0 0.0 -273.150000  &
+        116            726.850000
+        117
+        118    PROP-DATA NRTL-1
+        119        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
+        120            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=F  &
+        121            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
+        122            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
+        123            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
+        124            PDROP=bar SHORT-LENGTH=mm
+        125        PROP-LIST NRTL
+        126        BPVAL WATER PHENOL -.5363000000 2542.916880 .3000000000 0.0  &
+        127            0.0 0.0 111.9200000 359.6000000
+        128        BPVAL PHENOL WATER 2.301500000 -1583.461440 .3000000000 0.0  &
         129            0.0 0.0 111.9200000 359.6000000
-        130        BPVAL PHENOL WATER 2.301500000 -1583.461440 .3000000000 0.0  &
-        131            0.0 0.0 111.9200000 359.6000000
-        132
-        133    PROP-DATA PRKBV-1
-        134        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
-        135            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=F  &
-        136            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
-        137            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
-        138            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
-        139            PDROP=bar SHORT-LENGTH=mm
-        140        PROP-LIST PRKBV
-        141        BPVAL WATER CO2 .1200000000 0.0 0.0 -459.6700000  &
+        130
+        131    PROP-DATA PRKBV-1
+        132        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
+        133            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=F  &
+        134            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
+        135            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
+        136            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
+        137            PDROP=bar SHORT-LENGTH=mm
+        138        PROP-LIST PRKBV
+        139        BPVAL WATER CO2 .1200000000 0.0 0.0 -459.6700000  &
+        140            1340.330000
+        141        BPVAL CO2 WATER .1200000000 0.0 0.0 -459.6700000  &
         142            1340.330000
-        143        BPVAL CO2 WATER .1200000000 0.0 0.0 -459.6700000  &
-        144            1340.330000
-        145        BPVAL N2 O2 -.0119000000 0.0 0.0 -459.6700000 1340.330000
-        146        BPVAL O2 N2 -.0119000000 0.0 0.0 -459.6700000 1340.330000
-        147        BPVAL N2 CO .0307000000 0.0 0.0 -459.6700000 1340.330000
-        148        BPVAL CO N2 .0307000000 0.0 0.0 -459.6700000 1340.330000
-        149        BPVAL N2 CO2 -.0170000000 0.0 0.0 -459.6700000 1340.330000
-        150        BPVAL CO2 N2 -.0170000000 0.0 0.0 -459.6700000 1340.330000
-        151        BPVAL N2 CH4 .0311000000 0.0 0.0 -459.6700000 1340.330000
-        152        BPVAL CH4 N2 .0311000000 0.0 0.0 -459.6700000 1340.330000
-        153        BPVAL N2 H2 .1030000000 0.0 0.0 -459.6700000 1340.330000
-        154        BPVAL H2 N2 .1030000000 0.0 0.0 -459.6700000 1340.330000
-        155        BPVAL N2 C2H4 .0856000000 0.0 0.0 -459.6700000 1340.330000
-        156        BPVAL C2H4 N2 .0856000000 0.0 0.0 -459.6700000 1340.330000
-        157        BPVAL N2 C2H6 .0515000000 0.0 0.0 -459.6700000 1340.330000
-        158        BPVAL C2H6 N2 .0515000000 0.0 0.0 -459.6700000 1340.330000
-        159        BPVAL CO CH4 .0300000000 0.0 0.0 -459.6700000 1340.330000
-        160        BPVAL CH4 CO .0300000000 0.0 0.0 -459.6700000 1340.330000
-        161        BPVAL CO H2 .0919000000 0.0 0.0 -459.6700000 1340.330000
-        162        BPVAL H2 CO .0919000000 0.0 0.0 -459.6700000 1340.330000
-        163        BPVAL CO C2H6 -.0226000000 0.0 0.0 -459.6700000  &
+        143        BPVAL N2 O2 -.0119000000 0.0 0.0 -459.6700000 1340.330000
+        144        BPVAL O2 N2 -.0119000000 0.0 0.0 -459.6700000 1340.330000
+        145        BPVAL N2 CO .0307000000 0.0 0.0 -459.6700000 1340.330000
+        146        BPVAL CO N2 .0307000000 0.0 0.0 -459.6700000 1340.330000
+        147        BPVAL N2 CO2 -.0170000000 0.0 0.0 -459.6700000 1340.330000
+        148        BPVAL CO2 N2 -.0170000000 0.0 0.0 -459.6700000 1340.330000
+        149        BPVAL N2 CH4 .0311000000 0.0 0.0 -459.6700000 1340.330000
+        150        BPVAL CH4 N2 .0311000000 0.0 0.0 -459.6700000 1340.330000
+        151        BPVAL N2 H2 .1030000000 0.0 0.0 -459.6700000 1340.330000
+        152        BPVAL H2 N2 .1030000000 0.0 0.0 -459.6700000 1340.330000
+        153        BPVAL N2 C2H4 .0856000000 0.0 0.0 -459.6700000 1340.330000
+        154        BPVAL C2H4 N2 .0856000000 0.0 0.0 -459.6700000 1340.330000
+        155        BPVAL N2 C2H6 .0515000000 0.0 0.0 -459.6700000 1340.330000
+        156        BPVAL C2H6 N2 .0515000000 0.0 0.0 -459.6700000 1340.330000
+        157        BPVAL CO CH4 .0300000000 0.0 0.0 -459.6700000 1340.330000
+        158        BPVAL CH4 CO .0300000000 0.0 0.0 -459.6700000 1340.330000
+        159        BPVAL CO H2 .0919000000 0.0 0.0 -459.6700000 1340.330000
+        160        BPVAL H2 CO .0919000000 0.0 0.0 -459.6700000 1340.330000
+        161        BPVAL CO C2H6 -.0226000000 0.0 0.0 -459.6700000  &
+        162            1340.330000
+        163        BPVAL C2H6 CO -.0226000000 0.0 0.0 -459.6700000  &
         164            1340.330000
-        165        BPVAL C2H6 CO -.0226000000 0.0 0.0 -459.6700000  &
-        166            1340.330000
-        167        BPVAL CO2 CH4 .0919000000 0.0 0.0 -459.6700000 1340.330000
-        168        BPVAL CH4 CO2 .0919000000 0.0 0.0 -459.6700000 1340.330000
-        169        BPVAL CO2 H2 -.1622000000 0.0 0.0 -459.6700000 1340.330000
-        170        BPVAL H2 CO2 -.1622000000 0.0 0.0 -459.6700000 1340.330000
-        171        BPVAL CO2 C2H4 .0552000000 0.0 0.0 -459.6700000  &
+        165        BPVAL CO2 CH4 .0919000000 0.0 0.0 -459.6700000 1340.330000
+        166        BPVAL CH4 CO2 .0919000000 0.0 0.0 -459.6700000 1340.330000
+        167        BPVAL CO2 H2 -.1622000000 0.0 0.0 -459.6700000 1340.330000
+        168        BPVAL H2 CO2 -.1622000000 0.0 0.0 -459.6700000 1340.330000
+        169        BPVAL CO2 C2H4 .0552000000 0.0 0.0 -459.6700000  &
+        170            1340.330000
+        171        BPVAL C2H4 CO2 .0552000000 0.0 0.0 -459.6700000  &
         172            1340.330000
-        173        BPVAL C2H4 CO2 .0552000000 0.0 0.0 -459.6700000  &
+        173        BPVAL CO2 C2H6 .1322000000 0.0 0.0 -459.6700000  &
         174            1340.330000
-        175        BPVAL CO2 C2H6 .1322000000 0.0 0.0 -459.6700000  &
+        175        BPVAL C2H6 CO2 .1322000000 0.0 0.0 -459.6700000  &
         176            1340.330000
-        177        BPVAL C2H6 CO2 .1322000000 0.0 0.0 -459.6700000  &
-        178            1340.330000
-        179        BPVAL CH4 H2 .0156000000 0.0 0.0 -459.6700000 1340.330000
-        180        BPVAL H2 CH4 .0156000000 0.0 0.0 -459.6700000 1340.330000
-        181        BPVAL CH4 C2H4 .0215000000 0.0 0.0 -459.6700000  &
+        177        BPVAL CH4 H2 .0156000000 0.0 0.0 -459.6700000 1340.330000
+        178        BPVAL H2 CH4 .0156000000 0.0 0.0 -459.6700000 1340.330000
+        179        BPVAL CH4 C2H4 .0215000000 0.0 0.0 -459.6700000  &
+        180            1340.330000
+        181        BPVAL C2H4 CH4 .0215000000 0.0 0.0 -459.6700000  &
         182            1340.330000
-        183        BPVAL C2H4 CH4 .0215000000 0.0 0.0 -459.6700000  &
+        183        BPVAL CH4 C2H6 -2.6000000E-3 0.0 0.0 -459.6700000  &
         184            1340.330000
-        185        BPVAL CH4 C2H6 -2.6000000E-3 0.0 0.0 -459.6700000  &
+        185        BPVAL C2H6 CH4 -2.6000000E-3 0.0 0.0 -459.6700000  &
         186            1340.330000
-        187        BPVAL C2H6 CH4 -2.6000000E-3 0.0 0.0 -459.6700000  &
+        187        BPVAL H2 C2H4 7.40000000E-3 0.0 0.0 -459.6700000  &
         188            1340.330000
-        189        BPVAL H2 C2H4 7.40000000E-3 0.0 0.0 -459.6700000  &
+        189        BPVAL C2H4 H2 7.40000000E-3 0.0 0.0 -459.6700000  &
         190            1340.330000
-        191        BPVAL C2H4 H2 7.40000000E-3 0.0 0.0 -459.6700000  &
+        191        BPVAL H2 C2H6 -.0667000000 0.0 0.0 -459.6700000  &
         192            1340.330000
-        193        BPVAL H2 C2H6 -.0667000000 0.0 0.0 -459.6700000  &
+        193        BPVAL C2H6 H2 -.0667000000 0.0 0.0 -459.6700000  &
         194            1340.330000
-        195        BPVAL C2H6 H2 -.0667000000 0.0 0.0 -459.6700000  &
+        195        BPVAL C2H4 C2H6 8.90000000E-3 0.0 0.0 -459.6700000  &
         196            1340.330000
-        197        BPVAL C2H4 C2H6 8.90000000E-3 0.0 0.0 -459.6700000  &
+        197        BPVAL C2H6 C2H4 8.90000000E-3 0.0 0.0 -459.6700000  &
         198            1340.330000
-        199        BPVAL C2H6 C2H4 8.90000000E-3 0.0 0.0 -459.6700000  &
-        200            1340.330000
-        201        BPVAL N2 SO2 .0800000000 0.0 0.0 -459.6700000 1340.330000
-        202        BPVAL SO2 N2 .0800000000 0.0 0.0 -459.6700000 1340.330000
-        203        BPVAL CH4 SO2 .1356000000 0.0 0.0 -459.6700000 1340.330000
-        204        BPVAL SO2 CH4 .1356000000 0.0 0.0 -459.6700000 1340.330000
-        205
-        206    PROP-DATA UNIQ-1
-        207        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
-        208            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=F  &
-        209            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
-        210            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
-        211            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
-        212            PDROP=bar SHORT-LENGTH=mm
-        213        PROP-LIST UNIQ
-        214        BPVAL WATER ACETICAC 0.0 -132.1992000 0.0 0.0 68.00000000  &
+        199        BPVAL N2 SO2 .0800000000 0.0 0.0 -459.6700000 1340.330000
+        200        BPVAL SO2 N2 .0800000000 0.0 0.0 -459.6700000 1340.330000
+        201        BPVAL CH4 SO2 .1356000000 0.0 0.0 -459.6700000 1340.330000
+        202        BPVAL SO2 CH4 .1356000000 0.0 0.0 -459.6700000 1340.330000
+        203
+        204    PROP-DATA UNIQ-1
+        205        IN-UNITS MET VOLUME-FLOW='cum/hr' ENTHALPY-FLO='Gcal/hr'  &
+        206            HEAT-TRANS-C='kcal/hr-sqm-K' PRESSURE=bar TEMPERATURE=F  &
+        207            VOLUME=cum DELTA-T=C HEAD=meter MOLE-DENSITY='kmol/cum'  &
+        208            MASS-DENSITY='kg/cum' MOLE-ENTHALP='kcal/mol'  &
+        209            MASS-ENTHALP='kcal/kg' HEAT=Gcal MOLE-CONC='mol/l'  &
+        210            PDROP=bar SHORT-LENGTH=mm
+        211        PROP-LIST UNIQ
+        212        BPVAL WATER ACETICAC 0.0 -132.1992000 0.0 0.0 68.00000000  &
+        213            104.0000000 0.0
+        214        BPVAL ACETICAC WATER 0.0 395.3880000 0.0 0.0 68.00000000  &
         215            104.0000000 0.0
-        216        BPVAL ACETICAC WATER 0.0 395.3880000 0.0 0.0 68.00000000  &
-        217            104.0000000 0.0
-        218        BPVAL WATER PHENOL .9562000000 -422.3860200 0.0 0.0  &
+        216        BPVAL WATER PHENOL .9562000000 -422.3860200 0.0 0.0  &
+        217            111.9200000 359.6000000 0.0
+        218        BPVAL PHENOL WATER -3.463400000 1774.892340 0.0 0.0  &
         219            111.9200000 359.6000000 0.0
-        220        BPVAL PHENOL WATER -3.463400000 1774.892340 0.0 0.0  &
-        221            111.9200000 359.6000000 0.0
-        222
-        223    DEF-SUBS-ATTR PSD PSD
-        224        IN-UNITS ENG SHORT-LENGTH=in
-        225        INTERVALS 10
-        226        SIZE-LIMITS 0.0 <mm> / 2. <mm> / 4. <mm> / 6. <mm> /  &
-        227            8. <mm> / 10. <mm> / 12. <mm> / 14. <mm> / 16. <mm> /  &
-        228            18. <mm> / 20. <mm>
-        229
-        230    STREAM AIR1
-        231        SUBSTREAM MIXED TEMP=25. PRES=1. MASS-FLOW=100.
-        232        MOLE-FRAC N2 0.781 / O2 0.21 / CO2 0.008
-        233
-        234    STREAM AIR2
-        235        SUBSTREAM MIXED TEMP=25. PRES=1. MASS-FLOW=100.
-        236        MOLE-FRAC N2 0.781 / O2 0.21 / CO2 0.008
-        237
-        238    STREAM COLDLOOP
-        239        SUBSTREAM MIXED TEMP=200. PRES=1. MOLE-FLOW=0.555
-        240        MOLE-FLOW WATER 1.
-        241
-        242    STREAM COLDLOP2
-        243        SUBSTREAM MIXED TEMP=300. PRES=1. MOLE-FLOW=0.555
-        244        MOLE-FLOW WATER 1.
+        220
+        221    DEF-SUBS-ATTR PSD PSD
+        222        IN-UNITS ENG SHORT-LENGTH=in
+        223        INTERVALS 10
+        224        SIZE-LIMITS 0.0 <mm> / 2. <mm> / 4. <mm> / 6. <mm> /  &
+        225            8. <mm> / 10. <mm> / 12. <mm> / 14. <mm> / 16. <mm> /  &
+        226            18. <mm> / 20. <mm>
+        227
+        228    STREAM AIR1
+        229        SUBSTREAM MIXED TEMP=25. PRES=1. MASS-FLOW=100.
+        230        MOLE-FRAC N2 0.781 / O2 0.21 / CO2 0.008
+        231
+        232    STREAM AIR2
+        233        SUBSTREAM MIXED TEMP=25. PRES=1. MASS-FLOW=100.
+        234        MOLE-FRAC N2 0.781 / O2 0.21 / CO2 0.008
+        235
+        236    STREAM COLDFLU1
+        237        SUBSTREAM MIXED TEMP=200. PRES=1. MOLE-FLOW=0.555
+        238        MOLE-FLOW WATER 1.
+        239
+        240    STREAM EXHAUST1
+        241        SUBSTREAM MIXED TEMP=300. PRES=1.
+        242
+        243    STREAM EXHAUST2
+        244        SUBSTREAM MIXED TEMP=500. PRES=1.
         245
-        246    STREAM HOTLOOP
-        247        SUBSTREAM MIXED TEMP=1. PRES=1. MOLE-FLOW=0.555
-        248        MOLE-FLOW WATER 1.
-        249
-        250    STREAM HOTLOOP2
-        251        SUBSTREAM MIXED TEMP=550. PRES=1. MOLE-FLOW=0.555
-        252        MOLE-FLOW WATER 1.
-        253
-        254    STREAM WASTEH2O
-        255        SUBSTREAM MIXED TEMP=25.00000000 PRES=1.000000000  &
-        256            MASS-FLOW=13293.
-        257        MASS-FRAC WATER 0.9999 / CHX 0.0001
-        258
-        259    STREAM WOOD
-        260        SUBSTREAM MIXED TEMP=25.00000000 PRES=1.000000000  &
-        261            FREE-WATER=NO NPHASE=2 PHASE=V
-        262        SUBSTREAM NCPSD TEMP=25.00000000 PRES=1.000000000  &
-        263            MASS-FLOW=43.044
-        264        MASS-FRAC MULBERRY 1.
-        265        COMP-ATTR MULBERRY PROXANAL ( 20. 17. 81.5 1.5 )
-        266        COMP-ATTR MULBERRY ULTANAL ( 1.5 48. 6. 0.2 0. 0.02  &
-        267            44.28 )
-        268        COMP-ATTR MULBERRY SULFANAL ( 0. 0. 0.02 )
-        269        SUBS-ATTR PSD ( * * * * * 1. * * * * )
-        270
-        271    DEF-STREAMS HEAT COLDFLU
-        272
-        273    DEF-STREAMS HEAT COLDFLU2
+        246    STREAM WASTEH2O
+        247        SUBSTREAM MIXED TEMP=25.00000000 PRES=1.000000000  &
+        248            MASS-FLOW=13293.
+        249        MASS-FRAC WATER 0.9999 / CHX 0.0001
+        250
+        251    STREAM WOOD
+        252        SUBSTREAM MIXED TEMP=25.00000000 PRES=1.000000000  &
+        253            FREE-WATER=NO NPHASE=2 PHASE=V
+        254        SUBSTREAM NCPSD TEMP=25.00000000 PRES=1.000000000  &
+        255            MASS-FLOW=43.044
+        256        MASS-FRAC MULBERRY 1.
+        257        COMP-ATTR MULBERRY PROXANAL ( 20. 17. 81.5 1.5 )
+        258        COMP-ATTR MULBERRY ULTANAL ( 1.5 48. 6. 0.2 0. 0.02  &
+        259            44.28 )
+        260        COMP-ATTR MULBERRY SULFANAL ( 0. 0. 0.02 )
+        261        SUBS-ATTR PSD ( * * * * * 1. * * * * )
+        262
+        263    BLOCK CHARSEP SEP
+        264        PARAM
+        265        FRAC STREAM=CHAR SUBSTREAM=NCPSD COMPS=CHAR FRACS=1.
+        266        FLASH-SPECS CHAR TEMP=350.0000000 PRES=1.000000000 NPHASE=1  &
+        267            FREE-WATER=NO PHASE=S
+        268        FLASH-SPECS VAPORS TEMP=350.0000000 PRES=1.000000000
+        269
+        270    BLOCK FBSEP SEP
+        271        PARAM
+        272        FRAC STREAM=CLEANH2O SUBSTREAM=MIXED COMPS=WATER CHX  &
+        273            FRACS=0.99 0.
         274
-        275    DEF-STREAMS HEAT HOTFLU
-        276
-        277    DEF-STREAMS HEAT HOTFLU2
-        278
-        279    BLOCK CHARSEP SEP
-        280        PARAM
-        281        FRAC STREAM=CHAR SUBSTREAM=NCPSD COMPS=CHAR FRACS=1.
-        282        FLASH-SPECS CHAR TEMP=350.0000000 PRES=1.000000000 NPHASE=1  &
-        283            FREE-WATER=NO PHASE=S
-        284        FLASH-SPECS VAPORS TEMP=350.0000000 PRES=1.000000000
-        285
-        286    BLOCK FBSEP SEP
-        287        PARAM
-        288        FRAC STREAM=CLEANH2O SUBSTREAM=MIXED COMPS=WATER CHX  &
-        289            FRACS=0.99 0.
-        290
-        291    BLOCK PYEXCH HEATER
-        292        PARAM TEMP=550. PRES=1. DPPARMOPT=NO
-        293
-        294    BLOCK TOREXCH HEATER
-        295        PARAM TEMP=350. PRES=1. DPPARMOPT=NO
-        296
-        297    BLOCK CONDENSE FLASH2
-        298        PARAM TEMP=25.00000000 PRES=1.000000000
+        275    BLOCK CONDENSE FLASH2
+        276        PARAM TEMP=25.00000000 PRES=1.000000000
+        277
+        278    BLOCK TORSEP FLASH2
+        279        PARAM TEMP=250. PRES=1.
+        280
+        281    BLOCK PYHEAT HEATX
+        282        PARAM T-COLD=500.
+        283        FEEDS HOT=EXHAUST2 COLD=DRYWOOD
+        284        OUTLETS-HOT COLDFLU2
+        285        OUTLETS-COLD HOTPYFED
+        286        HOT-SIDE DPPARMOPT=NO
+        287        COLD-SIDE DPPARMOPT=NO
+        288        TQ-PARAM CURVE=NO
+        289
+        290    BLOCK TORHEAT HEATX
+        291        PARAM T-COLD=250. CALC-TYPE=DESIGN U-OPTION=PHASE  &
+        292            F-OPTION=CONSTANT CALC-METHOD=SHORTCUT
+        293        FEEDS HOT=EXHAUST1 COLD=WOOD
+        294        OUTLETS-HOT COLDFLU1
+        295        OUTLETS-COLD TORHOT
+        296        HOT-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
+        297        COLD-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
+        298        TQ-PARAM CURVE=YES
         299
-        300    BLOCK TORSEP FLASH2
-        301        PARAM TEMP=250. PRES=1.
-        302
-        303    BLOCK PYHEAT HEATX
-        304        PARAM T-COLD=500.
-        305        FEEDS HOT=HOTLOOP2 COLD=DRYWOOD
-        306        OUTLETS-HOT COLDLOP2
-        307        OUTLETS-COLD HOTPYFED
-        308        HOT-SIDE DPPARMOPT=NO
-        309        COLD-SIDE DPPARMOPT=NO
-        310        TQ-PARAM CURVE=NO
-        311
-        312    BLOCK TORHEAT HEATX
-        313        PARAM T-COLD=250. CALC-TYPE=DESIGN U-OPTION=PHASE  &
-        314            F-OPTION=CONSTANT CALC-METHOD=SHORTCUT
-        315        FEEDS HOT=HOTLOOP COLD=WOOD
-        316        OUTLETS-HOT COLDLOOP
-        317        OUTLETS-COLD TORHOT
-        318        HOT-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
-        319        COLD-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
-        320        TQ-PARAM CURVE=YES
-        321
-        322    BLOCK BURNER1 RSTOIC
-        323        PARAM PRES=10. DUTY=0. COMBUSTION=YES
-        324        STOIC 1 MIXED C2H4 -1. / O2 -3. / CO2 2. / WATER 2.
-        325        STOIC 2 MIXED C2H6 -2. / O2 -7. / CO2 4. / WATER 6.
-        326        CONV 1 MIXED C2H4 1.
-        327        CONV 2 MIXED C2H6 1.
-        328
-        329    BLOCK PYROLYZE RYIELD
-        330        PARAM TEMP=350.0000000 PRES=1.000000000 OPT-PSD=SPEC
-        331        MASS-YIELD MIXED WATER 0.01 / ACETICAC 0.05 / PHENOL  &
-        332            0.05 / GUAIACOL 0.1 / ACETOL 0.21 / CO2 0.09 / CO  &
-        333            0.08 / CH4 0.04 / H2 0.03 / N2 0.01 / NCPSD CHAR  &
-        334            0.33
-        335        COMP-ATTR NCPSD CHAR PROXANAL ( 2. 75. 15. 8. )
-        336        COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
-        337            10.98 )
-        338        COMP-ATTR NCPSD CHAR SULFANAL ( 0. 0. 2. )
-        339        OVALL-ATTR PSDID=PSD VALUE=* * * * * 1. * * * *
-        340
-        341    BLOCK TORDRYER RYIELD
-        342        PARAM TEMP=250. PRES=1.
-        343        MASS-YIELD NCPSD DRYMUL 0.8008 / MIXED WATER 0.1992
-        344        COMP-ATTR NCPSD DRYMUL PROXANAL ( 0.1 17. 81.5 1.5 )
-        345        COMP-ATTR NCPSD DRYMUL ULTANAL ( 1.5 48. 6. 0.2 0.  &
-        346            0.02 44.28 )
-        347        COMP-ATTR NCPSD DRYMUL SULFANAL ( 0. 0. 0.02 )
-        348
-        349    BLOCK BURNER2 RGIBBS
-        350        PARAM PRES=10. CHEMEQ=YES TAPP=1. MAXIT=50 DUTY=0.
-        351        PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
-        352            V / HCL V
-        353
-        354    EO-CONV-OPTI
-        355
-        356    STREAM-REPOR MOLEFLOW
-        357
-        358    DISABLE
-        359        STREAM AIR1
-        360    ;
-        361    ;
-        362    ;
-        363    ;
-        364    ;
+        300    BLOCK BURNER1 RSTOIC
+        301        PARAM PRES=10. DUTY=0. COMBUSTION=YES
+        302        STOIC 1 MIXED C2H4 -1. / O2 -3. / CO2 2. / WATER 2.
+        303        STOIC 2 MIXED C2H6 -2. / O2 -7. / CO2 4. / WATER 6.
+        304        CONV 1 MIXED C2H4 1.
+        305        CONV 2 MIXED C2H6 1.
+        306
+        307    BLOCK PYROLYZE RYIELD
+        308        PARAM TEMP=350.0000000 PRES=1.000000000 OPT-PSD=SPEC
+        309        MASS-YIELD MIXED WATER 0.01 / ACETICAC 0.05 / PHENOL  &
+        310            0.05 / GUAIACOL 0.1 / ACETOL 0.21 / CO2 0.09 / CO  &
+        311            0.08 / CH4 0.04 / H2 0.03 / N2 0.01 / NCPSD CHAR  &
+        312            0.33
+        313        COMP-ATTR NCPSD CHAR PROXANAL ( 2. 75. 15. 8. )
+        314        COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
+        315            10.98 )
+        316        COMP-ATTR NCPSD CHAR SULFANAL ( 0. 0. 2. )
+        317        OVALL-ATTR PSDID=PSD VALUE=* * * * * 1. * * * *
+        318
+        319    BLOCK TORDRYER RYIELD
+        320        PARAM TEMP=250. PRES=1.
+        321        MASS-YIELD NCPSD DRYMUL 0.8008 / MIXED WATER 0.1992
+        322        COMP-ATTR NCPSD DRYMUL PROXANAL ( 0.1 17. 81.5 1.5 )
+        323        COMP-ATTR NCPSD DRYMUL ULTANAL ( 1.5 48. 6. 0.2 0.  &
+        324            0.02 44.28 )
+        325        COMP-ATTR NCPSD DRYMUL SULFANAL ( 0. 0. 0.02 )
+        326
+        327    BLOCK BURNER2 RGIBBS
+        328        PARAM PRES=10. CHEMEQ=YES TAPP=1. MAXIT=50 DUTY=0.
+        329        PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
+        330            V / HCL V
+        331
+        332    EO-CONV-OPTI
+        333
+        334    STREAM-REPOR MOLEFLOW
+        335
+        336    DISABLE
+        337        STREAM AIR1
+        338    ;
+        339    ;
+        340    ;
+        341    ;
+        342    ;
 
    SIMULATION STARTED     MODULE USED: apmain  
    LOCATED IN:C:\Program Files\AspenTech\Aspen Plus V14.0\Engine\\xeq
