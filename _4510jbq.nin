@@ -1,5 +1,5 @@
 ;
-;Input file created by Aspen Plus Rel. 40.0 at 16:23:24 Wed Dec 17, 2025
+;Input file created by Aspen Plus Rel. 40.0 at 16:38:39 Wed Dec 17, 2025
 ;Directory G:\Documents\Y3 Project\Repo  Runid Y3PROJECT
 ;
 
@@ -322,10 +322,10 @@ BLOCK BURNER1 RSTOIC
 
 BLOCK PYROLYZE RYIELD
     PARAM TEMP=350.0000000 PRES=1.000000000 OPT-PSD=SPEC
-    MASS-YIELD 0.33 / 0. / MIXED WATER 0.01 / ACETICAC  &
-        0.05 / PHENOL 0.05 / GUAIACOL 0.1 / ACETOL 0.21 /  &
-        CO2 0.09 / CO 0.08 / CH4 0.04 / H2 0.03 / N2  &
-        0.01
+    MASS-YIELD MIXED WATER 0.01 / ACETICAC 0.05 / PHENOL  &
+        0.05 / GUAIACOL 0.1 / ACETOL 0.21 / CO2 0.09 / CO  &
+        0.08 / CH4 0.04 / H2 0.03 / N2 0.01 / NCPSD CHAR  &
+        0.33
     COMP-ATTR NCPSD CHAR PROXANAL ( 2. 75. 15. 8. )
     COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
         10.98 )
