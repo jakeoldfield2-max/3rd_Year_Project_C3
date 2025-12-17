@@ -13,7 +13,7 @@
  LSET L_STRPR (%ID_STRPR)                                                       
  IDSET ID_GUID (PROPERTIES) ( 1270 *6 )                                         
  LSET L_GUID (%ID_GUID)                                                         
- DSET RUN-STATUS IT @IT ( "DECEMBER 17, 2025   2:03:36 P.M." "_4510jbq.inm" 4)  
+ DSET RUN-STATUS IT @IT ( "DECEMBER 17, 2025   2:33:18 P.M." "_4510jbq.inm" 4)  
  DSET RUN-STATUS CURRENCY @CURRENCY ( "$" )                                     
  IDSET ID_NCC (COMPONENTS) (WATER N2 O2 CHX CO CO2 CH4 H2 C2H4 C2H6 ACETICAC    
  PHENOL GUAIACOL ACETOL)                                                        
@@ -83,7 +83,7 @@
  IDSET SPSTAT (SPSTAT) (116 *1)                                                 
  LSET SPSTAT ( %SPSTAT)                                                         
  IDSET IDERR (PROPERTIES) (131 *1)                                              
- DSET RUN-STATUS SP @SP ( "DECEMBER 17, 2025 2:03:36 P.M." )                    
+ DSET RUN-STATUS SP @SP ( "DECEMBER 17, 2025 2:33:18 P.M." )                    
  IDSET FOR (PROPERTIES) (737 *1)                                                
  LSET FOR (%FOR)                                                                
  IDSET FORSTAT (PROPERTIES) (738 *1)                                            

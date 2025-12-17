@@ -1,0 +1,38 @@
+
+ BLOCK:  TORSEP   MODEL: FLASH2          
+ ------------------------------
+   INLET STREAM:          TORHOT  
+   OUTLET VAPOR STREAM:   STEAM   
+   OUTLET LIQUID STREAM:  DRYWOOD 
+   PROPERTY OPTION SET:   NRTL      RENON (NRTL) / IDEAL GAS                    
+
+                      ***  MASS AND ENERGY BALANCE  ***
+                                    IN              OUT        RELATIVE DIFF.
+       CONV. COMP.(KMOL/HR )     0.00000         0.00000         0.00000    
+                  (KG/HR   )     0.00000         0.00000         0.00000    
+       NONCONV. COMP(KG/HR   )  0.118000        0.118000         0.00000    
+    TOTAL BALANCE
+       MASS(KG/HR   )           0.118000        0.118000         0.00000    
+       ENTHALPY(GCAL/HR )      -0.346164E-03   -0.362749E-03    0.457205E-01
+
+                      ***  CO2 EQUIVALENT SUMMARY ***
+    FEED STREAMS CO2E             0.00000      KG/HR           
+    PRODUCT STREAMS CO2E          0.00000      KG/HR           
+    NET STREAMS CO2E PRODUCTION   0.00000      KG/HR           
+    UTILITIES CO2E PRODUCTION     0.00000      KG/HR           
+    TOTAL CO2E PRODUCTION         0.00000      KG/HR           
+
+                          ***  INPUT DATA  ***
+   TWO    PHASE  TP  FLASH
+   SPECIFIED TEMPERATURE C                                   1.00000    
+   SPECIFIED PRESSURE    BAR                                 1.00000    
+   MAXIMUM NO. ITERATIONS                                   30
+   CONVERGENCE TOLERANCE                                     0.000100000
+
+                           ***  RESULTS  ***
+   OUTLET TEMPERATURE    C                                    1.0000    
+   OUTLET PRESSURE       BAR                                  1.0000    
+   HEAT DUTY             GCAL/HR                            -0.16585E-04
+   VAPOR FRACTION                                             0.0000    
+
+

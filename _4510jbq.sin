@@ -1,10 +1,10 @@
  >>ORIGINAL RUN                           DECEMBER 17, 2025   
-   2:03:33 P.M.                           WEDNESDAY   
+   2:33:17 P.M.                           WEDNESDAY   
    INPUT FILE: _4510jbq.inm
    RUN ID : _4510jbq
           1    ;
-          2    ;Input file created by Aspen Plus Rel. 40.0 at 14:03:32 Wed Dec 17, 2025
-          3    ;Directory G:\Documents\Y3 Project\Repo  Runid y3project
+          2    ;Input file created by Aspen Plus Rel. 40.0 at 14:33:15 Wed Dec 17, 2025
+          3    ;Directory G:\Documents\Y3 Project\Repo  Runid Y3PROJECT
           4    ;
           5
           6
@@ -210,7 +210,7 @@
         206        MOLE-FRAC N2 0.781 / O2 0.21 / CO2 0.008
         207
         208    STREAM COLDLOOP
-        209        SUBSTREAM MIXED TEMP=200. PRES=1. MOLE-FLOW=10.
+        209        SUBSTREAM MIXED TEMP=200. PRES=1. MASS-FLOW=10.
         210        MOLE-FLOW WATER 1.
         211
         212    STREAM HOTLOOP
@@ -219,19 +219,19 @@
         215
         216    STREAM WASTEH2O
         217        SUBSTREAM MIXED TEMP=25.00000000 PRES=1.000000000  &
-        218            MASS-FLOW=3600.000000
-        219        MASS-FLOW WATER 3592.800000 / CHX 3.64320000E-3
+        218            MASS-FLOW=3600.
+        219        MASS-FRAC WATER 0.9999 / CHX 0.0001
         220
         221    STREAM WOOD
         222        SUBSTREAM MIXED TEMP=25.00000000 PRES=1.000000000  &
         223            FREE-WATER=NO NPHASE=2 PHASE=V
         224        SUBSTREAM NCPSD TEMP=25.00000000 PRES=1.000000000  &
         225            MASS-FLOW=0.118
-        226        MASS-FRAC MULBERRY 0.02
+        226        MASS-FRAC MULBERRY 1.
         227        COMP-ATTR MULBERRY PROXANAL ( 20. 17. 81.5 1.5 )
         228        COMP-ATTR MULBERRY ULTANAL ( 1.5 48. 6. 0.2 0. 0.02  &
         229            44.28 )
-        230        COMP-ATTR MULBERRY SULFANAL ( 0. 0. 100. )
+        230        COMP-ATTR MULBERRY SULFANAL ( 0. 0. 0.02 )
         231        SUBS-ATTR PSD ( * * * * * 1. * * * * )
         232
         233    DEF-STREAMS HEAT COLDFLU
@@ -270,7 +270,7 @@
         266        TQ-PARAM CURVE=YES
         267
         268    BLOCK BURNER1 RSTOIC
-        269        PARAM PRES=10. DUTY=0.
+        269        PARAM PRES=10. DUTY=0. COMBUSTION=YES
         270        STOIC 1 MIXED C2H4 -1. / O2 -3. / CO2 2. / WATER 2.
         271        STOIC 2 MIXED C2H6 -2. / O2 -7. / CO2 4. / WATER 6.
         272        CONV 1 MIXED C2H4 1.
