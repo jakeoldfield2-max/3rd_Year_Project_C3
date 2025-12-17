@@ -13,7 +13,7 @@
 
  PLATFORM: WIN-X64                                       DECEMBER 17, 2025   
  VERSION: 40.0   Build 359                               WEDNESDAY   
- INSTALLATION:                                           4:04:39 P.M.        
+ INSTALLATION:                                           4:23:25 P.M.        
 
  THIS COPY OF ASPEN PLUS LICENSED TO QUEEN MARY UNIVERSITY OF        
 
@@ -33,11 +33,11 @@
  >>CURRENT RUN
 
    ORIGINAL RUN                           DECEMBER 17, 2025   
-   4:04:39 P.M.                           WEDNESDAY   
+   4:23:25 P.M.                           WEDNESDAY   
    INPUT FILE: _4510jbq.inm
    RUN ID : _4510jbq
           1    ;
-          2    ;Input file created by Aspen Plus Rel. 40.0 at 16:04:38 Wed Dec 17, 2025
+          2    ;Input file created by Aspen Plus Rel. 40.0 at 16:23:24 Wed Dec 17, 2025
           3    ;Directory G:\Documents\Y3 Project\Repo  Runid Y3PROJECT
           4    ;
           5
@@ -339,7 +339,7 @@
         301        OUTLETS-COLD HOTPYFED
         302        HOT-SIDE DPPARMOPT=NO
         303        COLD-SIDE DPPARMOPT=NO
-        304        TQ-PARAM CURVE=YES
+        304        TQ-PARAM CURVE=NO
         305
         306    BLOCK TORHEAT HEATX
         307        PARAM T-COLD=250. CALC-TYPE=DESIGN U-OPTION=PHASE  &
@@ -359,7 +359,7 @@
         321        CONV 2 MIXED C2H6 1.
         322
         323    BLOCK PYROLYZE RYIELD
-        324        PARAM TEMP=350.0000000 PRES=1.000000000
+        324        PARAM TEMP=350.0000000 PRES=1.000000000 OPT-PSD=SPEC
         325        MASS-YIELD 0.33 / 0. / MIXED WATER 0.01 / ACETICAC  &
         326            0.05 / PHENOL 0.05 / GUAIACOL 0.1 / ACETOL 0.21 /  &
         327            CO2 0.09 / CO 0.08 / CH4 0.04 / H2 0.03 / N2  &
@@ -368,23 +368,24 @@
         330        COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
         331            10.98 )
         332        COMP-ATTR NCPSD CHAR SULFANAL ( 0. 0. 2. )
-        333
-        334    BLOCK BURNER2 RGIBBS
-        335        PARAM PRES=10. CHEMEQ=YES TAPP=1. MAXIT=50 DUTY=0.
-        336        PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
-        337            V / HCL V
-        338
-        339    EO-CONV-OPTI
-        340
-        341    STREAM-REPOR MOLEFLOW
-        342
-        343    DISABLE
-        344        STREAM AIR1
-        345    ;
+        333        OVALL-ATTR PSDID=PSD VALUE=* * * * * 1. * * * *
+        334
+        335    BLOCK BURNER2 RGIBBS
+        336        PARAM PRES=10. CHEMEQ=YES TAPP=1. MAXIT=50 DUTY=0.
+        337        PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
+        338            V / HCL V
+        339
+        340    EO-CONV-OPTI
+        341
+        342    STREAM-REPOR MOLEFLOW
+        343
+        344    DISABLE
+        345        STREAM AIR1
         346    ;
         347    ;
         348    ;
         349    ;
+        350    ;
  *** INPUT TRANSLATOR MESSAGES ***
 
   *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
@@ -417,7 +418,7 @@
  
  
 
- PDF updated                                                                      TIME =      1.38
+ PDF updated                                                                      TIME =      1.40
 
  *** CALCULATION TRACE ***
 
@@ -470,33 +471,33 @@
       (RETURN $OLVER02) 
       PYROLYZE CHARSEP FBSEP BURNER2 CONDENSE BURNER1 
 
-Calculations begin                                                              time      0.39
+Calculations begin                                                              time      0.57
 
 
- SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.39
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.58
 
-      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.39
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.58
       ITER   0 For Tear Streams: HOTLOOP
 
-      ENTHALPY CALCULATION FOR INLET STREAM HOTLOOP OF BLOCK TORHEAT              TIME =      0.39
+      ENTHALPY CALCULATION FOR INLET STREAM HOTLOOP OF BLOCK TORHEAT              TIME =      0.59
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   1  T = 274.1500  P =  100000.      V =  0.00000      Q =  0.00000    
 
-      ENTHALPY CALCULATION FOR INLET STREAM WOOD OF BLOCK TORHEAT                 TIME =      0.39
+      ENTHALPY CALCULATION FOR INLET STREAM WOOD OF BLOCK TORHEAT                 TIME =      0.60
       SUBSTREAM NCPSD   
       KODE =    2 T =  298.150     P =  100000.     Q =  0.00000     HNCS =-7.756532E+06
 
-      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.40
+      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.61
 
   **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "TORHEAT" (MODEL: "HEATX")   
                                                                (UHE02I.2)       
       "COLD" STREAM IS HOTTER THAN "HOT" STREAM                                 
       BLOCK BYPASSED                                                            
 
-      UOS BLOCK TOREXCH  MODEL: HEATER                                            TIME =      0.40
+      UOS BLOCK TOREXCH  MODEL: HEATER                                            TIME =      0.63
       KODE = 2  NTRIAL =   1  T =  623.150      P =  100000.      V =  1.00000      Q =  8801.47    
 
-      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.40
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.64
       ITER   1 For Tear Streams: HOTLOOP
 
   *   WARNING WHILE EXECUTING CONVERGENCE BLOCK: "$OLVER01" (MODEL: "WEGSTEIN") 
@@ -509,49 +510,49 @@ Calculations begin                                                              
       NO. TEMP ITER =    5     TEMP =  623.150    
       KODE = 1  NTRIAL =   2  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
 
-  LOOP $OLVER01 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL      1985.3        TIME =      0.40
+  LOOP $OLVER01 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL      1985.3        TIME =      0.68
 
-      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.40
+      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.68
       SPECIFICATION: COLD OUTLET TEMP      523.15    
       FLOW TYPE:     COUNTERCURRENT  
       HOT:  TIN=  623.15  PIN=0.10000E+06   TOUT=  620.02  POUT=0.10000E+06
       COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  523.15  POUT=0.10000E+06
                               DUTY= 17.659    
 
-      UOS BLOCK TOREXCH  MODEL: HEATER                                            TIME =      0.40
+      UOS BLOCK TOREXCH  MODEL: HEATER                                            TIME =      0.70
       KODE = 2  NTRIAL =   1  T =  623.150      P =  100000.      V =  1.00000      Q =  17.6594    
 
-      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.40
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.71
       ITER   2 For Tear Streams: HOTLOOP
 
-  LOOP $OLVER01 ITER    2:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.40
+  LOOP $OLVER01 ITER    2:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.71
 
-      UOS BLOCK TORSEP   MODEL: FLASH2                                            TIME =      0.40
+      UOS BLOCK TORSEP   MODEL: FLASH2                                            TIME =      0.72
       KODE =    2 T =  523.150     P =  100000.     Q =  0.00000     HNCS =-7.217771E+06
 
-      CONVERGENCE BLOCK $OLVER02  METHOD: WEGSTEIN                                TIME =      0.40
+      CONVERGENCE BLOCK $OLVER02  METHOD: WEGSTEIN                                TIME =      0.73
       ITER   0 For Tear Streams: HOTLOOP2
 
-      ENTHALPY CALCULATION FOR INLET STREAM HOTLOOP2 OF BLOCK PYHEAT              TIME =      0.40
+      ENTHALPY CALCULATION FOR INLET STREAM HOTLOOP2 OF BLOCK PYHEAT              TIME =      0.73
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   1  T = 823.1500  P =  100000.      V =  1.00000      Q =  0.00000    
 
-      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =      0.41
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =      0.74
       SPECIFICATION: COLD OUTLET TEMP      773.15    
       FLOW TYPE:     COUNTERCURRENT  
       HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  819.07  POUT=0.10000E+06
       COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  773.15  POUT=0.10000E+06
                               DUTY= 24.519    
 
-      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =      0.41
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =      0.77
       KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  24.5199    
 
-      CONVERGENCE BLOCK $OLVER02  METHOD: WEGSTEIN                                TIME =      0.41
+      CONVERGENCE BLOCK $OLVER02  METHOD: WEGSTEIN                                TIME =      0.78
       ITER   1 For Tear Streams: HOTLOOP2
 
-  LOOP $OLVER02 ITER    1:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.41
+  LOOP $OLVER02 ITER    1:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.79
 
-      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =      0.41
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =      0.79
 
   *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
       "RYIELD")                                                (URE01.2)        
@@ -564,7 +565,7 @@ Calculations begin                                                              
       H     N     C                                                             
       KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  82.9049    
 
-      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =      0.42
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =      0.82
 
   *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "CHARSEP" (MODEL: "SEP")   
                                                                (USP03.1)        
@@ -572,11 +573,11 @@ Calculations begin                                                              
       ---FLASH OUTLET STREAM VAPORS  :
       KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
 
-      ENTHALPY CALCULATION FOR INLET STREAM WASTEH2O OF BLOCK FBSEP               TIME =      0.42
+      ENTHALPY CALCULATION FOR INLET STREAM WASTEH2O OF BLOCK FBSEP               TIME =      0.84
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   3  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
 
-      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =      0.42
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =      0.85
       ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
       NO. TEMP ITER =    5     TEMP =  298.150    
       KODE = 1  NTRIAL =   2  T =  298.150      P =  100000.      V =  0.00000      Q =  0.00000    
@@ -585,11 +586,11 @@ Calculations begin                                                              
       ---FLASH OUTLET STREAM SPNTCHAR:
       KODE = 2  NTRIAL =   3  T =  298.150      P =  100000.      V =  0.00000      Q =  0.00000    
 
-      ENTHALPY CALCULATION FOR INLET STREAM AIR2 OF BLOCK BURNER2                 TIME =      0.42
+      ENTHALPY CALCULATION FOR INLET STREAM AIR2 OF BLOCK BURNER2                 TIME =      0.89
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
 
-      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =      0.43
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =      0.90
       T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
       ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
 
@@ -597,20 +598,20 @@ Calculations begin                                                              
                                                                (TPLOOP.33)      
       T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
 
-      UOS BLOCK CONDENSE MODEL: FLASH2                                            TIME =      0.45
+      UOS BLOCK CONDENSE MODEL: FLASH2                                            TIME =      0.91
       KODE = 2  NTRIAL =   2  T =  298.150      P =  100000.      V = 0.809325      Q = -34.6875    
 
-      ENTHALPY CALCULATION FOR INLET STREAM AIR1 OF BLOCK BURNER1                 TIME =      0.46
+      ENTHALPY CALCULATION FOR INLET STREAM AIR1 OF BLOCK BURNER1                 TIME =      0.92
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
 
-      UOS BLOCK BURNER1  MODEL: RSTOIC                                            TIME =      0.48
+      UOS BLOCK BURNER1  MODEL: RSTOIC                                            TIME =      0.93
       NO. TEMP ITER =    4     TEMP =  298.150    
       KODE = 1  NTRIAL =   4  T =  298.150      P =  100000.      V =  1.00000      Q =  0.00000    
       NO. TEMP ITER =    4     TEMP =  309.577    
       KODE = 1  NTRIAL =   2  T =  309.577      P = 1.000000E+06  V =  1.00000      Q =  0.00000    
 
-      GENERATING RESULTS FOR UOS BLOCK TORHEAT  MODEL: HEATX                      TIME =      0.50
+      GENERATING RESULTS FOR UOS BLOCK TORHEAT  MODEL: HEATX                      TIME =      0.95
 
   *   WARNING WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "TORHEAT"     
       (MODEL: "HEATX")                                         (UHE02I.6)       
@@ -721,210 +722,21 @@ Calculations begin                                                              
       BEGIN HOT-TQCURVE  INLET   
       END HEATX TQ-CURVE CALCULATIONS FOR BLOCK TORHEAT 
 
-      GENERATING RESULTS FOR UOS BLOCK PYHEAT   MODEL: HEATX                      TIME =      0.77
+      GENERATING RESULTS FOR UOS BLOCK PYHEAT   MODEL: HEATX                      TIME =      1.23
       SPECIFICATION: COLD OUTLET TEMP      773.15    
       FLOW TYPE:     COUNTERCURRENT  
       HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  819.07  POUT=0.10000E+06
       COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  773.15  POUT=0.10000E+06
       AREA=0.20856E-03       DUTY= 24.519           FT=1.00000
 
-      BEGIN HEATX TQ-CURVE CALCULATIONS FOR BLOCK PYHEAT  
-
-      BEGIN COLD-TQCURVE INLET   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
-      (MODEL: "HEATX")    (WHILE GENERATING COLD-TQCURVE )     (TGSUPP.1)       
-      FLASH CALCULATIONS BYPASSED DUE TO UNREASONABLE SPECIFICATIONS. SPECIFIED 
-      PRESSURE (MISSING) IS HIGHER THAN THE UPPER LIMIT (1.0000D+10).           
-      PROPERTIES WILL NOT BE CALCULATED DUE TO FLASH FAILURE.                   
-
-      BEGIN HOT-TQCURVE  INLET   
-      NO. TEMP ITER =    6     TEMP =  823.150    
-      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  822.956    
-      KODE = 1  NTRIAL =   2  T =  822.956      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  822.762    
-      KODE = 1  NTRIAL =   2  T =  822.762      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  822.567    
-      KODE = 1  NTRIAL =   2  T =  822.567      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  822.373    
-      KODE = 1  NTRIAL =   2  T =  822.373      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  822.179    
-      KODE = 1  NTRIAL =   2  T =  822.179      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  821.985    
-      KODE = 1  NTRIAL =   2  T =  821.985      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  821.791    
-      KODE = 1  NTRIAL =   2  T =  821.791      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  821.596    
-      KODE = 1  NTRIAL =   2  T =  821.596      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  821.402    
-      KODE = 1  NTRIAL =   2  T =  821.402      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  821.208    
-      KODE = 1  NTRIAL =   2  T =  821.208      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  821.014    
-      KODE = 1  NTRIAL =   2  T =  821.014      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  820.819    
-      KODE = 1  NTRIAL =   2  T =  820.819      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  820.625    
-      KODE = 1  NTRIAL =   2  T =  820.625      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  820.431    
-      KODE = 1  NTRIAL =   2  T =  820.431      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  820.236    
-      KODE = 1  NTRIAL =   2  T =  820.236      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  820.042    
-      KODE = 1  NTRIAL =   2  T =  820.042      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  819.848    
-      KODE = 1  NTRIAL =   2  T =  819.848      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  819.653    
-      KODE = 1  NTRIAL =   2  T =  819.653      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  819.459    
-      KODE = 1  NTRIAL =   2  T =  819.459      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  819.265    
-      KODE = 1  NTRIAL =   2  T =  819.265      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    6     TEMP =  819.070    
-      KODE = 1  NTRIAL =   2  T =  819.070      P =  100000.      V =  1.00000      Q =  0.00000    
+      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
 
       BEGIN COLD-TQCURVE INLET   
 
       BEGIN HOT-TQCURVE  INLET   
-      END HEATX TQ-CURVE CALCULATIONS FOR BLOCK PYHEAT  
+      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
 
-  *   WARNING WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"      
-      (MODEL: "HEATX")                                         (HXTQCRV.1)      
-      TEMPERATURE CROSS DETECTED IN TQ-CURVE INLET                              
-
-      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK PYHEAT  
-
-      BEGIN COLD-TQCURVE INLET   
-
-      BEGIN HOT-TQCURVE  INLET   
-      END HEATX TQ-CURVE REPORT FOR BLOCK PYHEAT  
+ Report Writer entered                                                            Time =    184.93
 
       BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
 
@@ -933,14 +745,9 @@ Calculations begin                                                              
       BEGIN HOT-TQCURVE  INLET   
       END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
 
- Report Writer entered                                                            Time =    194.65
+ Results generated                                                                Time =    185.01
 
-      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK PYHEAT  
-
-      BEGIN COLD-TQCURVE INLET   
-
-      BEGIN HOT-TQCURVE  INLET   
-      END HEATX TQ-CURVE REPORT FOR BLOCK PYHEAT  
+ Report Writer entered                                                            Time =    186.11
 
       BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
 
@@ -949,25 +756,7 @@ Calculations begin                                                              
       BEGIN HOT-TQCURVE  INLET   
       END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
 
- Results generated                                                                Time =    194.74
-
- Report Writer entered                                                            Time =    195.90
-
-      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK PYHEAT  
-
-      BEGIN COLD-TQCURVE INLET   
-
-      BEGIN HOT-TQCURVE  INLET   
-      END HEATX TQ-CURVE REPORT FOR BLOCK PYHEAT  
-
-      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
-      BEGIN COLD-TQCURVE INLET   
-
-      BEGIN HOT-TQCURVE  INLET   
-      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
- Results generated                                                                Time =    196.00
+ Results generated                                                                Time =    192.17
 
 RUN SAVED
 
@@ -979,5 +768,5 @@ RUN SAVED
                   PROPERTY  SYSTEM  SIMULATION
  TERMINAL ERRORS      0        0         0
    SEVERE ERRORS      0        0         0
-          ERRORS      0        0        24
-        WARNINGS      0        0         6
+          ERRORS      0        0         2
+        WARNINGS      0        0         5

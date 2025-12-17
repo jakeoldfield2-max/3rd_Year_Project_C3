@@ -1,9 +1,9 @@
  >>ORIGINAL RUN                           DECEMBER 17, 2025   
-   4:04:39 P.M.                           WEDNESDAY   
+   4:23:25 P.M.                           WEDNESDAY   
    INPUT FILE: _4510jbq.inm
    RUN ID : _4510jbq
           1    ;
-          2    ;Input file created by Aspen Plus Rel. 40.0 at 16:04:38 Wed Dec 17, 2025
+          2    ;Input file created by Aspen Plus Rel. 40.0 at 16:23:24 Wed Dec 17, 2025
           3    ;Directory G:\Documents\Y3 Project\Repo  Runid Y3PROJECT
           4    ;
           5
@@ -305,7 +305,7 @@
         301        OUTLETS-COLD HOTPYFED
         302        HOT-SIDE DPPARMOPT=NO
         303        COLD-SIDE DPPARMOPT=NO
-        304        TQ-PARAM CURVE=YES
+        304        TQ-PARAM CURVE=NO
         305
         306    BLOCK TORHEAT HEATX
         307        PARAM T-COLD=250. CALC-TYPE=DESIGN U-OPTION=PHASE  &
@@ -325,7 +325,7 @@
         321        CONV 2 MIXED C2H6 1.
         322
         323    BLOCK PYROLYZE RYIELD
-        324        PARAM TEMP=350.0000000 PRES=1.000000000
+        324        PARAM TEMP=350.0000000 PRES=1.000000000 OPT-PSD=SPEC
         325        MASS-YIELD 0.33 / 0. / MIXED WATER 0.01 / ACETICAC  &
         326            0.05 / PHENOL 0.05 / GUAIACOL 0.1 / ACETOL 0.21 /  &
         327            CO2 0.09 / CO 0.08 / CH4 0.04 / H2 0.03 / N2  &
@@ -334,23 +334,24 @@
         330        COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
         331            10.98 )
         332        COMP-ATTR NCPSD CHAR SULFANAL ( 0. 0. 2. )
-        333
-        334    BLOCK BURNER2 RGIBBS
-        335        PARAM PRES=10. CHEMEQ=YES TAPP=1. MAXIT=50 DUTY=0.
-        336        PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
-        337            V / HCL V
-        338
-        339    EO-CONV-OPTI
-        340
-        341    STREAM-REPOR MOLEFLOW
-        342
-        343    DISABLE
-        344        STREAM AIR1
-        345    ;
+        333        OVALL-ATTR PSDID=PSD VALUE=* * * * * 1. * * * *
+        334
+        335    BLOCK BURNER2 RGIBBS
+        336        PARAM PRES=10. CHEMEQ=YES TAPP=1. MAXIT=50 DUTY=0.
+        337        PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
+        338            V / HCL V
+        339
+        340    EO-CONV-OPTI
+        341
+        342    STREAM-REPOR MOLEFLOW
+        343
+        344    DISABLE
+        345        STREAM AIR1
         346    ;
         347    ;
         348    ;
         349    ;
+        350    ;
 
    SIMULATION STARTED     MODULE USED: apmain  
    LOCATED IN:C:\Program Files\AspenTech\Aspen Plus V14.0\Engine\\xeq
