@@ -7,5 +7,4 @@ OLD_RUNID: _2124ilh
 PDF: _2124ilh.appdf
 USERNAME: ex23441
 XMOD: C:\Program Files\AspenTech\Aspen Plus V14.0\Engine\xeq\apmain
-SPONLY:
-DBCONN: _2124ilh
+DBCONN: _2124ilh.ads

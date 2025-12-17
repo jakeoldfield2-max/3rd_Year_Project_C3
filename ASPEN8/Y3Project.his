@@ -13,7 +13,7 @@
 
  PLATFORM: WIN-X64                                       DECEMBER 17, 2025   
  VERSION: 40.0   Build 359                               WEDNESDAY   
- INSTALLATION:                                           4:59:39 P.M.        
+ INSTALLATION:                                           10:53:47 P.M.       
 
  THIS COPY OF ASPEN PLUS LICENSED TO QUEEN MARY UNIVERSITY OF        
 
@@ -33,12 +33,12 @@
  >>CURRENT RUN
 
    ORIGINAL RUN                           DECEMBER 17, 2025   
-   4:59:39 P.M.                           WEDNESDAY   
-   INPUT FILE: _4510jbq.inm
-   RUN ID : _4510jbq
+   10:53:47 P.M.                          WEDNESDAY   
+   INPUT FILE: _2124ilh.inm
+   RUN ID : _2124ilh
           1    ;
-          2    ;Input file created by Aspen Plus Rel. 40.0 at 16:59:37 Wed Dec 17, 2025
-          3    ;Directory G:\Documents\Y3 Project\Repo  Runid Y3PROJECT
+          2    ;Input file created by Aspen Plus Rel. 40.0 at 22:53:46 Wed Dec 17, 2025
+          3    ;Directory G:\Documents\Y3 Project\Repo\ASPEN8  Runid y3project
           4    ;
           5
           6
@@ -291,7 +291,7 @@
         253
         254    STREAM WASTEH2O
         255        SUBSTREAM MIXED TEMP=25.00000000 PRES=1.000000000  &
-        256            MASS-FLOW=3600.
+        256            MASS-FLOW=13293.
         257        MASS-FRAC WATER 0.9999 / CHX 0.0001
         258
         259    STREAM WOOD
@@ -378,7 +378,7 @@
         340
         341    BLOCK TORDRYER RYIELD
         342        PARAM TEMP=250. PRES=1.
-        343        MASS-YIELD NCPSD DRYMUL 0.008 / MIXED WATER 0.992
+        343        MASS-YIELD NCPSD DRYMUL 0.8008 / MIXED WATER 0.1992
         344        COMP-ATTR NCPSD DRYMUL PROXANAL ( 0.1 17. 81.5 1.5 )
         345        COMP-ATTR NCPSD DRYMUL ULTANAL ( 1.5 48. 6. 0.2 0.  &
         346            0.02 44.28 )
@@ -432,7 +432,7 @@
  
  
 
- PDF updated                                                                      TIME =      1.30
+ PDF updated                                                                      TIME =      2.49
 
  *** CALCULATION TRACE ***
 
@@ -491,28 +491,28 @@ Calculations begin                                                              
 
  SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.45
 
-      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.46
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.45
       ITER   0 For Tear Streams: COLDLOOP
 
-      ENTHALPY CALCULATION FOR INLET STREAM COLDLOOP OF BLOCK TOREXCH             TIME =      0.46
+      ENTHALPY CALCULATION FOR INLET STREAM COLDLOOP OF BLOCK TOREXCH             TIME =      0.45
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   1  T = 473.1500  P =  100000.      V =  1.00000      Q =  0.00000    
 
-      UOS BLOCK TOREXCH  MODEL: HEATER                                            TIME =      0.48
+      UOS BLOCK TOREXCH  MODEL: HEATER                                            TIME =      0.45
       KODE = 2  NTRIAL =   1  T =  623.150      P =  100000.      V =  1.00000      Q =  826.919    
 
-      ENTHALPY CALCULATION FOR INLET STREAM WOOD OF BLOCK TORHEAT                 TIME =      0.48
+      ENTHALPY CALCULATION FOR INLET STREAM WOOD OF BLOCK TORHEAT                 TIME =      0.45
       SUBSTREAM NCPSD   
       KODE =    2 T =  298.150     P =  100000.     Q =  0.00000     HNCS =-7.756532E+06
 
-      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.51
+      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.45
       SPECIFICATION: COLD OUTLET TEMP      523.15    
       FLOW TYPE:     COUNTERCURRENT  
       HOT:  TIN=  623.15  PIN=0.10000E+06   TOUT=  372.80  POUT=0.10000E+06
       COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  523.15  POUT=0.10000E+06
                               DUTY= 6441.8    
 
-      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.52
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.45
       ITER   1 For Tear Streams: COLDLOOP
 
   *   WARNING WHILE EXECUTING CONVERGENCE BLOCK: "$OLVER01" (MODEL: "WEGSTEIN") 
@@ -524,109 +524,109 @@ Calculations begin                                                              
       --FLASH TEAR STREAM COLDLOOP
       KODE = 1  NTRIAL =   2  T =  372.799      P =  100000.      V = 0.190328      Q =  0.00000    
 
-  LOOP $OLVER01 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL     -1544.3        TIME =      0.55
+  LOOP $OLVER01 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL     -1544.3        TIME =      0.45
 
-      UOS BLOCK TOREXCH  MODEL: HEATER                                            TIME =      0.56
+      UOS BLOCK TOREXCH  MODEL: HEATER                                            TIME =      0.46
       KODE = 2  NTRIAL =   1  T =  623.150      P =  100000.      V =  1.00000      Q =  6441.78    
 
-      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.56
+      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.46
       SPECIFICATION: COLD OUTLET TEMP      523.15    
       FLOW TYPE:     COUNTERCURRENT  
       HOT:  TIN=  623.15  PIN=0.10000E+06   TOUT=  372.80  POUT=0.10000E+06
       COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  523.15  POUT=0.10000E+06
                               DUTY= 6441.8    
 
-      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.58
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.46
       ITER   2 For Tear Streams: COLDLOOP
 
-  LOOP $OLVER01 ITER    2:     *** CONVERGED *** , MAX ERR/TOL    -0.39637E-04    TIME =      0.59
+  LOOP $OLVER01 ITER    2:     *** CONVERGED *** , MAX ERR/TOL    -0.39637E-04    TIME =      0.46
 
-      UOS BLOCK TORDRYER MODEL: RYIELD                                            TIME =      0.59
+      UOS BLOCK TORDRYER MODEL: RYIELD                                            TIME =      0.46
+      KODE = 2  NTRIAL =   1  T =  523.150      P =  100000.      V =  1.00000      Q =  4794.73    
 
-  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "TORDRYER" (MODEL:         
-      "RYIELD")                                                (BALATM.1)       
-      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
-      H     C     N     S                                                       
-      KODE = 2  NTRIAL =   1  T =  523.150      P =  100000.      V =  1.00000      Q = -68318.0    
-
-      UOS BLOCK TORSEP   MODEL: FLASH2                                            TIME =      0.62
+      UOS BLOCK TORSEP   MODEL: FLASH2                                            TIME =      0.46
       KODE = 2  NTRIAL =   1  T =  523.150      P =  100000.      V =  1.00000      Q =  0.00000    
 
-      CONVERGENCE BLOCK $OLVER02  METHOD: WEGSTEIN                                TIME =      0.63
+      CONVERGENCE BLOCK $OLVER02  METHOD: WEGSTEIN                                TIME =      0.46
       ITER   0 For Tear Streams: HOTLOOP2
 
-      ENTHALPY CALCULATION FOR INLET STREAM HOTLOOP2 OF BLOCK PYHEAT              TIME =      0.64
+      ENTHALPY CALCULATION FOR INLET STREAM HOTLOOP2 OF BLOCK PYHEAT              TIME =      0.46
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   1  T = 823.1500  P =  100000.      V =  1.00000      Q =  0.00000    
 
-      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =      0.65
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =      0.46
       SPECIFICATION: COLD OUTLET TEMP      773.15    
       FLOW TYPE:     COUNTERCURRENT  
-      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  812.18  POUT=0.10000E+06
-      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  773.15  POUT=0.10000E+06
-                              DUTY= 65.873    
 
-      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =      0.66
-      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  65.8738    
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
 
-      CONVERGENCE BLOCK $OLVER02  METHOD: WEGSTEIN                                TIME =      0.67
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =      0.46
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: WEGSTEIN                                TIME =      0.46
       ITER   1 For Tear Streams: HOTLOOP2
 
-  LOOP $OLVER02 ITER    1:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.68
+  LOOP $OLVER02 ITER    1:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.46
 
-      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =      0.68
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =      0.46
 
   *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
       "RYIELD")                                                (BALATM.1)       
       THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
       H     N     C     S                                                       
-      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  185.867    
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
 
-      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =      0.70
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =      0.46
       ---FLASH OUTLET STREAM CHAR    :
       KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
       ---FLASH OUTLET STREAM VAPORS  :
       KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
 
-      ENTHALPY CALCULATION FOR INLET STREAM WASTEH2O OF BLOCK FBSEP               TIME =      0.73
+      ENTHALPY CALCULATION FOR INLET STREAM WASTEH2O OF BLOCK FBSEP               TIME =      0.46
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   3  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
 
-      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =      0.74
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =      0.46
       ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
-      NO. TEMP ITER =    5     TEMP =  298.154    
-      KODE = 1  NTRIAL =   2  T =  298.154      P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
       ---FLASH OUTLET STREAM CLEANH2O:
-      KODE = 2  NTRIAL =   1  T =  298.154      P =  100000.      V =  0.00000      Q =  0.00000    
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
       ---FLASH OUTLET STREAM SPNTCHAR:
-      KODE = 2  NTRIAL =   3  T =  298.154      P =  100000.      V =  0.00000      Q =  0.00000    
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
 
-      ENTHALPY CALCULATION FOR INLET STREAM AIR2 OF BLOCK BURNER2                 TIME =      0.76
+      ENTHALPY CALCULATION FOR INLET STREAM AIR2 OF BLOCK BURNER2                 TIME =      0.46
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
 
-      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =      0.77
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =      0.46
       T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
-      ITER =     5  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
 
   **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
                                                                (TPLOOP.33)      
       T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
 
-      UOS BLOCK CONDENSE MODEL: FLASH2                                            TIME =      0.79
-      KODE = 2  NTRIAL =   2  T =  298.150      P =  100000.      V = 0.809325      Q = -67.8217    
+      UOS BLOCK CONDENSE MODEL: FLASH2                                            TIME =      0.46
+      KODE = 2  NTRIAL =   2  T =  298.150      P =  100000.      V = 0.809325      Q = -6788.95    
 
-      ENTHALPY CALCULATION FOR INLET STREAM AIR1 OF BLOCK BURNER1                 TIME =      0.80
+      ENTHALPY CALCULATION FOR INLET STREAM AIR1 OF BLOCK BURNER1                 TIME =      0.46
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
 
-      UOS BLOCK BURNER1  MODEL: RSTOIC                                            TIME =      0.82
+      UOS BLOCK BURNER1  MODEL: RSTOIC                                            TIME =      0.46
       NO. TEMP ITER =    4     TEMP =  298.150    
-      KODE = 1  NTRIAL =   4  T =  298.150      P =  100000.      V =  1.00000      Q =  0.00000    
-      NO. TEMP ITER =    4     TEMP =  320.462    
-      KODE = 1  NTRIAL =   2  T =  320.462      P = 1.000000E+06  V =  1.00000      Q =  0.00000    
+      KODE = 1  NTRIAL =   3  T =  298.150      P =  100000.      V =  1.00000      Q =  0.00000    
+      NO. TEMP ITER =    6     TEMP =  1888.48    
+      KODE = 1  NTRIAL =   2  T =  1888.48      P = 1.000000E+06  V =  1.00000      Q =  0.00000    
 
-      GENERATING RESULTS FOR UOS BLOCK TORHEAT  MODEL: HEATX                      TIME =      0.84
+      GENERATING RESULTS FOR UOS BLOCK TORHEAT  MODEL: HEATX                      TIME =      0.46
 
   *   WARNING WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "TORHEAT"     
       (MODEL: "HEATX")                                         (UHE02I.6)       
@@ -728,12 +728,1808 @@ Calculations begin                                                              
       (MODEL: "HEATX")                                         (HXTQCRV.1)      
       TEMPERATURE CROSS DETECTED IN TQ-CURVE INLET                              
 
-      GENERATING RESULTS FOR UOS BLOCK PYHEAT   MODEL: HEATX                      TIME =      1.09
+      GENERATING RESULTS FOR UOS BLOCK PYHEAT   MODEL: HEATX                      TIME =      0.47
       SPECIFICATION: COLD OUTLET TEMP      773.15    
       FLOW TYPE:     COUNTERCURRENT  
-      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  812.18  POUT=0.10000E+06
-      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  773.15  POUT=0.10000E+06
-      AREA=0.56885E-03       DUTY= 65.873           FT=1.00000
+
+  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
+      (MODEL: "HEATX")                                         (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+      AREA=0.48247E-01       DUTY= 1715.2           FT=1.00000
+<reset scope>
+<reset scope>
+<reset scope>
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ DEF-STREAMS  IS GENERATED BECAUSE OF OTHER CHANGES 12/17/2025   22:57:37:99 
+ DEF-STREAMS HEAT COLDFLU
+
+ DEF-STREAMS  IS GENERATED BECAUSE OF OTHER CHANGES 12/17/2025   22:57:37:99 
+ DEF-STREAMS HEAT COLDFLU2
+
+ DEF-STREAMS  IS GENERATED BECAUSE OF OTHER CHANGES 12/17/2025   22:57:37:99 
+ DEF-STREAMS HEAT HOTFLU
+
+ DEF-STREAMS  IS GENERATED BECAUSE OF OTHER CHANGES 12/17/2025   22:57:37:99 
+ DEF-STREAMS HEAT HOTFLU2
+
+ BLOCK        BURNER2  IS GENERATED BECAUSE OF OTHER CHANGES 12/17/2025   22:57:37:99 
+ BLOCK BURNER2 RGIBBS
+     PARAM PRES=10. CHEMEQ=YES TAPP=1. MAXIT=50 DUTY=0.
+     PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
+         V / HCL V
+
+ DISABLE      IS  NEW 12/17/2025   22:57:37:99 
+ DISABLE
+     STREAM AIR1
+
+ FLOWSHEET    IS  NEW 12/17/2025   22:57:37:99 
+ FLOWSHEET
+     BLOCK PYROLYZE IN=HOTPYFED OUT=HOTPROD
+     BLOCK CHARSEP IN=HOTPROD OUT=CHAR VAPORS
+     BLOCK CONDENSE IN=VAPORS OUT=GAS OIL
+     BLOCK FBSEP IN=WASTEH2O CHAR OUT=CLEANH2O SPNTCHAR
+     BLOCK TORSEP IN=WETWOOD OUT=STEAM DRYWOOD
+     BLOCK BURNER1 IN=GAS AIR1 OUT=EXHAUST1 HOTFLU
+     BLOCK TORHEAT IN=HOTLOOP WOOD OUT=COLDLOOP TORHOT
+     BLOCK TOREXCH IN=COLDLOOP OUT=HOTLOOP COLDFLU
+     BLOCK PYHEAT IN=HOTLOOP2 DRYWOOD OUT=COLDLOP2 HOTPYFED
+     BLOCK PYEXCH IN=COLDLOP2 HOTFLU2 OUT=HOTLOOP2 COLDFLU2
+     BLOCK BURNER2 IN=SPNTCHAR AIR2 COLDFLU2 OUT=EXHAUST2  &
+         HOTFLU2
+     BLOCK TORDRYER IN=TORHOT OUT=WETWOOD
+
+ PDF updated                                                                      TIME =    227.69
+ THIS COPY OF ASPEN PLUS LICENSED TO QUEEN MARY UNIVERSITY OF        
+
+
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   WASTEH2O   ----       FBSEP          AIR1       ----       BURNER1 
+   WOOD       ----       TORHEAT        AIR2       ----       BURNER2 
+   HOTPROD    PYROLYZE   CHARSEP        CHAR       CHARSEP    FBSEP   
+   VAPORS     CHARSEP    CONDENSE       GAS        CONDENSE   BURNER1 
+   OIL        CONDENSE   ----           CLEANH2O   FBSEP      ----    
+   SPNTCHAR   FBSEP      BURNER2        STEAM      TORSEP     ----    
+   DRYWOOD    TORSEP     PYHEAT         EXHAUST1   BURNER1    ----    
+   HOTFLU     BURNER1    ----           COLDLOOP   TORHEAT    TOREXCH 
+   TORHOT     TORHEAT    TORDRYER       HOTLOOP    TOREXCH    TORHEAT 
+   COLDFLU    TOREXCH    ----           COLDLOP2   PYHEAT     PYEXCH  
+   HOTPYFED   PYHEAT     PYROLYZE       HOTLOOP2   PYEXCH     PYHEAT  
+   COLDFLU2   PYEXCH     BURNER2        EXHAUST2   BURNER2    ----    
+   HOTFLU2    BURNER2    PYEXCH         WETWOOD    TORDRYER   TORSEP  
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   PYROLYZE     HOTPYFED                       HOTPROD                     
+   CHARSEP      HOTPROD                        CHAR VAPORS                 
+   CONDENSE     VAPORS                         GAS OIL                     
+   FBSEP        WASTEH2O CHAR                  CLEANH2O SPNTCHAR           
+   TORSEP       WETWOOD                        STEAM DRYWOOD               
+   BURNER1      GAS AIR1                       EXHAUST1 HOTFLU             
+   TORHEAT      HOTLOOP WOOD                   COLDLOOP TORHOT             
+   TOREXCH      COLDLOOP                       HOTLOOP COLDFLU             
+   PYHEAT       HOTLOOP2 DRYWOOD               COLDLOP2 HOTPYFED           
+   PYEXCH       COLDLOP2 HOTFLU2               HOTLOOP2 COLDFLU2           
+   BURNER2      SPNTCHAR AIR2 COLDFLU2         EXHAUST2 HOTFLU2            
+   TORDRYER     TORHOT                         WETWOOD                     
+
+      BLOCK $OLVER01 (METHOD: WEGSTEIN) HAS BEEN DEFINED TO CONVERGE
+               STREAMS: COLDLOOP
+
+      BLOCK $OLVER04 (METHOD: WEGSTEIN) HAS BEEN DEFINED TO CONVERGE
+               STREAMS: HOTLOOP2  COLDFLU2
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      $OLVER01 TOREXCH TORHEAT 
+      (RETURN $OLVER01) 
+      TORDRYER TORSEP 
+      $OLVER04 PYHEAT PYROLYZE CHARSEP FBSEP BURNER2 PYEXCH 
+      (RETURN $OLVER04) 
+      CONDENSE BURNER1 
+
+
+Calculations begin                                                              time    228.22
+
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.22
+      ITER   0 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.22
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.22
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.23
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.23
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.23
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.23
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.23
+      ITER   1 For Tear Streams: HOTLOOP2  COLDFLU2
+
+  *   WARNING WHILE EXECUTING CONVERGENCE BLOCK: "$OLVER04" (MODEL: "WEGSTEIN") 
+                                                               (WEGSTN2.1)      
+      THE VALUES FOR SOME VARIABLES ARE MISSING.                                
+      THIS MAY BE CAUSED BY A ZERO-FLOW STREAM.                                 
+      THE PREVIOUS VALUES OF THE VARIABLES WILL BE USED.                        
+      THE MISSING VARIABLES ARE:                                                
+      "25"                                                                      
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL     0.10000E+07    TIME =    228.23
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.23
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.23
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.23
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.23
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.23
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.23
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.23
+      ITER   2 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER    2:   1 VARS NOT CONVERGED, MAX ERR/TOL     -5000.0        TIME =    228.23
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.23
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.23
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.23
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.23
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.23
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.24
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.24
+      ITER   3 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER    3:   1 VARS NOT CONVERGED, MAX ERR/TOL     -3333.3        TIME =    228.24
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.24
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.24
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.24
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.24
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.24
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.26
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.26
+      ITER   4 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER    4:   1 VARS NOT CONVERGED, MAX ERR/TOL     -2500.0        TIME =    228.26
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.26
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.26
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.26
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.26
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.26
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.26
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.26
+      ITER   5 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER    5:   1 VARS NOT CONVERGED, MAX ERR/TOL     -2000.0        TIME =    228.26
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.26
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.27
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.27
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.27
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.27
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.27
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.27
+      ITER   6 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER    6:   1 VARS NOT CONVERGED, MAX ERR/TOL     -1666.7        TIME =    228.27
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.27
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.29
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.29
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.29
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.29
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.29
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.29
+      ITER   7 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER    7:   1 VARS NOT CONVERGED, MAX ERR/TOL     -1428.6        TIME =    228.29
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.29
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.29
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.30
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.30
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.30
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.30
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.30
+      ITER   8 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER    8:   1 VARS NOT CONVERGED, MAX ERR/TOL     -1250.0        TIME =    228.30
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.30
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.30
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.30
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.30
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.30
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.30
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.33
+      ITER   9 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER    9:   1 VARS NOT CONVERGED, MAX ERR/TOL     -1111.1        TIME =    228.33
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.33
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.33
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.33
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.33
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.33
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.33
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.33
+      ITER  10 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   10:   1 VARS NOT CONVERGED, MAX ERR/TOL     -1000.0        TIME =    228.33
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.33
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.33
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.33
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.33
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.33
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.33
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.33
+      ITER  11 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   11:   1 VARS NOT CONVERGED, MAX ERR/TOL     -909.09        TIME =    228.33
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.33
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.33
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.35
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.35
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.35
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.35
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.35
+      ITER  12 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   12:   1 VARS NOT CONVERGED, MAX ERR/TOL     -833.33        TIME =    228.35
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.35
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.35
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.35
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.35
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.36
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.36
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.36
+      ITER  13 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   13:   1 VARS NOT CONVERGED, MAX ERR/TOL     -769.23        TIME =    228.36
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.36
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.36
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.36
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.36
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.36
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.36
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.36
+      ITER  14 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   14:   1 VARS NOT CONVERGED, MAX ERR/TOL     -714.29        TIME =    228.48
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.48
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.48
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.48
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.48
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.48
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.48
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.48
+      ITER  15 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   15:   1 VARS NOT CONVERGED, MAX ERR/TOL     -666.67        TIME =    228.48
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.48
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.48
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.48
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.48
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.48
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.48
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.48
+      ITER  16 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   16:   1 VARS NOT CONVERGED, MAX ERR/TOL     -625.00        TIME =    228.48
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.48
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.48
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.48
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.48
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.51
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.51
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.51
+      ITER  17 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   17:   1 VARS NOT CONVERGED, MAX ERR/TOL     -588.24        TIME =    228.51
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.51
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.51
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.51
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.51
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.51
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.51
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.51
+      ITER  18 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   18:   1 VARS NOT CONVERGED, MAX ERR/TOL     -555.56        TIME =    228.51
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.51
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.51
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.51
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.51
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.51
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.51
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.51
+      ITER  19 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   19:   1 VARS NOT CONVERGED, MAX ERR/TOL     -526.32        TIME =    228.51
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.51
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.54
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.54
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.54
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.54
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.55
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.55
+      ITER  20 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   20:   1 VARS NOT CONVERGED, MAX ERR/TOL     -500.00        TIME =    228.55
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.55
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.55
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.55
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.55
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.55
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.55
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.55
+      ITER  21 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   21:   1 VARS NOT CONVERGED, MAX ERR/TOL     -384.62        TIME =    228.55
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.55
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.55
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.55
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.55
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.55
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.58
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.58
+      ITER  22 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   22:   1 VARS NOT CONVERGED, MAX ERR/TOL     -370.37        TIME =    228.58
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.58
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.58
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.58
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.58
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.59
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.59
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.59
+      ITER  23 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   23:   1 VARS NOT CONVERGED, MAX ERR/TOL     -357.14        TIME =    228.59
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.59
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.59
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.59
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.59
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.59
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.59
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.59
+      ITER  24 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   24:   1 VARS NOT CONVERGED, MAX ERR/TOL     -344.83        TIME =    228.59
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.59
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.59
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.60
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.60
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.61
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.61
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.61
+      ITER  25 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   25:   1 VARS NOT CONVERGED, MAX ERR/TOL     -333.33        TIME =    228.61
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.61
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.61
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.61
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.61
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.61
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.61
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.61
+      ITER  26 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   26:   1 VARS NOT CONVERGED, MAX ERR/TOL     -322.58        TIME =    228.61
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.61
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.61
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.61
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.61
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.61
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.61
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.61
+      ITER  27 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   27:   1 VARS NOT CONVERGED, MAX ERR/TOL     -312.50        TIME =    228.68
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.68
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.68
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.68
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.68
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.68
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.69
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.69
+      ITER  28 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   28:   1 VARS NOT CONVERGED, MAX ERR/TOL     -303.03        TIME =    228.69
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.69
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.69
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.69
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.69
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.69
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.69
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.69
+      ITER  29 For Tear Streams: HOTLOOP2  COLDFLU2
+
+      --FLASH TEAR STREAM HOTLOOP2
+      NO. TEMP ITER =   10     TEMP =  823.150    
+      KODE = 1  NTRIAL =   2  T =  823.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+  LOOP $OLVER04 ITER   29:   1 VARS NOT CONVERGED, MAX ERR/TOL     -294.12        TIME =    228.69
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    228.69
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")    
+                                                               (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+                              DUTY= 1715.2    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    228.69
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  23484.0    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    228.69
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    228.71
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =    228.71
+      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T =   10.0000
+      ITER =    11  T =   10.0000  P =  1.000000E+06  PHASES = VAPOR
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
+                                                               (TPLOOP.33)      
+      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
+
+      UOS BLOCK PYEXCH   MODEL: HEATER                                            TIME =    228.71
+      KODE = 2  NTRIAL =   1  T =  823.150      P =  100000.      V =  1.00000      Q =  1715.20    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: WEGSTEIN                                TIME =    228.71
+      ITER  30 For Tear Streams: HOTLOOP2  COLDFLU2
+
+  *   WARNING WHILE EXECUTING CONVERGENCE BLOCK: "$OLVER04" (MODEL: "WEGSTEIN") 
+                                                               (CONVI.1)        
+      CONVERGENCE BLOCK $OLVER04 NOT CONVERGED IN 30 ITERATIONS                 
+
+     VAR#  TEAR STREAM VAR     STREAM   SUBSTREA COMPONEN ATTRIBUT ELEMENT       NEW X            G(X)             X           ERR/TOL
+     ----  ---------------     -------- -------- -------- -------- -------- --------------- --------------- --------------- ---------------
+       94  INFO-VAR        (2) COLDFLU2                   HEAT     Q          -60032.113      -61747.316      -60032.113      -285.71429     *   
+
+  LOOP $OLVER04 ITER   30:   1 VARS NOT CONVERGED, MAX ERR/TOL     -285.71        TIME =    228.71
+
+      UOS BLOCK CONDENSE MODEL: FLASH2                                            TIME =    228.71
+      KODE = 2  NTRIAL =   1  T =  298.150      P =  100000.      V = 0.809325      Q = -6788.95    
+
+      UOS BLOCK BURNER1  MODEL: RSTOIC                                            TIME =    228.71
+      NO. TEMP ITER =    4     TEMP =  298.150    
+      KODE = 1  NTRIAL =   3  T =  298.150      P =  100000.      V =  1.00000      Q =  0.00000    
+      NO. TEMP ITER =    6     TEMP =  1888.48    
+      KODE = 1  NTRIAL =   2  T =  1888.48      P = 1.000000E+06  V =  1.00000      Q =  0.00000    
+
+  **  ERROR WHILE IN SEQUENCE MONITOR                          (CHKCVG.1)       
+      Convergence block $OLVER04 did not converge                               
+      normally in the final pass                                                
+
+      GENERATING RESULTS FOR UOS BLOCK PYHEAT   MODEL: HEATX                      TIME =    228.71
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+
+  **  ERROR WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "PYHEAT"        
+      (MODEL: "HEATX")                                         (HEATX.4)        
+      TEMPERATURE CROSSOVER DETECTED                                            
+      RE-CALCULATING WITH MINIMUM APPROACH TEMP. SPEC                           
+      HOT:  TIN=  823.15  PIN=0.10000E+06   TOUT=  524.15  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  595.05  POUT=0.10000E+06
+      AREA=0.48247E-01       DUTY= 1715.2           FT=1.00000
 
       BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
 
@@ -741,28 +2537,7 @@ Calculations begin                                                              
 
       BEGIN HOT-TQCURVE  INLET   
       END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
- Report Writer entered                                                            Time =    196.55
-
-      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
-      BEGIN COLD-TQCURVE INLET   
-
-      BEGIN HOT-TQCURVE  INLET   
-      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
- Results generated                                                                Time =    196.63
-
- Report Writer entered                                                            Time =    197.84
-
-      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
-      BEGIN COLD-TQCURVE INLET   
-
-      BEGIN HOT-TQCURVE  INLET   
-      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
- Results generated                                                                Time =    197.92
+<reset scope>
 
 RUN SAVED
 
@@ -774,40 +2549,5 @@ RUN SAVED
                   PROPERTY  SYSTEM  SIMULATION
  TERMINAL ERRORS      0        0         0
    SEVERE ERRORS      0        0         0
-          ERRORS      0        0         1
-        WARNINGS      0        0         5
-
- Report Writer entered                                                            Time =    226.37
-
-      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
-      BEGIN COLD-TQCURVE INLET   
-
-      BEGIN HOT-TQCURVE  INLET   
-      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
- Results generated                                                                Time =    226.44
-
- Report Writer entered                                                            Time =    227.60
-
-      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
-      BEGIN COLD-TQCURVE INLET   
-
-      BEGIN HOT-TQCURVE  INLET   
-      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
- Results generated                                                                Time =    229.06
-
-RUN SAVED
-
-
-
- *** SUMMARY OF ERRORS ***
-
-                  PHYSICAL
-                  PROPERTY  SYSTEM  SIMULATION
- TERMINAL ERRORS      0        0         0
-   SEVERE ERRORS      0        0         0
-          ERRORS      0        0         1
-        WARNINGS      0        0         5
+          ERRORS      0        0        65
+        WARNINGS      0        0        37
