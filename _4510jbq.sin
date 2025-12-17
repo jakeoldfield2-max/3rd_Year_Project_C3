@@ -1,9 +1,9 @@
  >>ORIGINAL RUN                           DECEMBER 17, 2025   
-   3:44:08 P.M.                           WEDNESDAY   
+   4:04:39 P.M.                           WEDNESDAY   
    INPUT FILE: _4510jbq.inm
    RUN ID : _4510jbq
           1    ;
-          2    ;Input file created by Aspen Plus Rel. 40.0 at 15:44:07 Wed Dec 17, 2025
+          2    ;Input file created by Aspen Plus Rel. 40.0 at 16:04:38 Wed Dec 17, 2025
           3    ;Directory G:\Documents\Y3 Project\Repo  Runid Y3PROJECT
           4    ;
           5
@@ -231,118 +231,126 @@
         227
         228    STREAM AIR2
         229        SUBSTREAM MIXED TEMP=25. PRES=1. MASS-FLOW=100.
-        230        MOLE-FLOW N2 0.781 / O2 0.21 / CO2 0.008
+        230        MOLE-FRAC N2 0.781 / O2 0.21 / CO2 0.008
         231
         232    STREAM COLDLOOP
-        233        SUBSTREAM MIXED TEMP=200. PRES=1. MASS-FLOW=10.
+        233        SUBSTREAM MIXED TEMP=200. PRES=1. MOLE-FLOW=0.555
         234        MOLE-FLOW WATER 1.
         235
-        236    STREAM HOTLOOP
-        237        SUBSTREAM MIXED TEMP=1. PRES=1. MASS-FLOW=10.
+        236    STREAM COLDLOP2
+        237        SUBSTREAM MIXED TEMP=300. PRES=1. MOLE-FLOW=0.555
         238        MOLE-FLOW WATER 1.
         239
-        240    STREAM WASTEH2O
-        241        SUBSTREAM MIXED TEMP=25.00000000 PRES=1.000000000  &
-        242            MASS-FLOW=3600.
-        243        MASS-FRAC WATER 0.9999 / CHX 0.0001
-        244
-        245    STREAM WOOD
-        246        SUBSTREAM MIXED TEMP=25.00000000 PRES=1.000000000  &
-        247            FREE-WATER=NO NPHASE=2 PHASE=V
-        248        SUBSTREAM NCPSD TEMP=25.00000000 PRES=1.000000000  &
-        249            MASS-FLOW=0.118
-        250        MASS-FRAC MULBERRY 1.
-        251        COMP-ATTR MULBERRY PROXANAL ( 20. 17. 81.5 1.5 )
-        252        COMP-ATTR MULBERRY ULTANAL ( 1.5 48. 6. 0.2 0. 0.02  &
-        253            44.28 )
-        254        COMP-ATTR MULBERRY SULFANAL ( 0. 0. 0.02 )
-        255        SUBS-ATTR PSD ( * * * * * 1. * * * * )
-        256
-        257    DEF-STREAMS HEAT COLDFLU
-        258
-        259    DEF-STREAMS HEAT COLDFLU2
-        260
-        261    DEF-STREAMS HEAT HOTFLU
-        262
-        263    DEF-STREAMS HEAT HOTFLU2
+        240    STREAM HOTLOOP
+        241        SUBSTREAM MIXED TEMP=1. PRES=1. MOLE-FLOW=0.555
+        242        MOLE-FLOW WATER 1.
+        243
+        244    STREAM HOTLOOP2
+        245        SUBSTREAM MIXED TEMP=550. PRES=1. MOLE-FLOW=0.555
+        246        MOLE-FLOW WATER 1.
+        247
+        248    STREAM WASTEH2O
+        249        SUBSTREAM MIXED TEMP=25.00000000 PRES=1.000000000  &
+        250            MASS-FLOW=3600.
+        251        MASS-FRAC WATER 0.9999 / CHX 0.0001
+        252
+        253    STREAM WOOD
+        254        SUBSTREAM MIXED TEMP=25.00000000 PRES=1.000000000  &
+        255            FREE-WATER=NO NPHASE=2 PHASE=V
+        256        SUBSTREAM NCPSD TEMP=25.00000000 PRES=1.000000000  &
+        257            MASS-FLOW=0.118
+        258        MASS-FRAC MULBERRY 1.
+        259        COMP-ATTR MULBERRY PROXANAL ( 20. 17. 81.5 1.5 )
+        260        COMP-ATTR MULBERRY ULTANAL ( 1.5 48. 6. 0.2 0. 0.02  &
+        261            44.28 )
+        262        COMP-ATTR MULBERRY SULFANAL ( 0. 0. 0.02 )
+        263        SUBS-ATTR PSD ( * * * * * 1. * * * * )
         264
-        265    BLOCK CHARSEP SEP
-        266        PARAM
-        267        FRAC STREAM=CHAR SUBSTREAM=NCPSD COMPS=CHAR FRACS=1.
-        268        FLASH-SPECS CHAR TEMP=350.0000000 PRES=1.000000000 NPHASE=1  &
-        269            FREE-WATER=NO PHASE=S
-        270        FLASH-SPECS VAPORS TEMP=350.0000000 PRES=1.000000000
-        271
-        272    BLOCK FBSEP SEP
-        273        PARAM
-        274        FRAC STREAM=CLEANH2O SUBSTREAM=MIXED COMPS=WATER CHX  &
-        275            FRACS=0.99 0.
-        276
-        277    BLOCK PYEXCH HEATER
-        278        PARAM TEMP=550. PRES=1. DPPARMOPT=NO
+        265    DEF-STREAMS HEAT COLDFLU
+        266
+        267    DEF-STREAMS HEAT COLDFLU2
+        268
+        269    DEF-STREAMS HEAT HOTFLU
+        270
+        271    DEF-STREAMS HEAT HOTFLU2
+        272
+        273    BLOCK CHARSEP SEP
+        274        PARAM
+        275        FRAC STREAM=CHAR SUBSTREAM=NCPSD COMPS=CHAR FRACS=1.
+        276        FLASH-SPECS CHAR TEMP=350.0000000 PRES=1.000000000 NPHASE=1  &
+        277            FREE-WATER=NO PHASE=S
+        278        FLASH-SPECS VAPORS TEMP=350.0000000 PRES=1.000000000
         279
-        280    BLOCK TOREXCH HEATER
-        281        PARAM TEMP=350. PRES=1. DPPARMOPT=NO
-        282
-        283    BLOCK CONDENSE FLASH2
-        284        PARAM TEMP=25.00000000 PRES=1.000000000
-        285
-        286    BLOCK TORSEP FLASH2
-        287        PARAM TEMP=1. PRES=1.
-        288
-        289    BLOCK PYHEAT HEATX
-        290        PARAM T-COLD=500.
-        291        FEEDS HOT=HOTLOOP2 COLD=DRYWOOD
-        292        OUTLETS-HOT COLDLOP2
-        293        OUTLETS-COLD HOTPYFED
-        294        HOT-SIDE DPPARMOPT=NO
-        295        COLD-SIDE DPPARMOPT=NO
-        296        TQ-PARAM CURVE=YES
-        297
-        298    BLOCK TORHEAT HEATX
-        299        PARAM T-COLD=250. U-OPTION=PHASE F-OPTION=CONSTANT  &
-        300            CALC-METHOD=SHORTCUT
-        301        FEEDS HOT=HOTLOOP COLD=WOOD
-        302        OUTLETS-HOT COLDLOOP
-        303        OUTLETS-COLD TORHOT
-        304        HOT-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
-        305        COLD-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
-        306        TQ-PARAM CURVE=YES
-        307
-        308    BLOCK BURNER1 RSTOIC
-        309        PARAM PRES=10. DUTY=0. COMBUSTION=YES
-        310        STOIC 1 MIXED C2H4 -1. / O2 -3. / CO2 2. / WATER 2.
-        311        STOIC 2 MIXED C2H6 -2. / O2 -7. / CO2 4. / WATER 6.
-        312        CONV 1 MIXED C2H4 1.
-        313        CONV 2 MIXED C2H6 1.
-        314
-        315    BLOCK PYROLYZE RYIELD
-        316        PARAM TEMP=350.0000000 PRES=1.000000000
-        317        MASS-YIELD 0.33 / 0. / MIXED WATER 0.01 / ACETICAC  &
-        318            0.05 / PHENOL 0.05 / GUAIACOL 0.1 / ACETOL 0.21 /  &
-        319            CO2 0.09 / CO 0.08 / CH4 0.04 / H2 0.03 / N2  &
-        320            0.01
-        321        COMP-ATTR NCPSD CHAR PROXANAL ( 2. 75. 15. 8. )
-        322        COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
-        323            10.98 )
-        324        COMP-ATTR NCPSD CHAR SULFANAL ( 0. 0. 2. )
-        325
-        326    BLOCK BURNER2 RGIBBS
-        327        PARAM PRES=10. CHEMEQ=YES TAPP=0. MAXIT=50 DUTY=0.
-        328        PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
-        329            V / HCL V
-        330
-        331    EO-CONV-OPTI
-        332
-        333    STREAM-REPOR MOLEFLOW
-        334
-        335    DISABLE
-        336        STREAM AIR1
-        337    ;
-        338    ;
-        339    ;
-        340    ;
-        341    ;
+        280    BLOCK FBSEP SEP
+        281        PARAM
+        282        FRAC STREAM=CLEANH2O SUBSTREAM=MIXED COMPS=WATER CHX  &
+        283            FRACS=0.99 0.
+        284
+        285    BLOCK PYEXCH HEATER
+        286        PARAM TEMP=550. PRES=1. DPPARMOPT=NO
+        287
+        288    BLOCK TOREXCH HEATER
+        289        PARAM TEMP=350. PRES=1. DPPARMOPT=NO
+        290
+        291    BLOCK CONDENSE FLASH2
+        292        PARAM TEMP=25.00000000 PRES=1.000000000
+        293
+        294    BLOCK TORSEP FLASH2
+        295        PARAM TEMP=250. PRES=1.
+        296
+        297    BLOCK PYHEAT HEATX
+        298        PARAM T-COLD=500.
+        299        FEEDS HOT=HOTLOOP2 COLD=DRYWOOD
+        300        OUTLETS-HOT COLDLOP2
+        301        OUTLETS-COLD HOTPYFED
+        302        HOT-SIDE DPPARMOPT=NO
+        303        COLD-SIDE DPPARMOPT=NO
+        304        TQ-PARAM CURVE=YES
+        305
+        306    BLOCK TORHEAT HEATX
+        307        PARAM T-COLD=250. CALC-TYPE=DESIGN U-OPTION=PHASE  &
+        308            F-OPTION=CONSTANT CALC-METHOD=SHORTCUT
+        309        FEEDS HOT=HOTLOOP COLD=WOOD
+        310        OUTLETS-HOT COLDLOOP
+        311        OUTLETS-COLD TORHOT
+        312        HOT-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
+        313        COLD-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
+        314        TQ-PARAM CURVE=YES
+        315
+        316    BLOCK BURNER1 RSTOIC
+        317        PARAM PRES=10. DUTY=0. COMBUSTION=YES
+        318        STOIC 1 MIXED C2H4 -1. / O2 -3. / CO2 2. / WATER 2.
+        319        STOIC 2 MIXED C2H6 -2. / O2 -7. / CO2 4. / WATER 6.
+        320        CONV 1 MIXED C2H4 1.
+        321        CONV 2 MIXED C2H6 1.
+        322
+        323    BLOCK PYROLYZE RYIELD
+        324        PARAM TEMP=350.0000000 PRES=1.000000000
+        325        MASS-YIELD 0.33 / 0. / MIXED WATER 0.01 / ACETICAC  &
+        326            0.05 / PHENOL 0.05 / GUAIACOL 0.1 / ACETOL 0.21 /  &
+        327            CO2 0.09 / CO 0.08 / CH4 0.04 / H2 0.03 / N2  &
+        328            0.01
+        329        COMP-ATTR NCPSD CHAR PROXANAL ( 2. 75. 15. 8. )
+        330        COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
+        331            10.98 )
+        332        COMP-ATTR NCPSD CHAR SULFANAL ( 0. 0. 2. )
+        333
+        334    BLOCK BURNER2 RGIBBS
+        335        PARAM PRES=10. CHEMEQ=YES TAPP=1. MAXIT=50 DUTY=0.
+        336        PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
+        337            V / HCL V
+        338
+        339    EO-CONV-OPTI
+        340
+        341    STREAM-REPOR MOLEFLOW
+        342
+        343    DISABLE
+        344        STREAM AIR1
+        345    ;
+        346    ;
+        347    ;
+        348    ;
+        349    ;
 
    SIMULATION STARTED     MODULE USED: apmain  
    LOCATED IN:C:\Program Files\AspenTech\Aspen Plus V14.0\Engine\\xeq
