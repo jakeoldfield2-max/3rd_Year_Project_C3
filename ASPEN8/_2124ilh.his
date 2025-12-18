@@ -13,7 +13,7 @@
 
  PLATFORM: WIN-X64                                       DECEMBER 18, 2025   
  VERSION: 40.0   Build 359                               THURSDAY    
- INSTALLATION:                                           12:38:01 A.M.       
+ INSTALLATION:                                           12:59:48 A.M.       
 
  THIS COPY OF ASPEN PLUS LICENSED TO QUEEN MARY UNIVERSITY OF        
 
@@ -33,12 +33,12 @@
  >>CURRENT RUN
 
    ORIGINAL RUN                           DECEMBER 18, 2025   
-   12:38:01 A.M.                          THURSDAY    
+   12:59:48 A.M.                          THURSDAY    
    INPUT FILE: _2124ilh.inm
    RUN ID : _2124ilh
           1    ;
-          2    ;Input file created by Aspen Plus Rel. 40.0 at 00:37:59 Thu Dec 18, 2025
-          3    ;Directory G:\Documents\Y3 Project\Repo\ASPEN8  Runid Y3PROJECTBACKUP
+          2    ;Input file created by Aspen Plus Rel. 40.0 at 00:59:46 Thu Dec 18, 2025
+          3    ;Directory G:\Documents\Y3 Project\Repo\ASPEN8  Runid Y3PROJECT
           4    ;
           5
           6
@@ -111,10 +111,10 @@
          73        BLOCK BURNER1 IN=GAS AIR1 OUT=EXHAUST1
          74        BLOCK TORHEAT IN=EXHAUST1 WOOD OUT=COLDFLU1 TORHOT
          75        BLOCK PYHEAT IN=EXHAUST2 DRYWOOD OUT=COLDFLU2 HOTPYFED
-         76        BLOCK BURNER2 IN=AIR2 DECCHAR CHXRECO OUT=EXHAUST2
-         77        BLOCK TORDRYER IN=TORHOT OUT=WETWOOD
-         78        BLOCK DECOMP IN=SPNTCHAR OUT=DECCHAR
-         79        BLOCK CHXSEP IN=WASTECHA OUT=SPNTCHAR CHXRECO
+         76        BLOCK TORDRYER IN=TORHOT OUT=WETWOOD
+         77        BLOCK DECOMP IN=SPNTCHAR OUT=DECCHAR
+         78        BLOCK CHXSEP IN=WASTECHA OUT=SPNTCHAR CHXRECO
+         79        BLOCK BURNER3 IN=AIR2 DECCHAR CHXRECO OUT=EXHAUST2
          80
          81    PROPERTIES NRTL
          82        PROPERTIES NRTL-RK / PENG-ROB / UNIQUAC
@@ -349,51 +349,60 @@
         311        CONV 1 MIXED C2H4 1.
         312        CONV 2 MIXED C2H6 1.
         313
-        314    BLOCK DECOMP RYIELD
-        315        PARAM TEMP=25. PRES=1.
-        316        MASS-YIELD MIXED C 0.78 / H2 0.025 / O2 0.109 / N2  &
-        317            0.005 / WATER 0.01 / S 0.0002 / NCPSD ASH 0.0708
-        318        COMP-ATTR NCPSD ASH PROXANAL ( 0. 0. 0. 100. )
-        319        COMP-ATTR NCPSD ASH ULTANAL ( 100. 0. 0. 0. 0. 0. 0.  &
-        320            )
-        321        COMP-ATTR NCPSD ASH SULFANAL ( 0. 0. 0. )
-        322
-        323    BLOCK PYROLYZE RYIELD
-        324        PARAM TEMP=350.0000000 PRES=1.000000000 OPT-PSD=SPEC
-        325        MASS-YIELD MIXED WATER 0.01 / ACETICAC 0.05 / PHENOL  &
-        326            0.05 / GUAIACOL 0.1 / ACETOL 0.21 / CO2 0.09 / CO  &
-        327            0.08 / CH4 0.04 / H2 0.03 / N2 0.01 / NCPSD CHAR  &
-        328            0.33
-        329        COMP-ATTR NCPSD CHAR PROXANAL ( 2. 75. 15. 8. )
-        330        COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
-        331            10.98 )
-        332        COMP-ATTR NCPSD CHAR SULFANAL ( 0. 0. 2. )
-        333        OVALL-ATTR PSDID=PSD VALUE=* * * * * 1. * * * *
-        334
-        335    BLOCK TORDRYER RYIELD
-        336        PARAM TEMP=250. PRES=1.
-        337        MASS-YIELD NCPSD DRYMUL 0.8008 / MIXED WATER 0.1992
-        338        COMP-ATTR NCPSD DRYMUL PROXANAL ( 0.1 17. 81.5 1.5 )
-        339        COMP-ATTR NCPSD DRYMUL ULTANAL ( 1.5 48. 6. 0.2 0.  &
-        340            0.02 44.28 )
-        341        COMP-ATTR NCPSD DRYMUL SULFANAL ( 0. 0. 0.02 )
-        342
-        343    BLOCK BURNER2 RGIBBS
-        344        PARAM PRES=10. CHEMEQ=YES TAPP=1. MAXIT=50 DUTY=0.
-        345        PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
-        346            V / HCL V
-        347
-        348    EO-CONV-OPTI
-        349
-        350    STREAM-REPOR MOLEFLOW
-        351
-        352    DISABLE
-        353        STREAM AIR1
-        354    ;
-        355    ;
-        356    ;
-        357    ;
-        358    ;
+        314    BLOCK BURNER3 RSTOIC
+        315        PARAM PRES=1. DUTY=0. COMBUSTION=YES
+        316        STOIC 1 MIXED C -1. / O2 -1. / CO2 1.
+        317        STOIC 2 MIXED C -2. / O2 -1. / CO 2.
+        318        STOIC 3 MIXED H2 -2. / O2 -1. / WATER 2.
+        319        STOIC 4 MIXED S -1. / O2 -1. / SO2 1.
+        320        STOIC 5 MIXED CHX -1. / O2 -29. / CO2 22. / WATER  &
+        321            14. / HCL 2. / N2 5.
+        322        CONV 1 MIXED C 0.4
+        323        CONV 2 MIXED C 0.6
+        324        CONV 3 MIXED H2 1.
+        325        CONV 4 MIXED S 1.
+        326        CONV 5 MIXED CHX 1.
+        327
+        328    BLOCK DECOMP RYIELD
+        329        PARAM TEMP=25. PRES=1.
+        330        MASS-YIELD MIXED C 0.78 / H2 0.025 / O2 0.109 / N2  &
+        331            0.005 / WATER 0.01 / S 0.0002 / NCPSD ASH 0.0708
+        332        COMP-ATTR NCPSD ASH PROXANAL ( 0. 0. 0. 100. )
+        333        COMP-ATTR NCPSD ASH ULTANAL ( 100. 0. 0. 0. 0. 0. 0.  &
+        334            )
+        335        COMP-ATTR NCPSD ASH SULFANAL ( 0. 0. 0. )
+        336
+        337    BLOCK PYROLYZE RYIELD
+        338        PARAM TEMP=350.0000000 PRES=1.000000000 OPT-PSD=SPEC
+        339        MASS-YIELD MIXED WATER 0.01 / ACETICAC 0.05 / PHENOL  &
+        340            0.05 / GUAIACOL 0.1 / ACETOL 0.21 / CO2 0.09 / CO  &
+        341            0.08 / CH4 0.04 / H2 0.03 / N2 0.01 / NCPSD CHAR  &
+        342            0.33
+        343        COMP-ATTR NCPSD CHAR PROXANAL ( 2. 75. 15. 8. )
+        344        COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
+        345            10.98 )
+        346        COMP-ATTR NCPSD CHAR SULFANAL ( 0. 0. 2. )
+        347        OVALL-ATTR PSDID=PSD VALUE=* * * * * 1. * * * *
+        348
+        349    BLOCK TORDRYER RYIELD
+        350        PARAM TEMP=250. PRES=1.
+        351        MASS-YIELD NCPSD DRYMUL 0.8008 / MIXED WATER 0.1992
+        352        COMP-ATTR NCPSD DRYMUL PROXANAL ( 0.1 17. 81.5 1.5 )
+        353        COMP-ATTR NCPSD DRYMUL ULTANAL ( 1.5 48. 6. 0.2 0.  &
+        354            0.02 44.28 )
+        355        COMP-ATTR NCPSD DRYMUL SULFANAL ( 0. 0. 0.02 )
+        356
+        357    EO-CONV-OPTI
+        358
+        359    STREAM-REPOR MOLEFLOW
+        360
+        361    DISABLE
+        362        STREAM AIR1
+        363    ;
+        364    ;
+        365    ;
+        366    ;
+        367    ;
  *** INPUT TRANSLATOR MESSAGES ***
 
   *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
@@ -411,7 +420,7 @@
  
  
 
- PDF updated                                                                      TIME =      1.32
+ PDF updated                                                                      TIME =      1.34
 
  *** CALCULATION TRACE ***
 
@@ -422,7 +431,7 @@
 
    STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
    WASTEH2O   ----       FBSEP          AIR1       ----       BURNER1 
-   WOOD       ----       TORHEAT        AIR2       ----       BURNER2 
+   WOOD       ----       TORHEAT        AIR2       ----       BURNER3 
    HOTPROD    PYROLYZE   CHARSEP        CHAR       CHARSEP    FBSEP   
    VAPORS     CHARSEP    CONDENSE       GAS        CONDENSE   BURNER1 
    OIL        CONDENSE   ----           CLEANH2O   FBSEP      ----    
@@ -430,9 +439,9 @@
    DRYWOOD    TORSEP     PYHEAT         EXHAUST1   BURNER1    TORHEAT 
    COLDFLU1   TORHEAT    ----           TORHOT     TORHEAT    TORDRYER
    COLDFLU2   PYHEAT     ----           HOTPYFED   PYHEAT     PYROLYZE
-   EXHAUST2   BURNER2    PYHEAT         WETWOOD    TORDRYER   TORSEP  
-   DECCHAR    DECOMP     BURNER2        SPNTCHAR   CHXSEP     DECOMP  
-   CHXRECO    CHXSEP     BURNER2                                      
+   WETWOOD    TORDRYER   TORSEP         DECCHAR    DECOMP     BURNER3 
+   SPNTCHAR   CHXSEP     DECOMP         CHXRECO    CHXSEP     BURNER3 
+   EXHAUST2   BURNER3    PYHEAT                                       
 
  FLOWSHEET CONNECTIVITY BY BLOCKS        
 
@@ -445,56 +454,56 @@
    BURNER1      GAS AIR1                       EXHAUST1                    
    TORHEAT      EXHAUST1 WOOD                  COLDFLU1 TORHOT             
    PYHEAT       EXHAUST2 DRYWOOD               COLDFLU2 HOTPYFED           
-   BURNER2      AIR2 DECCHAR CHXRECO           EXHAUST2                    
    TORDRYER     TORHOT                         WETWOOD                     
    DECOMP       SPNTCHAR                       DECCHAR                     
    CHXSEP       WASTECHA                       SPNTCHAR CHXRECO            
+   BURNER3      AIR2 DECCHAR CHXRECO           EXHAUST2                    
 
       BLOCK $OLVER01 (METHOD: WEGSTEIN) HAS BEEN DEFINED TO CONVERGE
                STREAMS: EXHAUST1  EXHAUST2
 
       COMPUTATION ORDER FOR THE FLOWSHEET IS:
       $OLVER01 TORHEAT TORDRYER TORSEP PYHEAT PYROLYZE CHARSEP FBSEP 
-      |  CHXSEP DECOMP BURNER2 CONDENSE BURNER1 
+      |  CHXSEP DECOMP BURNER3 CONDENSE BURNER1 
       (RETURN $OLVER01) 
 
-Calculations begin                                                              time      0.47
+Calculations begin                                                              time      0.40
 
 
- SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.47
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.40
 
-      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.47
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.40
       ITER   0 For Tear Streams: EXHAUST1  EXHAUST2
 
-      ENTHALPY CALCULATION FOR INLET STREAM WOOD OF BLOCK TORHEAT                 TIME =      0.47
+      ENTHALPY CALCULATION FOR INLET STREAM WOOD OF BLOCK TORHEAT                 TIME =      0.40
       SUBSTREAM NCPSD   
       KODE =    2 T =  298.150     P =  100000.     Q =  0.00000     HNCS =-7.756532E+06
 
-      ENTHALPY CALCULATION FOR OUTLET STREAM COLDFLU1 OF BLOCK TORHEAT            TIME =      0.47
+      ENTHALPY CALCULATION FOR OUTLET STREAM COLDFLU1 OF BLOCK TORHEAT            TIME =      0.40
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   1  T = 473.1500  P =  100000.      V =  1.00000      Q =  0.00000    
 
-      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.47
+      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.40
 
   *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "TORHEAT" (MODEL: "HEATX") 
                                                                (UHE02I.1)       
       AT LEAST ONE FEED HAS ZERO FLOW                                           
       BLOCK BYPASSED                                                            
 
-      UOS BLOCK TORDRYER MODEL: RYIELD                                            TIME =      0.47
+      UOS BLOCK TORDRYER MODEL: RYIELD                                            TIME =      0.40
       KODE = 2  NTRIAL =   1  T =  523.150      P =  100000.      V =  1.00000      Q =  11236.5    
 
-      UOS BLOCK TORSEP   MODEL: FLASH2                                            TIME =      0.47
+      UOS BLOCK TORSEP   MODEL: FLASH2                                            TIME =      0.40
       KODE = 2  NTRIAL =   1  T =  523.150      P =  100000.      V =  1.00000      Q =  0.00000    
 
-      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =      0.47
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =      0.40
 
   *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYHEAT" (MODEL: "HEATX")  
                                                                (UHE02I.1)       
       AT LEAST ONE FEED HAS ZERO FLOW                                           
       BLOCK BYPASSED                                                            
 
-      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =      0.47
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =      0.40
 
   *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
       "RYIELD")                                                (BALATM.1)       
@@ -502,17 +511,17 @@ Calculations begin                                                              
       H     N     C     S                                                       
       KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  25199.2    
 
-      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =      0.47
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =      0.40
       ---FLASH OUTLET STREAM CHAR    :
       KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
       ---FLASH OUTLET STREAM VAPORS  :
       KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
 
-      ENTHALPY CALCULATION FOR INLET STREAM WASTEH2O OF BLOCK FBSEP               TIME =      0.47
+      ENTHALPY CALCULATION FOR INLET STREAM WASTEH2O OF BLOCK FBSEP               TIME =      0.40
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   3  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
 
-      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =      0.47
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =      0.40
       ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
       NO. TEMP ITER =    5     TEMP =  298.247    
       KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
@@ -521,13 +530,13 @@ Calculations begin                                                              
       ---FLASH OUTLET STREAM WASTECHA:
       KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
 
-      UOS BLOCK CHXSEP   MODEL: SEP                                               TIME =      0.47
+      UOS BLOCK CHXSEP   MODEL: SEP                                               TIME =      0.40
       ---FLASH OUTLET STREAM SPNTCHAR:
       KODE =    2 T =  298.247     P =  100000.     Q =  0.00000     HNCS = -491908.    
       ---FLASH OUTLET STREAM CHXRECO :
       KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
 
-      UOS BLOCK DECOMP   MODEL: RYIELD                                            TIME =      0.47
+      UOS BLOCK DECOMP   MODEL: RYIELD                                            TIME =      0.40
 
   *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "DECOMP" (MODEL: "RYIELD") 
                                                                (BALATM.1)       
@@ -535,42 +544,31 @@ Calculations begin                                                              
       H     N     C     S                                                       
       KODE = 2  NTRIAL =   3  T =  298.150      P =  100000.      V = 0.195964      Q =  130766.    
 
-      ENTHALPY CALCULATION FOR INLET STREAM AIR2 OF BLOCK BURNER2                 TIME =      0.47
+      ENTHALPY CALCULATION FOR INLET STREAM AIR2 OF BLOCK BURNER3                 TIME =      0.40
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
 
-      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =      0.47
-      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T = 1298.1564
-      ITER =    27  T = 1298.1564  P =  1.000000E+06  PHASES = VAPOR
+      UOS BLOCK BURNER3  MODEL: RSTOIC                                            TIME =      0.40
 
-  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
-                                                               (GIBBS.18)       
-      UNABLE TO BALANCE ATOMS O  CL S                                           
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER3" (MODEL:          
+      "RSTOIC")                                                (URE07.3)        
+      COMPONENT "O2" IN SUBSTREAM "MIXED" HAS ZERO                              
+      FLOWRATE IN THE OUTLET STREAM. FRACTIONAL CONVERSION                      
+      HAS BEEN MODIFIED BY A FACTOR OF "0.1676087"                              
+      KODE = 1  NTRIAL =   1  T =  2994.15      P =  100000.      V = 0.622795      Q =  0.00000    
 
-  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
-                                                               (TPLOOP.33)      
-      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
-
-
-  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
-                                                               (BALMAS.1)       
-      BLOCK BURNER2 IS NOT IN MASS BALANCE:                                     
-      MASS INLET FLOW = 0.63436656E-02, MASS OUTLET FLOW = 0.12594156E-01       
-      RELATIVE DIFFERENCE = 0.98531214E+00                                      
-      CHECK BLOCK SPECIFICATIONS                                                
-
-      UOS BLOCK CONDENSE MODEL: FLASH2                                            TIME =      0.48
+      UOS BLOCK CONDENSE MODEL: FLASH2                                            TIME =      0.40
       KODE = 2  NTRIAL =   2  T =  298.150      P =  100000.      V = 0.809325      Q = -6788.95    
 
-      ENTHALPY CALCULATION FOR INLET STREAM AIR1 OF BLOCK BURNER1                 TIME =      0.48
+      ENTHALPY CALCULATION FOR INLET STREAM AIR1 OF BLOCK BURNER1                 TIME =      0.40
       SUBSTREAM MIXED   
       KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
 
-      UOS BLOCK BURNER1  MODEL: RSTOIC                                            TIME =      0.48
+      UOS BLOCK BURNER1  MODEL: RSTOIC                                            TIME =      0.40
       NO. TEMP ITER =    6     TEMP =  1888.48    
       KODE = 1  NTRIAL =   2  T =  1888.48      P = 1.000000E+06  V =  1.00000      Q =  0.00000    
 
-      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.48
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.40
       ITER   1 For Tear Streams: EXHAUST1  EXHAUST2
 
   *   WARNING WHILE EXECUTING CONVERGENCE BLOCK: "$OLVER01" (MODEL: "WEGSTEIN") 
@@ -586,32 +584,31 @@ Calculations begin                                                              
       KODE = 1  NTRIAL =   2  T =  1888.48      P = 1.000000E+06  V =  1.00000      Q =  0.00000    
 
       --FLASH TEAR STREAM EXHAUST2
-      KODE = 1   NO. TEMP ITER =    1     TEMP =  1298.16    
-      KPHASE =    1 KODE =    1 T =  1298.16     P = 1.000000E+06 Q =  0.00000    
+      KODE = 1  NTRIAL =   6  T =  2994.16      P =  100000.      V = 0.622794      Q =  0.00000    
 
-  LOOP $OLVER01 ITER    1:  13 VARS NOT CONVERGED, MAX ERR/TOL     0.10000E+07    TIME =      0.48
+  LOOP $OLVER01 ITER    1:  19 VARS NOT CONVERGED, MAX ERR/TOL     0.10000E+07    TIME =      0.40
 
-      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.48
+      UOS BLOCK TORHEAT  MODEL: HEATX                                             TIME =      0.40
       SPECIFICATION: COLD OUTLET TEMP      523.15    
       FLOW TYPE:     COUNTERCURRENT  
       HOT:  TIN= 1888.48  PIN=0.10000E+07   TOUT= 1741.39  POUT=0.10000E+07
       COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  523.15  POUT=0.10000E+06
                               DUTY= 6441.8    
 
-      UOS BLOCK TORDRYER MODEL: RYIELD                                            TIME =      0.48
+      UOS BLOCK TORDRYER MODEL: RYIELD                                            TIME =      0.40
       KODE = 2  NTRIAL =   1  T =  523.150      P =  100000.      V =  1.00000      Q =  4794.73    
 
-      UOS BLOCK TORSEP   MODEL: FLASH2                                            TIME =      0.48
+      UOS BLOCK TORSEP   MODEL: FLASH2                                            TIME =      0.40
       KODE = 2  NTRIAL =   1  T =  523.150      P =  100000.      V =  1.00000      Q =  0.00000    
 
-      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =      0.48
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =      0.40
       SPECIFICATION: COLD OUTLET TEMP      773.15    
       FLOW TYPE:     COUNTERCURRENT  
-      HOT:  TIN= 1298.16  PIN=0.10000E+07   TOUT=  818.62  POUT=0.10000E+07
+      HOT:  TIN= 2994.15  PIN=0.10000E+06   TOUT= 2709.21  POUT=0.10000E+06
       COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  773.15  POUT=0.10000E+06
                               DUTY= 6593.9    
 
-      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =      0.48
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =      0.41
 
   *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
       "RYIELD")                                                (BALATM.1)       
@@ -619,13 +616,13 @@ Calculations begin                                                              
       H     N     C     S                                                       
       KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  18605.3    
 
-      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =      0.48
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =      0.41
       ---FLASH OUTLET STREAM CHAR    :
       KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
       ---FLASH OUTLET STREAM VAPORS  :
       KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
 
-      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =      0.48
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =      0.41
       ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
       NO. TEMP ITER =    5     TEMP =  298.247    
       KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
@@ -634,13 +631,13 @@ Calculations begin                                                              
       ---FLASH OUTLET STREAM WASTECHA:
       KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
 
-      UOS BLOCK CHXSEP   MODEL: SEP                                               TIME =      0.48
+      UOS BLOCK CHXSEP   MODEL: SEP                                               TIME =      0.41
       ---FLASH OUTLET STREAM SPNTCHAR:
       KODE =    2 T =  298.247     P =  100000.     Q =  0.00000     HNCS = -491908.    
       ---FLASH OUTLET STREAM CHXRECO :
       KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
 
-      UOS BLOCK DECOMP   MODEL: RYIELD                                            TIME =      0.49
+      UOS BLOCK DECOMP   MODEL: RYIELD                                            TIME =      0.41
 
   *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "DECOMP" (MODEL: "RYIELD") 
                                                                (BALATM.1)       
@@ -648,39 +645,28 @@ Calculations begin                                                              
       H     N     C     S                                                       
       KODE = 2  NTRIAL =   1  T =  298.150      P =  100000.      V = 0.195964      Q =  130766.    
 
-      UOS BLOCK BURNER2  MODEL: RGIBBS                                            TIME =      0.49
-      T-LOOP NOT CONVERGED IN   3 ITERATIONS.  T = 1298.1564
-      ITER =    27  T = 1298.1564  P =  1.000000E+06  PHASES = VAPOR
+      UOS BLOCK BURNER3  MODEL: RSTOIC                                            TIME =      0.41
 
-  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
-                                                               (GIBBS.18)       
-      UNABLE TO BALANCE ATOMS O  CL S                                           
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER3" (MODEL:          
+      "RSTOIC")                                                (URE07.3)        
+      COMPONENT "O2" IN SUBSTREAM "MIXED" HAS ZERO                              
+      FLOWRATE IN THE OUTLET STREAM. FRACTIONAL CONVERSION                      
+      HAS BEEN MODIFIED BY A FACTOR OF "0.1676087"                              
+      KODE = 1  NTRIAL =   1  T =  2994.15      P =  100000.      V = 0.622795      Q =  0.00000    
 
-  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
-                                                               (TPLOOP.33)      
-      T-LOOP NOT CONVERGED IN  3  ITERATIONS.                                   
-
-
-  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER2" (MODEL: "RGIBBS")  
-                                                               (BALMAS.1)       
-      BLOCK BURNER2 IS NOT IN MASS BALANCE:                                     
-      MASS INLET FLOW = 0.63436656E-02, MASS OUTLET FLOW = 0.12594156E-01       
-      RELATIVE DIFFERENCE = 0.98531214E+00                                      
-      CHECK BLOCK SPECIFICATIONS                                                
-
-      UOS BLOCK CONDENSE MODEL: FLASH2                                            TIME =      0.49
+      UOS BLOCK CONDENSE MODEL: FLASH2                                            TIME =      0.41
       KODE = 2  NTRIAL =   1  T =  298.150      P =  100000.      V = 0.809325      Q = -6788.95    
 
-      UOS BLOCK BURNER1  MODEL: RSTOIC                                            TIME =      0.49
+      UOS BLOCK BURNER1  MODEL: RSTOIC                                            TIME =      0.41
       NO. TEMP ITER =    6     TEMP =  1888.48    
       KODE = 1  NTRIAL =   2  T =  1888.48      P = 1.000000E+06  V =  1.00000      Q =  0.00000    
 
-      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.49
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.41
       ITER   2 For Tear Streams: EXHAUST1  EXHAUST2
 
-  LOOP $OLVER01 ITER    2:     *** CONVERGED *** , MAX ERR/TOL    -0.26817E-04    TIME =      0.49
+  LOOP $OLVER01 ITER    2:     *** CONVERGED *** , MAX ERR/TOL    -0.26817E-04    TIME =      0.41
 
-      GENERATING RESULTS FOR UOS BLOCK TORHEAT  MODEL: HEATX                      TIME =      0.49
+      GENERATING RESULTS FOR UOS BLOCK TORHEAT  MODEL: HEATX                      TIME =      0.41
 
   *   WARNING WHILE GENERATING RESULTS FOR UNIT OPERATIONS BLOCK: "TORHEAT"     
       (MODEL: "HEATX")                                         (UHE02I.6)       
@@ -791,12 +777,12 @@ Calculations begin                                                              
       BEGIN HOT-TQCURVE  INLET   
       END HEATX TQ-CURVE CALCULATIONS FOR BLOCK TORHEAT 
 
-      GENERATING RESULTS FOR UOS BLOCK PYHEAT   MODEL: HEATX                      TIME =      0.50
+      GENERATING RESULTS FOR UOS BLOCK PYHEAT   MODEL: HEATX                      TIME =      0.41
       SPECIFICATION: COLD OUTLET TEMP      773.15    
       FLOW TYPE:     COUNTERCURRENT  
-      HOT:  TIN= 1298.16  PIN=0.10000E+07   TOUT=  818.62  POUT=0.10000E+07
+      HOT:  TIN= 2994.15  PIN=0.10000E+06   TOUT= 2709.21  POUT=0.10000E+06
       COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  773.15  POUT=0.10000E+06
-      AREA=0.19428E-01       DUTY= 6593.9           FT=1.00000
+      AREA=0.35206E-02       DUTY= 6593.9           FT=1.00000
 
  STREAM SPNTCHAR
         SUBSTREAM MIXED     F =   0.00000000000000      T =  1.000000000000000E+35  P =   100000.000000000    
@@ -976,18 +962,63 @@ Calculations begin                                                              
                                FRAC7      0.00000000000000      FRAC8      0.00000000000000      FRAC9      0.00000000000000    
                                FRAC10     0.00000000000000    
 
- STREAM COLDFLU2
-        SUBSTREAM MIXED     F =  4.090794860243178E-04  T =   818.618966583792      P =   1000000.00000000    
-                            H =  -68691485.9536196      V =   1.00000000000000      L =   0.00000000000000    
-                            ENTROPY =   2333.09985840864      DENSITY =   4.44292193094843      MW =   30.2397183978103    
-        WATER      0.00000000000000      N2        7.915334252080700E-05  O2         0.00000000000000    
-        CHX        0.00000000000000      CO        2.220328017681502E-04  CO2        0.00000000000000    
-        CH4        0.00000000000000      H2         0.00000000000000      C2H4       0.00000000000000    
+ STREAM EXHAUST2
+        SUBSTREAM MIXED     F =  3.303433120596798E-04  T =   2994.15132697880      P =   100000.000000000    
+                            H =   386308240.864813      V =  0.622795267836068      L =  0.377204732163932    
+                            ENTROPY =   8421.55451881977      DENSITY =  0.119489836460765      MW =   18.5260530163927    
+        WATER     1.208536747353216E-05  N2        7.611289686750271E-05  O2         0.00000000000000    
+        CHX       6.080891306607813E-07  CO        2.063533175367480E-05  CO2       1.721824635490516E-05
+        CH4        0.00000000000000      H2        3.261752275571425E-05  C2H4       0.00000000000000    
         C2H6       0.00000000000000      ACETICAC   0.00000000000000      PHENOL     0.00000000000000    
-        GUAIACOL   0.00000000000000      ACETOL     0.00000000000000      C          0.00000000000000    
-        SO2        0.00000000000000      HCL       1.078933417353606E-04  S          0.00000000000000    
-        SUBSTREAM NCPSD     F =  2.237079324480005E-04  T =   818.618966583792      P =   1000000.00000000    
-                            H =  -324380.041806343      V =   0.00000000000000      L =   0.00000000000000    
+        GUAIACOL   0.00000000000000      ACETOL     0.00000000000000      C         1.708012627850324E-04
+        SO2       3.303162783561628E-09  HCL       2.448873570445392E-07  S         1.640441882936176E-08
+        SUBSTREAM NCPSD     F =  2.237079324480005E-04  T =   2994.15132697880      P =   100000.000000000    
+                            H =   3397842.80304183      V =   0.00000000000000      L =   0.00000000000000    
+                            ENTROPY =  1.000000000000000E+35  DENSITY =   3486.88408551234      MW =   1.00000000000000    
+                            S =   1.00000000000000    
+        MULBERRY   0.00000000000000      CHAR       0.00000000000000      ASH       2.237079324480005E-04
+        DRYMUL     0.00000000000000    
+        MULBERRY   PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        CHAR       PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        ASH        PROXANAL    MOISTURE   0.00000000000000      FC         0.00000000000000      VM         0.00000000000000    
+                               ASH        100.000000000000    
+                   ULTANAL     ASH        100.000000000000      CARBON     0.00000000000000      HYDROGEN   0.00000000000000    
+                               NITROGEN   0.00000000000000      CHLORINE   0.00000000000000      SULFUR     0.00000000000000    
+                               OXYGEN     0.00000000000000    
+                   SULFANAL    PYRITIC    0.00000000000000      SULFATE    0.00000000000000      ORGANIC    0.00000000000000    
+        DRYMUL     PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        SUBS ATTR  PSD         FRAC1      0.00000000000000      FRAC2      0.00000000000000      FRAC3      0.00000000000000    
+                               FRAC4      0.00000000000000      FRAC5      0.00000000000000      FRAC6      1.00000000000000    
+                               FRAC7      0.00000000000000      FRAC8      0.00000000000000      FRAC9      0.00000000000000    
+                               FRAC10     0.00000000000000    
+
+ STREAM COLDFLU2
+        SUBSTREAM MIXED     F =  3.303433120596798E-04  T =   2709.21178458770      P =   100000.000000000    
+                            H =   366784590.532807      V =  0.501239503470320      L =  0.498760496529680    
+                            ENTROPY =   8337.60522923707      DENSITY =  0.164080841015526      MW =   18.5260530163927    
+        WATER     1.208536747353216E-05  N2        7.611289686750271E-05  O2         0.00000000000000    
+        CHX       6.080891306607813E-07  CO        2.063533175367480E-05  CO2       1.721824635490516E-05
+        CH4        0.00000000000000      H2        3.261752275571425E-05  C2H4       0.00000000000000    
+        C2H6       0.00000000000000      ACETICAC   0.00000000000000      PHENOL     0.00000000000000    
+        GUAIACOL   0.00000000000000      ACETOL     0.00000000000000      C         1.708012627850324E-04
+        SO2       3.303162783561628E-09  HCL       2.448873570445392E-07  S         1.640441882936176E-08
+        SUBSTREAM NCPSD     F =  2.237079324480005E-04  T =   2709.21178458770      P =   100000.000000000    
+                            H =   2752444.64454955      V =   0.00000000000000      L =   0.00000000000000    
                             ENTROPY =  1.000000000000000E+35  DENSITY =   3486.88408551234      MW =   1.00000000000000    
                             S =   1.00000000000000    
         MULBERRY   0.00000000000000      CHAR       0.00000000000000      ASH       2.237079324480005E-04
@@ -1066,18 +1097,362 @@ Calculations begin                                                              
                                FRAC7      0.00000000000000      FRAC8      0.00000000000000      FRAC9      0.00000000000000    
                                FRAC10     0.00000000000000    
 
- STREAM EXHAUST2
-        SUBSTREAM MIXED     F =  4.090794860243178E-04  T =   1298.15642811578      P =   1000000.00000000    
-                            H =  -52890970.0718611      V =   1.00000000000000      L =   0.00000000000000    
-                            ENTROPY =   2833.98832188404      DENSITY =   2.80171178214978      MW =   30.2397183978103    
-        WATER      0.00000000000000      N2        7.915334252080700E-05  O2         0.00000000000000    
-        CHX        0.00000000000000      CO        2.220328017681502E-04  CO2        0.00000000000000    
+ STREAM HOTPROD 
+        SUBSTREAM MIXED     F =  2.699406406719055E-04  T =   623.150000000000      P =   100000.000000000    
+                            H =  -93644941.7507346      V =   1.00000000000000      L =   0.00000000000000    
+                            ENTROPY =   56.2086369420127      DENSITY =  0.458691674570403      MW =   23.7651584833567    
+        WATER     5.314876408619064E-06  N2        3.417961162507010E-06  O2         0.00000000000000    
+        CHX        0.00000000000000      CO        2.734669598910886E-05  CO2       1.958065885325545E-05
+        CH4       2.387344488521098E-05  H2        1.424920927833008E-04  C2H4       0.00000000000000    
+        C2H6       0.00000000000000      ACETICAC  7.972098663792754E-06  PHENOL    5.086913921103113E-06
+        GUAIACOL  7.713026514618159E-06  ACETOL    2.714287149038928E-05  C          0.00000000000000    
+        SO2        0.00000000000000      HCL        0.00000000000000      S          0.00000000000000    
+        SUBSTREAM NCPSD     F =  3.159716560000007E-03  T =   623.150000000000      P =   100000.000000000    
+                            H =  -25650.0463953728      V =   0.00000000000000      L =   0.00000000000000    
+                            ENTROPY =  1.000000000000000E+35  DENSITY =   1571.71645134441      MW =   1.00000000000000    
+                            S =   1.00000000000000    
+        MULBERRY   0.00000000000000      CHAR      3.159716560000007E-03  ASH        0.00000000000000    
+        DRYMUL     0.00000000000000    
+        MULBERRY   PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        CHAR       PROXANAL    MOISTURE   2.00000000000000      FC         75.0000000000000      VM         15.0000000000000    
+                               ASH        8.00000000000000    
+                   ULTANAL     ASH        8.00000000000000      CARBON     78.0000000000000      HYDROGEN   2.50000000000000    
+                               NITROGEN  0.500000000000000      CHLORINE   0.00000000000000      SULFUR    2.000000000000000E-02
+                               OXYGEN     10.9800000000000    
+                   SULFANAL    PYRITIC    0.00000000000000      SULFATE    0.00000000000000      ORGANIC    2.00000000000000    
+        ASH        PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        DRYMUL     PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        SUBS ATTR  PSD         FRAC1      0.00000000000000      FRAC2      0.00000000000000      FRAC3      0.00000000000000    
+                               FRAC4      0.00000000000000      FRAC5      0.00000000000000      FRAC6      1.00000000000000    
+                               FRAC7      0.00000000000000      FRAC8      0.00000000000000      FRAC9      0.00000000000000    
+                               FRAC10     0.00000000000000    
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO STREAM       AIR2     12/18/2025   01:01:07:99 
+ STREAM AIR2
+     SUBSTREAM MIXED TEMP=25. PRES=1. MASS-FLOW=20.
+     MOLE-FRAC N2 0.781 / O2 0.21 / CO2 0.008
+
+ DISABLE      IS  NEW 12/18/2025   01:01:07:99 
+ DISABLE
+     STREAM AIR1
+
+ PDF updated                                                                      TIME =     78.44
+ THIS COPY OF ASPEN PLUS LICENSED TO QUEEN MARY UNIVERSITY OF        
+ 
+ 
+
+
+Calculations begin                                                              time     79.09
+
+
+      ENTHALPY CALCULATION FOR INLET STREAM AIR2 OF BLOCK BURNER3                 TIME =     79.09
+      SUBSTREAM MIXED   
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK BURNER3  MODEL: RSTOIC                                            TIME =     79.09
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER3" (MODEL:          
+      "RSTOIC")                                                (URE07.3)        
+      COMPONENT "O2" IN SUBSTREAM "MIXED" HAS ZERO                              
+      FLOWRATE IN THE OUTLET STREAM. FRACTIONAL CONVERSION                      
+      HAS BEEN MODIFIED BY A FACTOR OF "0.2768593"                              
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER3" (MODEL:          
+      "RSTOIC")                                                (URE07.3)        
+      COMPONENT "O2" IN SUBSTREAM "MIXED" HAS ZERO                              
+      FLOWRATE IN THE OUTLET STREAM. FRACTIONAL CONVERSION                      
+      HAS BEEN MODIFIED BY A FACTOR OF "0.2768593"                              
+      KODE = 1  NTRIAL =   1  T =  3258.92      P =  100000.      V = 0.997793      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =     79.10
+      ITER   0 For Tear Streams: EXHAUST1  EXHAUST2
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =     79.10
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN= 3258.92  PIN=0.10000E+06   TOUT= 3042.46  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  773.15  POUT=0.10000E+06
+                              DUTY= 6593.9    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =     79.10
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  18605.3    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =     79.10
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =     79.10
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM WASTECHA:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK CHXSEP   MODEL: SEP                                               TIME =     79.10
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE =    2 T =  298.247     P =  100000.     Q =  0.00000     HNCS = -491908.    
+      ---FLASH OUTLET STREAM CHXRECO :
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK DECOMP   MODEL: RYIELD                                            TIME =     79.10
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "DECOMP" (MODEL: "RYIELD") 
+                                                               (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   1  T =  298.150      P =  100000.      V = 0.195964      Q =  130766.    
+
+      UOS BLOCK BURNER3  MODEL: RSTOIC                                            TIME =     79.10
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER3" (MODEL:          
+      "RSTOIC")                                                (URE07.3)        
+      COMPONENT "O2" IN SUBSTREAM "MIXED" HAS ZERO                              
+      FLOWRATE IN THE OUTLET STREAM. FRACTIONAL CONVERSION                      
+      HAS BEEN MODIFIED BY A FACTOR OF "0.2768593"                              
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER3" (MODEL:          
+      "RSTOIC")                                                (URE07.3)        
+      COMPONENT "O2" IN SUBSTREAM "MIXED" HAS ZERO                              
+      FLOWRATE IN THE OUTLET STREAM. FRACTIONAL CONVERSION                      
+      HAS BEEN MODIFIED BY A FACTOR OF "0.2768593"                              
+      KODE = 1  NTRIAL =   1  T =  3258.92      P =  100000.      V = 0.997793      Q =  0.00000    
+
+      UOS BLOCK CONDENSE MODEL: FLASH2                                            TIME =     79.10
+      KODE = 2  NTRIAL =   1  T =  298.150      P =  100000.      V = 0.809325      Q = -6788.95    
+
+      UOS BLOCK BURNER1  MODEL: RSTOIC                                            TIME =     79.10
+      NO. TEMP ITER =    6     TEMP =  1888.48    
+      KODE = 1  NTRIAL =   2  T =  1888.48      P = 1.000000E+06  V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =     79.10
+      ITER   1 For Tear Streams: EXHAUST1  EXHAUST2
+
+  LOOP $OLVER01 ITER    1:     *** CONVERGED *** , MAX ERR/TOL     0.10000E+07    TIME =     79.10
+
+      GENERATING RESULTS FOR UOS BLOCK PYHEAT   MODEL: HEATX                      TIME =     79.10
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN= 3258.92  PIN=0.10000E+06   TOUT= 3042.46  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  773.15  POUT=0.10000E+06
+      AREA=0.30999E-02       DUTY= 6593.9           FT=1.00000
+
+ STREAM SPNTCHAR
+        SUBSTREAM MIXED     F =   0.00000000000000      T =  1.000000000000000E+35  P =   100000.000000000    
+                            H =  1.000000000000000E+35  V =  1.000000000000000E+35  L =  1.000000000000000E+35
+                            ENTROPY =  1.000000000000000E+35  DENSITY =  1.000000000000000E+35  MW =  1.000000000000000E+35
+        WATER      0.00000000000000      N2         0.00000000000000      O2         0.00000000000000    
+        CHX        0.00000000000000      CO         0.00000000000000      CO2        0.00000000000000    
         CH4        0.00000000000000      H2         0.00000000000000      C2H4       0.00000000000000    
         C2H6       0.00000000000000      ACETICAC   0.00000000000000      PHENOL     0.00000000000000    
         GUAIACOL   0.00000000000000      ACETOL     0.00000000000000      C          0.00000000000000    
-        SO2        0.00000000000000      HCL       1.078933417353606E-04  S          0.00000000000000    
-        SUBSTREAM NCPSD     F =  2.237079324480005E-04  T =   1298.15642811578      P =   1000000.00000000    
-                            H =   257726.956601439      V =   0.00000000000000      L =   0.00000000000000    
+        SO2        0.00000000000000      HCL        0.00000000000000      S          0.00000000000000    
+        SUBSTREAM NCPSD     F =  3.159716560000007E-03  T =   298.246855184130      P =   100000.000000000    
+                            H =  -491908.464953825      V =   0.00000000000000      L =   0.00000000000000    
+                            ENTROPY =  1.000000000000000E+35  DENSITY =   1571.71645134441      MW =   1.00000000000000    
+                            S =   1.00000000000000    
+        MULBERRY   0.00000000000000      CHAR      3.159716560000007E-03  ASH        0.00000000000000    
+        DRYMUL     0.00000000000000    
+        MULBERRY   PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        CHAR       PROXANAL    MOISTURE   2.00000000000000      FC         75.0000000000000      VM         15.0000000000000    
+                               ASH        8.00000000000000    
+                   ULTANAL     ASH        8.00000000000000      CARBON     78.0000000000000      HYDROGEN   2.50000000000000    
+                               NITROGEN  0.500000000000000      CHLORINE   0.00000000000000      SULFUR    2.000000000000000E-02
+                               OXYGEN     10.9800000000000    
+                   SULFANAL    PYRITIC    0.00000000000000      SULFATE    0.00000000000000      ORGANIC    2.00000000000000    
+        ASH        PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        DRYMUL     PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        SUBS ATTR  PSD         FRAC1      0.00000000000000      FRAC2      0.00000000000000      FRAC3      0.00000000000000    
+                               FRAC4      0.00000000000000      FRAC5      0.00000000000000      FRAC6      1.00000000000000    
+                               FRAC7      0.00000000000000      FRAC8      0.00000000000000      FRAC9      0.00000000000000    
+                               FRAC10     0.00000000000000    
+
+ STREAM CHXRECO 
+        SUBSTREAM MIXED     F =  2.779976808865671E-06  T =   298.246855184130      P =   100000.000000000    
+                            H =  -192691687.395596      V =   0.00000000000000      L =   1.00000000000000    
+                            ENTROPY =   1131.04144488434      DENSITY =   3159.67419565037      MW =   146.106005705974    
+        WATER     2.049443999682620E-06  N2         0.00000000000000      O2         0.00000000000000    
+        CHX       7.305328091830509E-07  CO         0.00000000000000      CO2        0.00000000000000    
+        CH4        0.00000000000000      H2         0.00000000000000      C2H4       0.00000000000000    
+        C2H6       0.00000000000000      ACETICAC   0.00000000000000      PHENOL     0.00000000000000    
+        GUAIACOL   0.00000000000000      ACETOL     0.00000000000000      C          0.00000000000000    
+        SO2        0.00000000000000      HCL        0.00000000000000      S          0.00000000000000    
+        SUBSTREAM NCPSD     F =   0.00000000000000      T =  1.000000000000000E+35  P =   100000.000000000    
+                            H =  1.000000000000000E+35  V =  1.000000000000000E+35  L =  1.000000000000000E+35
+                            ENTROPY =  1.000000000000000E+35  DENSITY =  1.000000000000000E+35  MW =   1.00000000000000    
+        MULBERRY   0.00000000000000      CHAR       0.00000000000000      ASH        0.00000000000000    
+        DRYMUL     0.00000000000000    
+        MULBERRY   PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        CHAR       PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        ASH        PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        DRYMUL     PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        SUBS ATTR  PSD         FRAC1      0.00000000000000      FRAC2      0.00000000000000      FRAC3      0.00000000000000    
+                               FRAC4      0.00000000000000      FRAC5      0.00000000000000      FRAC6      1.00000000000000    
+                               FRAC7      0.00000000000000      FRAC8      0.00000000000000      FRAC9      0.00000000000000    
+                               FRAC10     0.00000000000000    
+
+ STREAM CLEANH2O
+        SUBSTREAM MIXED     F =  0.204942350532021      T =   298.246855184130      P =   100000.000000000    
+                            H =  -285792974.642385      V =   0.00000000000000      L =   1.00000000000000    
+                            ENTROPY =  -9054.27880794347      DENSITY =   993.863567021202      MW =   18.0152800000000    
+        WATER     0.204942350532021      N2         0.00000000000000      O2         0.00000000000000    
+        CHX        0.00000000000000      CO         0.00000000000000      CO2        0.00000000000000    
+        CH4        0.00000000000000      H2         0.00000000000000      C2H4       0.00000000000000    
+        C2H6       0.00000000000000      ACETICAC   0.00000000000000      PHENOL     0.00000000000000    
+        GUAIACOL   0.00000000000000      ACETOL     0.00000000000000      C          0.00000000000000    
+        SO2        0.00000000000000      HCL        0.00000000000000      S          0.00000000000000    
+        SUBSTREAM NCPSD     F =   0.00000000000000      T =  1.000000000000000E+35  P =   100000.000000000    
+                            H =  1.000000000000000E+35  V =  1.000000000000000E+35  L =  1.000000000000000E+35
+                            ENTROPY =  1.000000000000000E+35  DENSITY =  1.000000000000000E+35  MW =   1.00000000000000    
+        MULBERRY   0.00000000000000      CHAR       0.00000000000000      ASH        0.00000000000000    
+        DRYMUL     0.00000000000000    
+        MULBERRY   PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        CHAR       PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        ASH        PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        DRYMUL     PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        SUBS ATTR  PSD         FRAC1      0.00000000000000      FRAC2      0.00000000000000      FRAC3      0.00000000000000    
+                               FRAC4      0.00000000000000      FRAC5      0.00000000000000      FRAC6      1.00000000000000    
+                               FRAC7      0.00000000000000      FRAC8      0.00000000000000      FRAC9      0.00000000000000    
+                               FRAC10     0.00000000000000    
+
+ STREAM WASTECHA
+        SUBSTREAM MIXED     F =  2.779976808865671E-06  T =   298.246855184130      P =   100000.000000000    
+                            H =  -192691687.395596      V =   0.00000000000000      L =   1.00000000000000    
+                            ENTROPY =   1131.04144488434      DENSITY =   3159.67419565037      MW =   146.106005705974    
+        WATER     2.049443999682620E-06  N2         0.00000000000000      O2         0.00000000000000    
+        CHX       7.305328091830509E-07  CO         0.00000000000000      CO2        0.00000000000000    
+        CH4        0.00000000000000      H2         0.00000000000000      C2H4       0.00000000000000    
+        C2H6       0.00000000000000      ACETICAC   0.00000000000000      PHENOL     0.00000000000000    
+        GUAIACOL   0.00000000000000      ACETOL     0.00000000000000      C          0.00000000000000    
+        SO2        0.00000000000000      HCL        0.00000000000000      S          0.00000000000000    
+        SUBSTREAM NCPSD     F =  3.159716560000007E-03  T =   298.246855184130      P =   100000.000000000    
+                            H =  -491908.464953825      V =   0.00000000000000      L =   0.00000000000000    
+                            ENTROPY =  1.000000000000000E+35  DENSITY =   1571.71645134441      MW =   1.00000000000000    
+                            S =   1.00000000000000    
+        MULBERRY   0.00000000000000      CHAR      3.159716560000007E-03  ASH        0.00000000000000    
+        DRYMUL     0.00000000000000    
+        MULBERRY   PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        CHAR       PROXANAL    MOISTURE   2.00000000000000      FC         75.0000000000000      VM         15.0000000000000    
+                               ASH        8.00000000000000    
+                   ULTANAL     ASH        8.00000000000000      CARBON     78.0000000000000      HYDROGEN   2.50000000000000    
+                               NITROGEN  0.500000000000000      CHLORINE   0.00000000000000      SULFUR    2.000000000000000E-02
+                               OXYGEN     10.9800000000000    
+                   SULFANAL    PYRITIC    0.00000000000000      SULFATE    0.00000000000000      ORGANIC    2.00000000000000    
+        ASH        PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        DRYMUL     PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        SUBS ATTR  PSD         FRAC1      0.00000000000000      FRAC2      0.00000000000000      FRAC3      0.00000000000000    
+                               FRAC4      0.00000000000000      FRAC5      0.00000000000000      FRAC6      1.00000000000000    
+                               FRAC7      0.00000000000000      FRAC8      0.00000000000000      FRAC9      0.00000000000000    
+                               FRAC10     0.00000000000000    
+
+ STREAM EXHAUST2
+        SUBSTREAM MIXED     F =  4.093996914949650E-04  T =   3258.92288869460      P =   100000.000000000    
+                            H =   310622076.707854      V =  0.997793386704846      L =  2.206613295154147E-03
+                            ENTROPY =   6899.87416756874      DENSITY =  8.038765250682745E-02  MW =   21.7336155240254    
+        WATER     1.748374186233469E-05  N2        1.514486673411251E-04  O2        6.776263578034403E-21
+        CHX       5.282780125518416E-07  CO        3.408583340215439E-05  CO2       2.870868964392027E-05
+        CH4        0.00000000000000      H2        2.833650402043687E-05  C2H4       0.00000000000000    
+        C2H6       0.00000000000000      ACETICAC   0.00000000000000      PHENOL     0.00000000000000    
+        GUAIACOL   0.00000000000000      ACETOL     0.00000000000000      C         1.483837600375664E-04
+        SO2       5.456227100425836E-09  HCL       4.045095932624185E-07  S         1.425135451249755E-08
+        SUBSTREAM NCPSD     F =  2.237079324480005E-04  T =   3258.92288869460      P =   100000.000000000    
+                            H =   4040216.35760686      V =   0.00000000000000      L =   0.00000000000000    
                             ENTROPY =  1.000000000000000E+35  DENSITY =   3486.88408551234      MW =   1.00000000000000    
                             S =   1.00000000000000    
         MULBERRY   0.00000000000000      CHAR       0.00000000000000      ASH       2.237079324480005E-04
@@ -1106,6 +1481,96 @@ Calculations begin                                                              
                                NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
                                OXYGEN    1.000000000000000E+35
                    SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        SUBS ATTR  PSD         FRAC1      0.00000000000000      FRAC2      0.00000000000000      FRAC3      0.00000000000000    
+                               FRAC4      0.00000000000000      FRAC5      0.00000000000000      FRAC6      1.00000000000000    
+                               FRAC7      0.00000000000000      FRAC8      0.00000000000000      FRAC9      0.00000000000000    
+                               FRAC10     0.00000000000000    
+
+ STREAM COLDFLU2
+        SUBSTREAM MIXED     F =  4.093996914949650E-04  T =   3042.46338932467      P =   100000.000000000    
+                            H =   294804473.481330      V =  0.900312953420941      L =  9.968704657905914E-02
+                            ENTROPY =   6670.70215949297      DENSITY =  9.542993413811605E-02  MW =   21.7336155240254    
+        WATER     1.748374186233469E-05  N2        1.514486673411251E-04  O2        6.776263578034403E-21
+        CHX       5.282780125518416E-07  CO        3.408583340215439E-05  CO2       2.870868964392027E-05
+        CH4        0.00000000000000      H2        2.833650402043687E-05  C2H4       0.00000000000000    
+        C2H6       0.00000000000000      ACETICAC   0.00000000000000      PHENOL     0.00000000000000    
+        GUAIACOL   0.00000000000000      ACETOL     0.00000000000000      C         1.483837600375664E-04
+        SO2       5.456227100425836E-09  HCL       4.045095932624185E-07  S         1.425135451249755E-08
+        SUBSTREAM NCPSD     F =  2.237079324480005E-04  T =   3042.46338932467      P =   100000.000000000    
+                            H =   3511989.88066925      V =   0.00000000000000      L =   0.00000000000000    
+                            ENTROPY =  1.000000000000000E+35  DENSITY =   3486.88408551234      MW =   1.00000000000000    
+                            S =   1.00000000000000    
+        MULBERRY   0.00000000000000      CHAR       0.00000000000000      ASH       2.237079324480005E-04
+        DRYMUL     0.00000000000000    
+        MULBERRY   PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        CHAR       PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        ASH        PROXANAL    MOISTURE   0.00000000000000      FC         0.00000000000000      VM         0.00000000000000    
+                               ASH        100.000000000000    
+                   ULTANAL     ASH        100.000000000000      CARBON     0.00000000000000      HYDROGEN   0.00000000000000    
+                               NITROGEN   0.00000000000000      CHLORINE   0.00000000000000      SULFUR     0.00000000000000    
+                               OXYGEN     0.00000000000000    
+                   SULFANAL    PYRITIC    0.00000000000000      SULFATE    0.00000000000000      ORGANIC    0.00000000000000    
+        DRYMUL     PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        SUBS ATTR  PSD         FRAC1      0.00000000000000      FRAC2      0.00000000000000      FRAC3      0.00000000000000    
+                               FRAC4      0.00000000000000      FRAC5      0.00000000000000      FRAC6      1.00000000000000    
+                               FRAC7      0.00000000000000      FRAC8      0.00000000000000      FRAC9      0.00000000000000    
+                               FRAC10     0.00000000000000    
+
+ STREAM HOTPYFED
+        SUBSTREAM MIXED     F =   0.00000000000000      T =   773.150000000000      P =   100000.000000000    
+                            H =  1.000000000000000E+35  V =  1.000000000000000E+35  L =  1.000000000000000E+35
+                            ENTROPY =  1.000000000000000E+35  DENSITY =  1.000000000000000E+35  MW =  1.000000000000000E+35
+        WATER      0.00000000000000      N2         0.00000000000000      O2         0.00000000000000    
+        CHX        0.00000000000000      CO         0.00000000000000      CO2        0.00000000000000    
+        CH4        0.00000000000000      H2         0.00000000000000      C2H4       0.00000000000000    
+        C2H6       0.00000000000000      ACETICAC   0.00000000000000      PHENOL     0.00000000000000    
+        GUAIACOL   0.00000000000000      ACETOL     0.00000000000000      C          0.00000000000000    
+        SO2        0.00000000000000      HCL        0.00000000000000      S          0.00000000000000    
+        SUBSTREAM NCPSD     F =  9.574898666666687E-03  T =   773.150000000000      P =   100000.000000000    
+                            H =  -4591683.85261914      V =   0.00000000000000      L =   0.00000000000000    
+                            ENTROPY =  1.000000000000000E+35  DENSITY =   1274.89803255311      MW =   1.00000000000000    
+                            S =   1.00000000000000    
+        MULBERRY   0.00000000000000      CHAR       0.00000000000000      ASH        0.00000000000000    
+        DRYMUL    9.574898666666687E-03
+        MULBERRY   PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        CHAR       PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        ASH        PROXANAL    MOISTURE  1.000000000000000E+35  FC        1.000000000000000E+35  VM        1.000000000000000E+35
+                               ASH       1.000000000000000E+35
+                   ULTANAL     ASH       1.000000000000000E+35  CARBON    1.000000000000000E+35  HYDROGEN  1.000000000000000E+35
+                               NITROGEN  1.000000000000000E+35  CHLORINE  1.000000000000000E+35  SULFUR    1.000000000000000E+35
+                               OXYGEN    1.000000000000000E+35
+                   SULFANAL    PYRITIC   1.000000000000000E+35  SULFATE   1.000000000000000E+35  ORGANIC   1.000000000000000E+35
+        DRYMUL     PROXANAL    MOISTURE  0.100000000000000      FC         17.0000000000000      VM         81.5000000000000    
+                               ASH        1.50000000000000    
+                   ULTANAL     ASH        1.50000000000000      CARBON     48.0000000000000      HYDROGEN   6.00000000000000    
+                               NITROGEN  0.200000000000000      CHLORINE   0.00000000000000      SULFUR    2.000000000000000E-02
+                               OXYGEN     44.2800000000000    
+                   SULFANAL    PYRITIC    0.00000000000000      SULFATE    0.00000000000000      ORGANIC   2.000000000000000E-02
         SUBS ATTR  PSD         FRAC1      0.00000000000000      FRAC2      0.00000000000000      FRAC3      0.00000000000000    
                                FRAC4      0.00000000000000      FRAC5      0.00000000000000      FRAC6      1.00000000000000    
                                FRAC7      0.00000000000000      FRAC8      0.00000000000000      FRAC9      0.00000000000000    
@@ -1155,49 +1620,129 @@ Calculations begin                                                              
                                FRAC4      0.00000000000000      FRAC5      0.00000000000000      FRAC6      1.00000000000000    
                                FRAC7      0.00000000000000      FRAC8      0.00000000000000      FRAC9      0.00000000000000    
                                FRAC10     0.00000000000000    
+
 
- Report Writer entered                                                            Time =    159.10
+*** INPUT SPECIFICATION MESSAGES ***
 
-      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
+ CHANGES WERE MADE TO STREAM       AIR2     12/18/2025   01:02:17:99 
+ STREAM AIR2
+     SUBSTREAM MIXED TEMP=25. PRES=1. MASS-FLOW=100.
+     MOLE-FRAC N2 0.781 / O2 0.21 / CO2 0.008
 
-      BEGIN COLD-TQCURVE INLET   
+ BLOCK        BURNER3  IS GENERATED BECAUSE OF OTHER CHANGES 12/18/2025   01:02:17:99 
+ BLOCK BURNER3 RSTOIC
+     PARAM PRES=1. DUTY=0. COMBUSTION=YES
+     STOIC 1 MIXED C -1. / O2 -1. / CO2 1.
+     STOIC 2 MIXED C -2. / O2 -1. / CO 2.
+     STOIC 3 MIXED H2 -2. / O2 -1. / WATER 2.
+     STOIC 4 MIXED S -1. / O2 -1. / SO2 1.
+     STOIC 5 MIXED CHX -1. / O2 -29. / CO2 22. / WATER  &
+         14. / HCL 2. / N2 5.
+     CONV 1 MIXED C 0.4
+     CONV 2 MIXED C 0.6
+     CONV 3 MIXED H2 1.
+     CONV 4 MIXED S 1.
+     CONV 5 MIXED CHX 1.
 
-      BEGIN HOT-TQCURVE  INLET   
-      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
+ DISABLE      IS  NEW 12/18/2025   01:02:17:99 
+ DISABLE
+     STREAM AIR1
 
- Results generated                                                                Time =    159.17
+ PDF updated                                                                      TIME =    148.77
+ THIS COPY OF ASPEN PLUS LICENSED TO QUEEN MARY UNIVERSITY OF        
+ 
+ 
+
 
- Report Writer entered                                                            Time =    193.68
-
-      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
-      BEGIN COLD-TQCURVE INLET   
-
-      BEGIN HOT-TQCURVE  INLET   
-      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
- Results generated                                                                Time =    193.73
-
- Report Writer entered                                                            Time =    194.99
-
-      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
-      BEGIN COLD-TQCURVE INLET   
-
-      BEGIN HOT-TQCURVE  INLET   
-      END HEATX TQ-CURVE REPORT FOR BLOCK TORHEAT 
-
- Results generated                                                                Time =    195.05
-
-RUN SAVED
-
+Calculations begin                                                              time    149.35
 
 
- *** SUMMARY OF ERRORS ***
+      ENTHALPY CALCULATION FOR INLET STREAM AIR2 OF BLOCK BURNER3                 TIME =    149.35
+      SUBSTREAM MIXED   
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
 
-                  PHYSICAL
-                  PROPERTY  SYSTEM  SIMULATION
- TERMINAL ERRORS      0        0         0
-   SEVERE ERRORS      0        0         0
-          ERRORS      0        0         6
-        WARNINGS      0        0         9
+      UOS BLOCK BURNER3  MODEL: RSTOIC                                            TIME =    149.35
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER3" (MODEL:          
+      "RSTOIC")                                                (URE07.3)        
+      COMPONENT "C" IN SUBSTREAM "MIXED" HAS ZERO                               
+      FLOWRATE IN THE OUTLET STREAM. FRACTIONAL CONVERSION                      
+      HAS BEEN MODIFIED BY A FACTOR OF "1.000000"                               
+      NO. TEMP ITER =    7     TEMP =  4951.15    
+      KODE = 1  NTRIAL =   2  T =  4951.15      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =    149.35
+      ITER   0 For Tear Streams: EXHAUST1  EXHAUST2
+
+      UOS BLOCK PYHEAT   MODEL: HEATX                                             TIME =    149.35
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN= 4951.15  PIN=0.10000E+06   TOUT= 4802.98  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  773.15  POUT=0.10000E+06
+                              DUTY= 6593.9    
+
+      UOS BLOCK PYROLYZE MODEL: RYIELD                                            TIME =    149.35
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "PYROLYZE" (MODEL:         
+      "RYIELD")                                                (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  18605.3    
+
+      UOS BLOCK CHARSEP  MODEL: SEP                                               TIME =    149.35
+      ---FLASH OUTLET STREAM CHAR    :
+      KODE =    2 T =  623.150     P =  100000.     Q =  0.00000     HNCS = -25650.0    
+      ---FLASH OUTLET STREAM VAPORS  :
+      KODE = 2  NTRIAL =   3  T =  623.150      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK FBSEP    MODEL: SEP                                               TIME =    149.35
+      ---FLASH FEED STREAM TO CALCULATE TEMPERATURE:
+      NO. TEMP ITER =    5     TEMP =  298.247    
+      KODE = 1  NTRIAL =   2  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM CLEANH2O:
+      KODE = 2  NTRIAL =   1  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+      ---FLASH OUTLET STREAM WASTECHA:
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK CHXSEP   MODEL: SEP                                               TIME =    149.35
+      ---FLASH OUTLET STREAM SPNTCHAR:
+      KODE =    2 T =  298.247     P =  100000.     Q =  0.00000     HNCS = -491908.    
+      ---FLASH OUTLET STREAM CHXRECO :
+      KODE = 2  NTRIAL =   3  T =  298.247      P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK DECOMP   MODEL: RYIELD                                            TIME =    149.36
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "DECOMP" (MODEL: "RYIELD") 
+                                                               (BALATM.1)       
+      THE FOLLOWING ELEMENTS ARE NOT IN ATOM BALANCE:                           
+      H     N     C     S                                                       
+      KODE = 2  NTRIAL =   1  T =  298.150      P =  100000.      V = 0.195964      Q =  130766.    
+
+      UOS BLOCK BURNER3  MODEL: RSTOIC                                            TIME =    149.36
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "BURNER3" (MODEL:          
+      "RSTOIC")                                                (URE07.3)        
+      COMPONENT "C" IN SUBSTREAM "MIXED" HAS ZERO                               
+      FLOWRATE IN THE OUTLET STREAM. FRACTIONAL CONVERSION                      
+      HAS BEEN MODIFIED BY A FACTOR OF "1.000000"                               
+      NO. TEMP ITER =    7     TEMP =  4951.15    
+      KODE = 1  NTRIAL =   2  T =  4951.15      P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK CONDENSE MODEL: FLASH2                                            TIME =    149.36
+      KODE = 2  NTRIAL =   1  T =  298.150      P =  100000.      V = 0.809325      Q = -6788.95    
+
+      UOS BLOCK BURNER1  MODEL: RSTOIC                                            TIME =    149.36
+      NO. TEMP ITER =    6     TEMP =  1888.48    
+      KODE = 1  NTRIAL =   2  T =  1888.48      P = 1.000000E+06  V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =    149.36
+      ITER   1 For Tear Streams: EXHAUST1  EXHAUST2
+
+  LOOP $OLVER01 ITER    1:     *** CONVERGED *** , MAX ERR/TOL     0.10000E+07    TIME =    149.36
+
+      GENERATING RESULTS FOR UOS BLOCK PYHEAT   MODEL: HEATX                      TIME =    149.36
+      SPECIFICATION: COLD OUTLET TEMP      773.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN= 4951.15  PIN=0.10000E+06   TOUT= 4802.98  POUT=0.10000E+06
+      COLD: TIN=  523.15  PIN=0.10000E+06   TOUT=  773.15  POUT=0.10000E+06
+      AREA=0.18345E-02       DUTY= 6593.9           FT=1.00000

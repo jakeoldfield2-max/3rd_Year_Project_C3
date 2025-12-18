@@ -1,10 +1,10 @@
-INPUT: Y3Project.inm
+SLAVE:
+INPUT: _0837rhq.inm
 MODNAME: apmain
-RUNID: Y3Project
-NEW_RUNID: Y3Project
-OLD_RUNID: Y3Project
-PDF: Y3Project.appdf
+RUNID: _0837rhq
+NEW_RUNID: _0837rhq
+OLD_RUNID: _0837rhq
+PDF: _0837rhq.appdf
 USERNAME: ex23441
 XMOD: C:\Program Files\AspenTech\Aspen Plus V14.0\Engine\xeq\apmain
-SPONLY:
 DBCONN: _0837rhq.ads

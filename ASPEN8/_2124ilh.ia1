@@ -1,0 +1,653 @@
+
+ SUBSTREAM ATTR PSD TYPE: PSD            
+ ----------------------------
+
+ INTERVAL     LOWER LIMIT           UPPER LIMIT
+     1          0.0     METER      2.0000-03  METER   
+     2       2.0000-03  METER      4.0000-03  METER   
+     3       4.0000-03  METER      6.0000-03  METER   
+     4       6.0000-03  METER      8.0000-03  METER   
+     5       8.0000-03  METER      1.0000-02  METER   
+     6       1.0000-02  METER      1.2000-02  METER   
+     7       1.2000-02  METER      1.4000-02  METER   
+     8       1.4000-02  METER      1.6000-02  METER   
+     9       1.6000-02  METER      1.8000-02  METER   
+    10       1.8000-02  METER      2.0000-02  METER   
+
+
+ AIR1 AIR2 CHAR CHXRECO CLEANH2O         
+ -------------------------------
+
+ STREAM ID               AIR1       AIR2       CHAR       CHXRECO    CLEANH2O
+ FROM :                  ----       ----       CHARSEP    CHXSEP     FBSEP   
+ TO   :                  BURNER1    BURNER3    FBSEP      BURNER3    ----    
+ CLASS:                  MIXNCPSD   MIXNCPSD   MIXNCPSD   MIXNCPSD   MIXNCPSD
+ TOTAL STREAM:
+   KG/HR                100.0000   100.0000    11.3750     1.4622  1.3292+04
+   GCAL/HR            -2.5972-03 -2.5972-03 -6.9688-05 -4.6060-04   -50.3621
+ SUBSTREAM: MIXED   
+ PHASE:                  VAPOR      VAPOR      MISSING    LIQUID     LIQUID 
+ COMPONENTS: KMOL/HR         
+   WATER                  0.0        0.0        0.0     7.3780-03   737.7925
+   N2                     2.6977     2.6977     0.0        0.0        0.0   
+   O2                     0.7254     0.7254     0.0        0.0        0.0   
+   CHX                    0.0        0.0        0.0     2.6299-03     0.0   
+   CO                     0.0        0.0        0.0        0.0        0.0   
+   CO2                 2.7634-02  2.7634-02     0.0        0.0        0.0   
+   CH4                    0.0        0.0        0.0        0.0        0.0   
+   H2                     0.0        0.0        0.0        0.0        0.0   
+   C2H4                   0.0        0.0        0.0        0.0        0.0   
+   C2H6                   0.0        0.0        0.0        0.0        0.0   
+   ACETICAC               0.0        0.0        0.0        0.0        0.0   
+   PHENOL                 0.0        0.0        0.0        0.0        0.0   
+   GUAIACOL               0.0        0.0        0.0        0.0        0.0   
+   ACETOL                 0.0        0.0        0.0        0.0        0.0   
+   C                      0.0        0.0        0.0        0.0        0.0   
+   SO2                    0.0        0.0        0.0        0.0        0.0   
+   HCL                    0.0        0.0        0.0        0.0        0.0   
+   S                      0.0        0.0        0.0        0.0        0.0   
+ TOTAL FLOW:         
+   KMOL/HR                3.4507     3.4507     0.0     1.0008-02   737.7925
+   KG/HR                100.0000   100.0000     0.0        1.4622  1.3292+04
+   CUM/HR                85.5409    85.5409     0.0     4.6277-04    13.3736
+ STATE VARIABLES:    
+   TEMP   C              25.0000    25.0000    MISSING    25.0969    25.0969
+   PRES   BAR             1.0000     1.0000     1.0000     1.0000     1.0000
+   VFRAC                  1.0000     1.0000    MISSING     0.0        0.0   
+   LFRAC                  0.0        0.0       MISSING     1.0000     1.0000
+   SFRAC                  0.0        0.0       MISSING     0.0        0.0   
+ ENTHALPY:           
+   KCAL/MOL              -0.7527    -0.7527    MISSING   -46.0236   -68.2605
+   KCAL/KG              -25.9723   -25.9723    MISSING  -315.0016 -3789.0324
+   GCAL/HR            -2.5972-03 -2.5972-03    MISSING -4.6060-04   -50.3621
+ ENTROPY:            
+   CAL/MOL-K              1.1417     1.1417    MISSING    39.4697   -38.9594
+   CAL/GM-K            3.9396-02  3.9396-02    MISSING     0.2701    -2.1626
+ DENSITY:            
+   KMOL/CUM            4.0340-02  4.0340-02    MISSING    21.6259    55.1678
+   KG/CUM                 1.1690     1.1690    MISSING  3159.6742   993.8636
+ AVG MW                  28.9793    28.9793    MISSING   146.1060    18.0153
+
+ SUBSTREAM: NCPSD        STRUCTURE: NON CONVENTIONAL
+ COMPONENTS: KG/HR           
+   MULBERRY               0.0        0.0        0.0        0.0        0.0   
+   CHAR                   0.0        0.0       11.3750     0.0        0.0   
+   ASH                    0.0        0.0        0.0        0.0        0.0   
+   DRYMUL                 0.0        0.0        0.0        0.0        0.0   
+ TOTAL FLOW:         
+   KG/HR                  0.0        0.0       11.3750     0.0        0.0   
+ STATE VARIABLES:    
+   TEMP   C              MISSING    MISSING   350.0000    MISSING    MISSING
+   PRES   BAR             1.0000     1.0000     1.0000     1.0000     1.0000
+   VFRAC                 MISSING    MISSING     0.0       MISSING    MISSING
+   LFRAC                 MISSING    MISSING     0.0       MISSING    MISSING
+   SFRAC                 MISSING    MISSING     1.0000    MISSING    MISSING
+ ENTHALPY:           
+   KCAL/KG               MISSING    MISSING    -6.1264    MISSING    MISSING
+   GCAL/HR               MISSING    MISSING -6.9688-05    MISSING    MISSING
+ DENSITY:            
+   KG/CUM                MISSING    MISSING  1571.7165    MISSING    MISSING
+ AVG MW                   1.0000     1.0000     1.0000     1.0000     1.0000
+ COMPONENT ATTRIBUTES:
+ MULBERRY PROXANAL
+          ULTANAL 
+          SULFANAL
+ CHAR     PROXANAL
+            MOISTURE     MISSING    MISSING     2.0000    MISSING    MISSING
+            FC           MISSING    MISSING    75.0000    MISSING    MISSING
+            VM           MISSING    MISSING    15.0000    MISSING    MISSING
+            ASH          MISSING    MISSING     8.0000    MISSING    MISSING
+          ULTANAL 
+            ASH          MISSING    MISSING     8.0000    MISSING    MISSING
+            CARBON       MISSING    MISSING    78.0000    MISSING    MISSING
+            HYDROGEN     MISSING    MISSING     2.5000    MISSING    MISSING
+            NITROGEN     MISSING    MISSING     0.5000    MISSING    MISSING
+            CHLORINE     MISSING    MISSING     0.0       MISSING    MISSING
+            SULFUR       MISSING    MISSING  2.0000-02    MISSING    MISSING
+            OXYGEN       MISSING    MISSING    10.9800    MISSING    MISSING
+          SULFANAL
+            PYRITIC      MISSING    MISSING     0.0       MISSING    MISSING
+            SULFATE      MISSING    MISSING     0.0       MISSING    MISSING
+            ORGANIC      MISSING    MISSING     2.0000    MISSING    MISSING
+ ASH      PROXANAL
+          ULTANAL 
+          SULFANAL
+ DRYMUL   PROXANAL
+          ULTANAL 
+          SULFANAL
+ SUBSTREAM ATTRIBUTES:
+ PSD     
+   FRAC1                 MISSING    MISSING     0.0       MISSING    MISSING
+   FRAC2                 MISSING    MISSING     0.0       MISSING    MISSING
+   FRAC3                 MISSING    MISSING     0.0       MISSING    MISSING
+   FRAC4                 MISSING    MISSING     0.0       MISSING    MISSING
+   FRAC5                 MISSING    MISSING     0.0       MISSING    MISSING
+   FRAC6                 MISSING    MISSING     1.0000    MISSING    MISSING
+   FRAC7                 MISSING    MISSING     0.0       MISSING    MISSING
+   FRAC8                 MISSING    MISSING     0.0       MISSING    MISSING
+   FRAC9                 MISSING    MISSING     0.0       MISSING    MISSING
+   FRAC10                MISSING    MISSING     0.0       MISSING    MISSING
+
+ COLDFLU1 COLDFLU2 DECCHAR DRYWOOD EXHAUS
+ ------------------------------------------
+
+ STREAM ID               COLDFLU1   COLDFLU2   DECCHAR    DRYWOOD    EXHAUST1
+ FROM :                  TORHEAT    PYHEAT     DECOMP     TORSEP     BURNER1 
+ TO   :                  ----       ----       BURNER3    PYHEAT     TORHEAT 
+ CLASS:                  MIXNCPSD   MIXNCPSD   MIXNCPSD   MIXNCPSD   MIXNCPSD
+
+ CONV. MAX. REL. ERR:     0.0        0.0        0.0        0.0    -2.6782-09
+ TOTAL STREAM:
+   KG/HR                108.9354   112.8372    11.3750    34.4696   108.9354
+   GCAL/HR            -1.9411-02     0.1024     0.1111 -4.3473-02 -1.3872-02
+ SUBSTREAM: MIXED   
+ PHASE:                  VAPOR      VAPOR      MIXED      MISSING    VAPOR  
+ COMPONENTS: KMOL/HR         
+   WATER                  0.6977     0.1916  6.3141-03     0.0        0.6977
+   N2                     2.7100     2.7129  2.0303-03     0.0        2.7100
+   O2                     0.2361     0.1002  3.8747-02     0.0        0.2361
+   CHX                    0.0        0.0        0.0        0.0        0.0   
+   CO                     0.0        0.4432     0.0        0.0        0.0   
+   CO2                    0.2930     0.3810     0.0        0.0        0.2930
+   CH4                    0.0        0.0        0.0        0.0        0.0   
+   H2                     0.0        0.0        0.1411     0.0        0.0   
+   C2H4                   0.0        0.0        0.0        0.0        0.0   
+   C2H6                   0.0        0.0        0.0        0.0        0.0   
+   ACETICAC               0.0        0.0        0.0        0.0        0.0   
+   PHENOL                 0.0        0.0        0.0        0.0        0.0   
+   GUAIACOL               0.0        0.0        0.0        0.0        0.0   
+   ACETOL                 0.0        0.0        0.0        0.0        0.0   
+   C                      0.0        0.0        0.7387     0.0        0.0   
+   SO2                    0.0     7.0947-05     0.0        0.0        0.0   
+   HCL                    0.0     5.2598-03     0.0        0.0        0.0   
+   S                      0.0        0.0     7.0947-05     0.0        0.0   
+ TOTAL FLOW:         
+   KMOL/HR                3.9368     3.8342     0.9269     0.0        3.9368
+   KG/HR                108.9354   112.0318    10.5696     0.0      108.9354
+   CUM/HR                56.9991  1531.1189     4.5055     0.0       61.8138
+ STATE VARIABLES:    
+   TEMP   C            1468.2378  4529.8294    25.0000    MISSING  1615.3300
+   PRES   BAR            10.0000     1.0000     1.0000     1.0000    10.0000
+   VFRAC                  1.0000     1.0000     0.1960    MISSING     1.0000
+   LFRAC                  0.0        0.0        0.8040    MISSING     0.0   
+   SFRAC                  0.0        0.0        0.0       MISSING     0.0   
+ ENTHALPY:           
+   KCAL/MOL              -4.9307    26.2690   120.0279    MISSING    -3.5238
+   KCAL/KG             -178.1915   899.0280  1.0526+04    MISSING  -127.3455
+   GCAL/HR            -1.9411-02     0.1007     0.1113    MISSING -1.3872-02
+ ENTROPY:            
+   CAL/MOL-K              9.8981    27.9126   213.8791    MISSING    10.6737
+   CAL/GM-K               0.3577     0.9553    18.7566    MISSING     0.3857
+ DENSITY:            
+   KMOL/CUM            6.9068-02  2.5042-03     0.2057    MISSING  6.3688-02
+   KG/CUM                 1.9112  7.3170-02     2.3459    MISSING     1.7623
+ AVG MW                  27.6709    29.2194    11.4029    MISSING    27.6709
+
+ SUBSTREAM: NCPSD        STRUCTURE: NON CONVENTIONAL
+ COMPONENTS: KG/HR           
+   MULBERRY               0.0        0.0        0.0        0.0        0.0   
+   CHAR                   0.0        0.0        0.0        0.0        0.0   
+   ASH                    0.0        0.8053     0.8053     0.0        0.0   
+   DRYMUL                 0.0        0.0        0.0       34.4696     0.0   
+ TOTAL FLOW:         
+   KG/HR                  0.0        0.8053     0.8053    34.4696     0.0   
+ STATE VARIABLES:    
+   TEMP   C              MISSING  4529.8294    25.0000   250.0000    MISSING
+   PRES   BAR            10.0000     1.0000     1.0000     1.0000    MISSING
+   VFRAC                 MISSING     0.0        0.0        0.0       MISSING
+   LFRAC                 MISSING     0.0        0.0        0.0       MISSING
+   SFRAC                 MISSING     1.0000     1.0000     1.0000    MISSING
+ ENTHALPY:           
+   KCAL/KG               MISSING  2055.2353  -191.9451 -1261.1894    MISSING
+   GCAL/HR               MISSING  1.6552-03 -1.5458-04 -4.3473-02    MISSING
+ DENSITY:            
+   KG/CUM                MISSING  3486.8841  3486.8841  1274.8980    MISSING
+ AVG MW                   1.0000     1.0000     1.0000     1.0000     1.0000
+ COMPONENT ATTRIBUTES:
+ MULBERRY PROXANAL
+          ULTANAL 
+          SULFANAL
+ CHAR     PROXANAL
+          ULTANAL 
+          SULFANAL
+ ASH      PROXANAL
+            MOISTURE     MISSING     0.0        0.0       MISSING    MISSING
+            FC           MISSING     0.0        0.0       MISSING    MISSING
+            VM           MISSING     0.0        0.0       MISSING    MISSING
+            ASH          MISSING   100.0000   100.0000    MISSING    MISSING
+          ULTANAL 
+            ASH          MISSING   100.0000   100.0000    MISSING    MISSING
+            CARBON       MISSING     0.0        0.0       MISSING    MISSING
+            HYDROGEN     MISSING     0.0        0.0       MISSING    MISSING
+            NITROGEN     MISSING     0.0        0.0       MISSING    MISSING
+            CHLORINE     MISSING     0.0        0.0       MISSING    MISSING
+            SULFUR       MISSING     0.0        0.0       MISSING    MISSING
+            OXYGEN       MISSING     0.0        0.0       MISSING    MISSING
+          SULFANAL
+            PYRITIC      MISSING     0.0        0.0       MISSING    MISSING
+            SULFATE      MISSING     0.0        0.0       MISSING    MISSING
+            ORGANIC      MISSING     0.0        0.0       MISSING    MISSING
+ DRYMUL   PROXANAL
+            MOISTURE     MISSING    MISSING    MISSING     0.1000    MISSING
+            FC           MISSING    MISSING    MISSING    17.0000    MISSING
+            VM           MISSING    MISSING    MISSING    81.5000    MISSING
+            ASH          MISSING    MISSING    MISSING     1.5000    MISSING
+          ULTANAL 
+            ASH          MISSING    MISSING    MISSING     1.5000    MISSING
+            CARBON       MISSING    MISSING    MISSING    48.0000    MISSING
+            HYDROGEN     MISSING    MISSING    MISSING     6.0000    MISSING
+            NITROGEN     MISSING    MISSING    MISSING     0.2000    MISSING
+            CHLORINE     MISSING    MISSING    MISSING     0.0       MISSING
+            SULFUR       MISSING    MISSING    MISSING  2.0000-02    MISSING
+            OXYGEN       MISSING    MISSING    MISSING    44.2800    MISSING
+          SULFANAL
+            PYRITIC      MISSING    MISSING    MISSING     0.0       MISSING
+            SULFATE      MISSING    MISSING    MISSING     0.0       MISSING
+            ORGANIC      MISSING    MISSING    MISSING  2.0000-02    MISSING
+ SUBSTREAM ATTRIBUTES:
+ PSD     
+   FRAC1                 MISSING     0.0        0.0        0.0       MISSING
+   FRAC2                 MISSING     0.0        0.0        0.0       MISSING
+   FRAC3                 MISSING     0.0        0.0        0.0       MISSING
+   FRAC4                 MISSING     0.0        0.0        0.0       MISSING
+   FRAC5                 MISSING     0.0        0.0        0.0       MISSING
+   FRAC6                 MISSING     1.0000     1.0000     1.0000    MISSING
+   FRAC7                 MISSING     0.0        0.0        0.0       MISSING
+   FRAC8                 MISSING     0.0        0.0        0.0       MISSING
+   FRAC9                 MISSING     0.0        0.0        0.0       MISSING
+   FRAC10                MISSING     0.0        0.0        0.0       MISSING
+
+ EXHAUST2 GAS HOTPROD HOTPYFED OIL       
+ ---------------------------------
+
+ STREAM ID               EXHAUST2   GAS        HOTPROD    HOTPYFED   OIL     
+ FROM :                  BURNER3    CONDENSE   PYROLYZE   PYHEAT     CONDENSE
+ TO   :                  PYHEAT     BURNER1    CHARSEP    PYROLYZE   ----    
+ CLASS:                  MIXNCPSD   MIXNCPSD   MIXNCPSD   MIXNCPSD   MIXNCPSD
+ TOTAL STREAM:
+   KG/HR                112.8372     8.9354    34.4696    34.4696    14.1592
+   GCAL/HR                0.1080 -1.1275-02 -2.1805-02 -3.7803-02 -1.6298-02
+ SUBSTREAM: MIXED   
+ PHASE:                  VAPOR      VAPOR      VAPOR      MISSING    LIQUID 
+ COMPONENTS: KMOL/HR         
+   WATER                  0.1916  2.3770-03  1.9134-02     0.0     1.6757-02
+   N2                     2.7129  1.2302-02  1.2305-02     0.0     2.9531-06
+   O2                     0.1002     0.0        0.0        0.0        0.0   
+   CHX                    0.0        0.0        0.0        0.0        0.0   
+   CO                     0.4432  9.8423-02  9.8448-02     0.0     2.5479-05
+   CO2                    0.3810  7.0232-02  7.0490-02     0.0     2.5847-04
+   CH4                    0.0     8.5889-02  8.5944-02     0.0     5.5334-05
+   H2                     0.0        0.5130     0.5130     0.0     8.4232-06
+   C2H4                   0.0        0.0        0.0        0.0        0.0   
+   C2H6                   0.0        0.0        0.0        0.0        0.0   
+   ACETICAC               0.0     2.3159-03  2.8700-02     0.0     2.6384-02
+   PHENOL                 0.0     4.6586-05  1.8313-02     0.0     1.8266-02
+   GUAIACOL               0.0     1.6443-05  2.7767-02     0.0     2.7750-02
+   ACETOL                 0.0     1.9270-03  9.7714-02     0.0     9.5787-02
+   C                      0.0        0.0        0.0        0.0        0.0   
+   SO2                 7.0947-05     0.0        0.0        0.0        0.0   
+   HCL                 5.2598-03     0.0        0.0        0.0        0.0   
+   S                      0.0        0.0        0.0        0.0        0.0   
+ TOTAL FLOW:         
+   KMOL/HR                3.8342     0.7865     0.9718     0.0        0.1853
+   KG/HR                112.0318     8.9354    23.0947     0.0       14.1592
+   CUM/HR              1578.3542    19.4965    50.3490     0.0     1.2833-02
+ STATE VARIABLES:    
+   TEMP   C            4678.0022    25.0000   350.0000   500.0000    25.0000
+   PRES   BAR             1.0000     1.0000     1.0000     1.0000     1.0000
+   VFRAC                  1.0000     1.0000     1.0000    MISSING     0.0   
+   LFRAC                  0.0        0.0        0.0       MISSING     1.0000
+   SFRAC                  0.0        0.0        0.0       MISSING     0.0   
+ ENTHALPY:           
+   KCAL/MOL              27.7221   -14.3361   -22.3667    MISSING   -87.9565
+   KCAL/KG              948.7579 -1261.8574  -941.1555    MISSING -1151.0427
+   GCAL/HR                0.1063 -1.1275-02 -2.1736-02    MISSING -1.6298-02
+ ENTROPY:            
+   CAL/MOL-K             28.2105     2.5282     0.3191    MISSING   -85.6950
+   CAL/GM-K               0.9655     0.2225  1.3425-02    MISSING    -1.1214
+ DENSITY:            
+   KMOL/CUM            2.4292-03  4.0340-02  1.9301-02    MISSING    14.4385
+   KG/CUM              7.0980-02     0.4583     0.4587    MISSING  1103.3156
+ AVG MW                  29.2194    11.3611    23.7652    MISSING    76.4146
+
+ SUBSTREAM: NCPSD        STRUCTURE: NON CONVENTIONAL
+ COMPONENTS: KG/HR           
+   MULBERRY               0.0        0.0        0.0        0.0        0.0   
+   CHAR                   0.0        0.0       11.3750     0.0        0.0   
+   ASH                    0.8053     0.0        0.0        0.0        0.0   
+   DRYMUL                 0.0        0.0        0.0       34.4696     0.0   
+ TOTAL FLOW:         
+   KG/HR                  0.8053     0.0       11.3750    34.4696     0.0   
+ STATE VARIABLES:    
+   TEMP   C            4678.0022    MISSING   350.0000   500.0000    MISSING
+   PRES   BAR             1.0000     1.0000     1.0000     1.0000     1.0000
+   VFRAC                  0.0       MISSING     0.0        0.0       MISSING
+   LFRAC                  0.0       MISSING     0.0        0.0       MISSING
+   SFRAC                  1.0000    MISSING     1.0000     1.0000    MISSING
+ ENTHALPY:           
+   KCAL/KG             2177.4109    MISSING    -6.1264 -1096.7048    MISSING
+   GCAL/HR             1.7536-03    MISSING -6.9688-05 -3.7803-02    MISSING
+ DENSITY:            
+   KG/CUM              3486.8841    MISSING  1571.7165  1274.8980    MISSING
+ AVG MW                   1.0000     1.0000     1.0000     1.0000     1.0000
+ COMPONENT ATTRIBUTES:
+ MULBERRY PROXANAL
+          ULTANAL 
+          SULFANAL
+ CHAR     PROXANAL
+            MOISTURE     MISSING    MISSING     2.0000    MISSING    MISSING
+            FC           MISSING    MISSING    75.0000    MISSING    MISSING
+            VM           MISSING    MISSING    15.0000    MISSING    MISSING
+            ASH          MISSING    MISSING     8.0000    MISSING    MISSING
+          ULTANAL 
+            ASH          MISSING    MISSING     8.0000    MISSING    MISSING
+            CARBON       MISSING    MISSING    78.0000    MISSING    MISSING
+            HYDROGEN     MISSING    MISSING     2.5000    MISSING    MISSING
+            NITROGEN     MISSING    MISSING     0.5000    MISSING    MISSING
+            CHLORINE     MISSING    MISSING     0.0       MISSING    MISSING
+            SULFUR       MISSING    MISSING  2.0000-02    MISSING    MISSING
+            OXYGEN       MISSING    MISSING    10.9800    MISSING    MISSING
+          SULFANAL
+            PYRITIC      MISSING    MISSING     0.0       MISSING    MISSING
+            SULFATE      MISSING    MISSING     0.0       MISSING    MISSING
+            ORGANIC      MISSING    MISSING     2.0000    MISSING    MISSING
+ ASH      PROXANAL
+            MOISTURE      0.0       MISSING    MISSING    MISSING    MISSING
+            FC            0.0       MISSING    MISSING    MISSING    MISSING
+            VM            0.0       MISSING    MISSING    MISSING    MISSING
+            ASH         100.0000    MISSING    MISSING    MISSING    MISSING
+          ULTANAL 
+            ASH         100.0000    MISSING    MISSING    MISSING    MISSING
+            CARBON        0.0       MISSING    MISSING    MISSING    MISSING
+            HYDROGEN      0.0       MISSING    MISSING    MISSING    MISSING
+            NITROGEN      0.0       MISSING    MISSING    MISSING    MISSING
+            CHLORINE      0.0       MISSING    MISSING    MISSING    MISSING
+            SULFUR        0.0       MISSING    MISSING    MISSING    MISSING
+            OXYGEN        0.0       MISSING    MISSING    MISSING    MISSING
+          SULFANAL
+            PYRITIC       0.0       MISSING    MISSING    MISSING    MISSING
+            SULFATE       0.0       MISSING    MISSING    MISSING    MISSING
+            ORGANIC       0.0       MISSING    MISSING    MISSING    MISSING
+ DRYMUL   PROXANAL
+            MOISTURE     MISSING    MISSING    MISSING     0.1000    MISSING
+            FC           MISSING    MISSING    MISSING    17.0000    MISSING
+            VM           MISSING    MISSING    MISSING    81.5000    MISSING
+            ASH          MISSING    MISSING    MISSING     1.5000    MISSING
+          ULTANAL 
+            ASH          MISSING    MISSING    MISSING     1.5000    MISSING
+            CARBON       MISSING    MISSING    MISSING    48.0000    MISSING
+            HYDROGEN     MISSING    MISSING    MISSING     6.0000    MISSING
+            NITROGEN     MISSING    MISSING    MISSING     0.2000    MISSING
+            CHLORINE     MISSING    MISSING    MISSING     0.0       MISSING
+            SULFUR       MISSING    MISSING    MISSING  2.0000-02    MISSING
+            OXYGEN       MISSING    MISSING    MISSING    44.2800    MISSING
+          SULFANAL
+            PYRITIC      MISSING    MISSING    MISSING     0.0       MISSING
+            SULFATE      MISSING    MISSING    MISSING     0.0       MISSING
+            ORGANIC      MISSING    MISSING    MISSING  2.0000-02    MISSING
+ SUBSTREAM ATTRIBUTES:
+ PSD     
+   FRAC1                  0.0       MISSING     0.0        0.0       MISSING
+   FRAC2                  0.0       MISSING     0.0        0.0       MISSING
+   FRAC3                  0.0       MISSING     0.0        0.0       MISSING
+   FRAC4                  0.0       MISSING     0.0        0.0       MISSING
+   FRAC5                  0.0       MISSING     0.0        0.0       MISSING
+   FRAC6                  1.0000    MISSING     1.0000     1.0000    MISSING
+   FRAC7                  0.0       MISSING     0.0        0.0       MISSING
+   FRAC8                  0.0       MISSING     0.0        0.0       MISSING
+   FRAC9                  0.0       MISSING     0.0        0.0       MISSING
+   FRAC10                 0.0       MISSING     0.0        0.0       MISSING
+
+ SPNTCHAR STEAM TORHOT VAPORS WASTECHA   
+ -------------------------------------
+
+ STREAM ID               SPNTCHAR   STEAM      TORHOT     VAPORS     WASTECHA
+ FROM :                  CHXSEP     TORSEP     TORHEAT    CHARSEP    FBSEP   
+ TO   :                  DECOMP     ----       TORDRYER   CONDENSE   CHXSEP  
+ CLASS:                  MIXNCPSD   MIXNCPSD   MIXNCPSD   MIXNCPSD   MIXNCPSD
+ TOTAL STREAM:
+   KG/HR                 11.3750     8.5744    43.0440    23.0947    12.8372
+   GCAL/HR            -1.3364-03 -2.6610-02 -7.4205-02 -2.1736-02 -1.7971-03
+ SUBSTREAM: MIXED   
+ PHASE:                  MISSING    VAPOR      MISSING    VAPOR      LIQUID 
+ COMPONENTS: KMOL/HR         
+   WATER                  0.0        0.4759     0.0     1.9134-02  7.3780-03
+   N2                     0.0        0.0        0.0     1.2305-02     0.0   
+   O2                     0.0        0.0        0.0        0.0        0.0   
+   CHX                    0.0        0.0        0.0        0.0     2.6299-03
+   CO                     0.0        0.0        0.0     9.8448-02     0.0   
+   CO2                    0.0        0.0        0.0     7.0490-02     0.0   
+   CH4                    0.0        0.0        0.0     8.5944-02     0.0   
+   H2                     0.0        0.0        0.0        0.5130     0.0   
+   C2H4                   0.0        0.0        0.0        0.0        0.0   
+   C2H6                   0.0        0.0        0.0        0.0        0.0   
+   ACETICAC               0.0        0.0        0.0     2.8700-02     0.0   
+   PHENOL                 0.0        0.0        0.0     1.8313-02     0.0   
+   GUAIACOL               0.0        0.0        0.0     2.7767-02     0.0   
+   ACETOL                 0.0        0.0        0.0     9.7714-02     0.0   
+   C                      0.0        0.0        0.0        0.0        0.0   
+   SO2                    0.0        0.0        0.0        0.0        0.0   
+   HCL                    0.0        0.0        0.0        0.0        0.0   
+   S                      0.0        0.0        0.0        0.0        0.0   
+ TOTAL FLOW:         
+   KMOL/HR                0.0        0.4759     0.0        0.9718  1.0008-02
+   KG/HR                  0.0        8.5744     0.0       23.0947     1.4622
+   CUM/HR                 0.0       20.7021     0.0       50.3490  4.6277-04
+ STATE VARIABLES:    
+   TEMP   C              MISSING   250.0000   250.0000   350.0000    25.0969
+   PRES   BAR             1.0000     1.0000     1.0000     1.0000     1.0000
+   VFRAC                 MISSING     1.0000    MISSING     1.0000     0.0   
+   LFRAC                 MISSING     0.0       MISSING     0.0        1.0000
+   SFRAC                 MISSING     0.0       MISSING     0.0        0.0   
+ ENTHALPY:           
+   KCAL/MOL              MISSING   -55.9084    MISSING   -22.3667   -46.0236
+   KCAL/KG               MISSING -3103.3894    MISSING  -941.1555  -315.0016
+   GCAL/HR               MISSING -2.6610-02    MISSING -2.1736-02 -4.6060-04
+ ENTROPY:            
+   CAL/MOL-K             MISSING    -5.9770    MISSING     0.3191    39.4697
+   CAL/GM-K              MISSING    -0.3318    MISSING  1.3425-02     0.2701
+ DENSITY:            
+   KMOL/CUM              MISSING  2.2990-02    MISSING  1.9301-02    21.6259
+   KG/CUM                MISSING     0.4142    MISSING     0.4587  3159.6742
+ AVG MW                  MISSING    18.0153    MISSING    23.7652   146.1060
+
+ SUBSTREAM: NCPSD        STRUCTURE: NON CONVENTIONAL
+ COMPONENTS: KG/HR           
+   MULBERRY               0.0        0.0       43.0440     0.0        0.0   
+   CHAR                  11.3750     0.0        0.0        0.0       11.3750
+   ASH                    0.0        0.0        0.0        0.0        0.0   
+   DRYMUL                 0.0        0.0        0.0        0.0        0.0   
+ TOTAL FLOW:         
+   KG/HR                 11.3750     0.0       43.0440     0.0       11.3750
+ STATE VARIABLES:    
+   TEMP   C              25.0969    MISSING   250.0000    MISSING    25.0969
+   PRES   BAR             1.0000     1.0000     1.0000     1.0000     1.0000
+   VFRAC                  0.0       MISSING     0.0       MISSING     0.0   
+   LFRAC                  0.0       MISSING     0.0       MISSING     0.0   
+   SFRAC                  1.0000    MISSING     1.0000    MISSING     1.0000
+ ENTHALPY:           
+   KCAL/KG             -117.4903    MISSING -1723.9351    MISSING  -117.4903
+   GCAL/HR            -1.3364-03    MISSING -7.4205-02    MISSING -1.3364-03
+ DENSITY:            
+   KG/CUM              1571.7165    MISSING  1274.8980    MISSING  1571.7165
+ AVG MW                   1.0000     1.0000     1.0000     1.0000     1.0000
+ COMPONENT ATTRIBUTES:
+ MULBERRY PROXANAL
+            MOISTURE     MISSING    MISSING    20.0000    MISSING    MISSING
+            FC           MISSING    MISSING    17.0000    MISSING    MISSING
+            VM           MISSING    MISSING    81.5000    MISSING    MISSING
+            ASH          MISSING    MISSING     1.5000    MISSING    MISSING
+          ULTANAL 
+            ASH          MISSING    MISSING     1.5000    MISSING    MISSING
+            CARBON       MISSING    MISSING    48.0000    MISSING    MISSING
+            HYDROGEN     MISSING    MISSING     6.0000    MISSING    MISSING
+            NITROGEN     MISSING    MISSING     0.2000    MISSING    MISSING
+            CHLORINE     MISSING    MISSING     0.0       MISSING    MISSING
+            SULFUR       MISSING    MISSING  2.0000-02    MISSING    MISSING
+            OXYGEN       MISSING    MISSING    44.2800    MISSING    MISSING
+          SULFANAL
+            PYRITIC      MISSING    MISSING     0.0       MISSING    MISSING
+            SULFATE      MISSING    MISSING     0.0       MISSING    MISSING
+            ORGANIC      MISSING    MISSING  2.0000-02    MISSING    MISSING
+ CHAR     PROXANAL
+            MOISTURE      2.0000    MISSING    MISSING    MISSING     2.0000
+            FC           75.0000    MISSING    MISSING    MISSING    75.0000
+            VM           15.0000    MISSING    MISSING    MISSING    15.0000
+            ASH           8.0000    MISSING    MISSING    MISSING     8.0000
+          ULTANAL 
+            ASH           8.0000    MISSING    MISSING    MISSING     8.0000
+            CARBON       78.0000    MISSING    MISSING    MISSING    78.0000
+            HYDROGEN      2.5000    MISSING    MISSING    MISSING     2.5000
+            NITROGEN      0.5000    MISSING    MISSING    MISSING     0.5000
+            CHLORINE      0.0       MISSING    MISSING    MISSING     0.0   
+            SULFUR     2.0000-02    MISSING    MISSING    MISSING  2.0000-02
+            OXYGEN       10.9800    MISSING    MISSING    MISSING    10.9800
+          SULFANAL
+            PYRITIC       0.0       MISSING    MISSING    MISSING     0.0   
+            SULFATE       0.0       MISSING    MISSING    MISSING     0.0   
+            ORGANIC       2.0000    MISSING    MISSING    MISSING     2.0000
+ ASH      PROXANAL
+          ULTANAL 
+          SULFANAL
+ DRYMUL   PROXANAL
+          ULTANAL 
+          SULFANAL
+ SUBSTREAM ATTRIBUTES:
+ PSD     
+   FRAC1                  0.0       MISSING     0.0       MISSING     0.0   
+   FRAC2                  0.0       MISSING     0.0       MISSING     0.0   
+   FRAC3                  0.0       MISSING     0.0       MISSING     0.0   
+   FRAC4                  0.0       MISSING     0.0       MISSING     0.0   
+   FRAC5                  0.0       MISSING     0.0       MISSING     0.0   
+   FRAC6                  1.0000    MISSING     1.0000    MISSING     1.0000
+   FRAC7                  0.0       MISSING     0.0       MISSING     0.0   
+   FRAC8                  0.0       MISSING     0.0       MISSING     0.0   
+   FRAC9                  0.0       MISSING     0.0       MISSING     0.0   
+   FRAC10                 0.0       MISSING     0.0       MISSING     0.0   
+
+ WASTEH2O WETWOOD WOOD                   
+ ---------------------
+
+ STREAM ID               WASTEH2O   WETWOOD    WOOD    
+ FROM :                  ----       TORDRYER   ----    
+ TO   :                  FBSEP      TORSEP     TORHEAT 
+ CLASS:                  MIXNCPSD   MIXNCPSD   MIXNCPSD
+ TOTAL STREAM:
+   KG/HR               1.3293+04    43.0440    43.0440
+   GCAL/HR              -50.3638 -7.0082-02 -7.9744-02
+ SUBSTREAM: MIXED   
+ PHASE:                  LIQUID     VAPOR      MISSING
+ COMPONENTS: KMOL/HR         
+   WATER                737.7998     0.4759     0.0   
+   N2                     0.0        0.0        0.0   
+   O2                     0.0        0.0        0.0   
+   CHX                 2.6299-03     0.0        0.0   
+   CO                     0.0        0.0        0.0   
+   CO2                    0.0        0.0        0.0   
+   CH4                    0.0        0.0        0.0   
+   H2                     0.0        0.0        0.0   
+   C2H4                   0.0        0.0        0.0   
+   C2H6                   0.0        0.0        0.0   
+   ACETICAC               0.0        0.0        0.0   
+   PHENOL                 0.0        0.0        0.0   
+   GUAIACOL               0.0        0.0        0.0   
+   ACETOL                 0.0        0.0        0.0   
+   C                      0.0        0.0        0.0   
+   SO2                    0.0        0.0        0.0   
+   HCL                    0.0        0.0        0.0   
+   S                      0.0        0.0        0.0   
+ TOTAL FLOW:         
+   KMOL/HR              737.8025     0.4759     0.0   
+   KG/HR               1.3293+04     8.5744     0.0   
+   CUM/HR                13.3728    20.7021     0.0   
+ STATE VARIABLES:    
+   TEMP   C              25.0000   250.0000    25.0000
+   PRES   BAR             1.0000     1.0000     1.0000
+   VFRAC                  0.0        1.0000    MISSING
+   LFRAC                  1.0000     0.0       MISSING
+   SFRAC                  0.0        0.0       MISSING
+ ENTHALPY:           
+   KCAL/MOL             -68.2619   -55.9084    MISSING
+   KCAL/KG            -3788.7455 -3103.3894    MISSING
+   GCAL/HR              -50.3638 -2.6610-02    MISSING
+ ENTROPY:            
+   CAL/MOL-K            -38.9640    -5.9770    MISSING
+   CAL/GM-K              -2.1626    -0.3318    MISSING
+ DENSITY:            
+   KMOL/CUM              55.1718  2.2990-02    MISSING
+   KG/CUM               994.0321     0.4142    MISSING
+ AVG MW                  18.0170    18.0153    68.2594
+
+ SUBSTREAM: NCPSD        STRUCTURE: NON CONVENTIONAL
+ COMPONENTS: KG/HR           
+   MULBERRY               0.0        0.0       43.0440
+   CHAR                   0.0        0.0        0.0   
+   ASH                    0.0        0.0        0.0   
+   DRYMUL                 0.0       34.4696     0.0   
+ TOTAL FLOW:         
+   KG/HR                  0.0       34.4696    43.0440
+ STATE VARIABLES:    
+   TEMP   C              MISSING   250.0000    25.0000
+   PRES   BAR             1.0000     1.0000     1.0000
+   VFRAC                 MISSING     0.0        0.0   
+   LFRAC                 MISSING     0.0        0.0   
+   SFRAC                 MISSING     1.0000     1.0000
+ ENTHALPY:           
+   KCAL/KG               MISSING -1261.1894 -1852.6158
+   GCAL/HR               MISSING -4.3473-02 -7.9744-02
+ DENSITY:            
+   KG/CUM                MISSING  1274.8980  1274.8980
+ AVG MW                   1.0000     1.0000     1.0000
+ COMPONENT ATTRIBUTES:
+ MULBERRY PROXANAL
+            MOISTURE     MISSING    MISSING    20.0000
+            FC           MISSING    MISSING    17.0000
+            VM           MISSING    MISSING    81.5000
+            ASH          MISSING    MISSING     1.5000
+          ULTANAL 
+            ASH          MISSING    MISSING     1.5000
+            CARBON       MISSING    MISSING    48.0000
+            HYDROGEN     MISSING    MISSING     6.0000
+            NITROGEN     MISSING    MISSING     0.2000
+            CHLORINE     MISSING    MISSING     0.0   
+            SULFUR       MISSING    MISSING  2.0000-02
+            OXYGEN       MISSING    MISSING    44.2800
+          SULFANAL
+            PYRITIC      MISSING    MISSING     0.0   
+            SULFATE      MISSING    MISSING     0.0   
+            ORGANIC      MISSING    MISSING  2.0000-02
+ CHAR     PROXANAL
+          ULTANAL 
+          SULFANAL
+ ASH      PROXANAL
+          ULTANAL 
+          SULFANAL
+ DRYMUL   PROXANAL
+            MOISTURE     MISSING     0.1000    MISSING
+            FC           MISSING    17.0000    MISSING
+            VM           MISSING    81.5000    MISSING
+            ASH          MISSING     1.5000    MISSING
+          ULTANAL 
+            ASH          MISSING     1.5000    MISSING
+            CARBON       MISSING    48.0000    MISSING
+            HYDROGEN     MISSING     6.0000    MISSING
+            NITROGEN     MISSING     0.2000    MISSING
+            CHLORINE     MISSING     0.0       MISSING
+            SULFUR       MISSING  2.0000-02    MISSING
+            OXYGEN       MISSING    44.2800    MISSING
+          SULFANAL
+            PYRITIC      MISSING     0.0       MISSING
+            SULFATE      MISSING     0.0       MISSING
+            ORGANIC      MISSING  2.0000-02    MISSING
+ SUBSTREAM ATTRIBUTES:
+ PSD     
+   FRAC1                 MISSING     0.0        0.0   
+   FRAC2                 MISSING     0.0        0.0   
+   FRAC3                 MISSING     0.0        0.0   
+   FRAC4                 MISSING     0.0        0.0   
+   FRAC5                 MISSING     0.0        0.0   
+   FRAC6                 MISSING     1.0000     1.0000
+   FRAC7                 MISSING     0.0        0.0   
+   FRAC8                 MISSING     0.0        0.0   
+   FRAC9                 MISSING     0.0        0.0   
+   FRAC10                MISSING     0.0        0.0   

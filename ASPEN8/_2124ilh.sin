@@ -1,10 +1,10 @@
  >>ORIGINAL RUN                           DECEMBER 18, 2025   
-   12:38:01 A.M.                          THURSDAY    
+   12:59:48 A.M.                          THURSDAY    
    INPUT FILE: _2124ilh.inm
    RUN ID : _2124ilh
           1    ;
-          2    ;Input file created by Aspen Plus Rel. 40.0 at 00:37:59 Thu Dec 18, 2025
-          3    ;Directory G:\Documents\Y3 Project\Repo\ASPEN8  Runid Y3PROJECTBACKUP
+          2    ;Input file created by Aspen Plus Rel. 40.0 at 00:59:46 Thu Dec 18, 2025
+          3    ;Directory G:\Documents\Y3 Project\Repo\ASPEN8  Runid Y3PROJECT
           4    ;
           5
           6
@@ -77,10 +77,10 @@
          73        BLOCK BURNER1 IN=GAS AIR1 OUT=EXHAUST1
          74        BLOCK TORHEAT IN=EXHAUST1 WOOD OUT=COLDFLU1 TORHOT
          75        BLOCK PYHEAT IN=EXHAUST2 DRYWOOD OUT=COLDFLU2 HOTPYFED
-         76        BLOCK BURNER2 IN=AIR2 DECCHAR CHXRECO OUT=EXHAUST2
-         77        BLOCK TORDRYER IN=TORHOT OUT=WETWOOD
-         78        BLOCK DECOMP IN=SPNTCHAR OUT=DECCHAR
-         79        BLOCK CHXSEP IN=WASTECHA OUT=SPNTCHAR CHXRECO
+         76        BLOCK TORDRYER IN=TORHOT OUT=WETWOOD
+         77        BLOCK DECOMP IN=SPNTCHAR OUT=DECCHAR
+         78        BLOCK CHXSEP IN=WASTECHA OUT=SPNTCHAR CHXRECO
+         79        BLOCK BURNER3 IN=AIR2 DECCHAR CHXRECO OUT=EXHAUST2
          80
          81    PROPERTIES NRTL
          82        PROPERTIES NRTL-RK / PENG-ROB / UNIQUAC
@@ -315,51 +315,60 @@
         311        CONV 1 MIXED C2H4 1.
         312        CONV 2 MIXED C2H6 1.
         313
-        314    BLOCK DECOMP RYIELD
-        315        PARAM TEMP=25. PRES=1.
-        316        MASS-YIELD MIXED C 0.78 / H2 0.025 / O2 0.109 / N2  &
-        317            0.005 / WATER 0.01 / S 0.0002 / NCPSD ASH 0.0708
-        318        COMP-ATTR NCPSD ASH PROXANAL ( 0. 0. 0. 100. )
-        319        COMP-ATTR NCPSD ASH ULTANAL ( 100. 0. 0. 0. 0. 0. 0.  &
-        320            )
-        321        COMP-ATTR NCPSD ASH SULFANAL ( 0. 0. 0. )
-        322
-        323    BLOCK PYROLYZE RYIELD
-        324        PARAM TEMP=350.0000000 PRES=1.000000000 OPT-PSD=SPEC
-        325        MASS-YIELD MIXED WATER 0.01 / ACETICAC 0.05 / PHENOL  &
-        326            0.05 / GUAIACOL 0.1 / ACETOL 0.21 / CO2 0.09 / CO  &
-        327            0.08 / CH4 0.04 / H2 0.03 / N2 0.01 / NCPSD CHAR  &
-        328            0.33
-        329        COMP-ATTR NCPSD CHAR PROXANAL ( 2. 75. 15. 8. )
-        330        COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
-        331            10.98 )
-        332        COMP-ATTR NCPSD CHAR SULFANAL ( 0. 0. 2. )
-        333        OVALL-ATTR PSDID=PSD VALUE=* * * * * 1. * * * *
-        334
-        335    BLOCK TORDRYER RYIELD
-        336        PARAM TEMP=250. PRES=1.
-        337        MASS-YIELD NCPSD DRYMUL 0.8008 / MIXED WATER 0.1992
-        338        COMP-ATTR NCPSD DRYMUL PROXANAL ( 0.1 17. 81.5 1.5 )
-        339        COMP-ATTR NCPSD DRYMUL ULTANAL ( 1.5 48. 6. 0.2 0.  &
-        340            0.02 44.28 )
-        341        COMP-ATTR NCPSD DRYMUL SULFANAL ( 0. 0. 0.02 )
-        342
-        343    BLOCK BURNER2 RGIBBS
-        344        PARAM PRES=10. CHEMEQ=YES TAPP=1. MAXIT=50 DUTY=0.
-        345        PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
-        346            V / HCL V
-        347
-        348    EO-CONV-OPTI
-        349
-        350    STREAM-REPOR MOLEFLOW
-        351
-        352    DISABLE
-        353        STREAM AIR1
-        354    ;
-        355    ;
-        356    ;
-        357    ;
-        358    ;
+        314    BLOCK BURNER3 RSTOIC
+        315        PARAM PRES=1. DUTY=0. COMBUSTION=YES
+        316        STOIC 1 MIXED C -1. / O2 -1. / CO2 1.
+        317        STOIC 2 MIXED C -2. / O2 -1. / CO 2.
+        318        STOIC 3 MIXED H2 -2. / O2 -1. / WATER 2.
+        319        STOIC 4 MIXED S -1. / O2 -1. / SO2 1.
+        320        STOIC 5 MIXED CHX -1. / O2 -29. / CO2 22. / WATER  &
+        321            14. / HCL 2. / N2 5.
+        322        CONV 1 MIXED C 0.4
+        323        CONV 2 MIXED C 0.6
+        324        CONV 3 MIXED H2 1.
+        325        CONV 4 MIXED S 1.
+        326        CONV 5 MIXED CHX 1.
+        327
+        328    BLOCK DECOMP RYIELD
+        329        PARAM TEMP=25. PRES=1.
+        330        MASS-YIELD MIXED C 0.78 / H2 0.025 / O2 0.109 / N2  &
+        331            0.005 / WATER 0.01 / S 0.0002 / NCPSD ASH 0.0708
+        332        COMP-ATTR NCPSD ASH PROXANAL ( 0. 0. 0. 100. )
+        333        COMP-ATTR NCPSD ASH ULTANAL ( 100. 0. 0. 0. 0. 0. 0.  &
+        334            )
+        335        COMP-ATTR NCPSD ASH SULFANAL ( 0. 0. 0. )
+        336
+        337    BLOCK PYROLYZE RYIELD
+        338        PARAM TEMP=350.0000000 PRES=1.000000000 OPT-PSD=SPEC
+        339        MASS-YIELD MIXED WATER 0.01 / ACETICAC 0.05 / PHENOL  &
+        340            0.05 / GUAIACOL 0.1 / ACETOL 0.21 / CO2 0.09 / CO  &
+        341            0.08 / CH4 0.04 / H2 0.03 / N2 0.01 / NCPSD CHAR  &
+        342            0.33
+        343        COMP-ATTR NCPSD CHAR PROXANAL ( 2. 75. 15. 8. )
+        344        COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
+        345            10.98 )
+        346        COMP-ATTR NCPSD CHAR SULFANAL ( 0. 0. 2. )
+        347        OVALL-ATTR PSDID=PSD VALUE=* * * * * 1. * * * *
+        348
+        349    BLOCK TORDRYER RYIELD
+        350        PARAM TEMP=250. PRES=1.
+        351        MASS-YIELD NCPSD DRYMUL 0.8008 / MIXED WATER 0.1992
+        352        COMP-ATTR NCPSD DRYMUL PROXANAL ( 0.1 17. 81.5 1.5 )
+        353        COMP-ATTR NCPSD DRYMUL ULTANAL ( 1.5 48. 6. 0.2 0.  &
+        354            0.02 44.28 )
+        355        COMP-ATTR NCPSD DRYMUL SULFANAL ( 0. 0. 0.02 )
+        356
+        357    EO-CONV-OPTI
+        358
+        359    STREAM-REPOR MOLEFLOW
+        360
+        361    DISABLE
+        362        STREAM AIR1
+        363    ;
+        364    ;
+        365    ;
+        366    ;
+        367    ;
 
    SIMULATION STARTED     MODULE USED: apmain  
    LOCATED IN:C:\Program Files\AspenTech\Aspen Plus V14.0\Engine\\xeq
