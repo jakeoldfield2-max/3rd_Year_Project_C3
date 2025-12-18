@@ -1,10 +1,10 @@
  >>ORIGINAL RUN                           DECEMBER 18, 2025   
-   12:24:13 A.M.                          THURSDAY    
+   12:38:01 A.M.                          THURSDAY    
    INPUT FILE: _2124ilh.inm
    RUN ID : _2124ilh
           1    ;
-          2    ;Input file created by Aspen Plus Rel. 40.0 at 00:24:11 Thu Dec 18, 2025
-          3    ;Directory G:\Documents\Y3 Project\Repo\ASPEN8  Runid Y3PROJECT
+          2    ;Input file created by Aspen Plus Rel. 40.0 at 00:37:59 Thu Dec 18, 2025
+          3    ;Directory G:\Documents\Y3 Project\Repo\ASPEN8  Runid Y3PROJECTBACKUP
           4    ;
           5
           6
@@ -237,7 +237,7 @@
         233        MOLE-FRAC N2 0.781 / O2 0.21 / CO2 0.008
         234
         235    STREAM AIR2
-        236        SUBSTREAM MIXED TEMP=25. PRES=1. MASS-FLOW=100.
+        236        SUBSTREAM MIXED TEMP=25. PRES=1. MASS-FLOW=10.
         237        MOLE-FRAC N2 0.781 / O2 0.21 / CO2 0.008
         238
         239    STREAM COLDFLU1
@@ -267,102 +267,99 @@
         263        COMP-ATTR MULBERRY SULFANAL ( 0. 0. 0.02 )
         264        SUBS-ATTR PSD ( * * * * * 1. * * * * )
         265
-        266    BLOCK CHXSEP FSPLIT
-        267        PARAM NPHASE=1 PHASE=L
-        268        MASS-FLOW SPNTCHAR 12. 1
-        269        DEF-KEY KEYNO=3 SUBSTREAM=MIXED COMPS=WATER
-        270        DEF-KEY KEYNO=1 SUBSTREAM=NCPSD COMPS=CHAR
-        271        DEF-KEY KEYNO=2 SUBSTREAM=MIXED COMPS=CHX
-        272        BLOCK-OPTION FREE-WATER=DIRTY
-        273
-        274    BLOCK CHARSEP SEP
-        275        PARAM
-        276        FRAC STREAM=CHAR SUBSTREAM=NCPSD COMPS=CHAR FRACS=1.
-        277        FLASH-SPECS CHAR TEMP=350.0000000 PRES=1.000000000 NPHASE=1  &
-        278            FREE-WATER=NO PHASE=S
-        279        FLASH-SPECS VAPORS TEMP=350.0000000 PRES=1.000000000
-        280
-        281    BLOCK FBSEP SEP
-        282        PARAM
-        283        FRAC STREAM=CLEANH2O SUBSTREAM=MIXED COMPS=WATER CHX  &
-        284            FRACS=0.99 0.
-        285
-        286    BLOCK CONDENSE FLASH2
-        287        PARAM TEMP=25.00000000 PRES=1.000000000
-        288
-        289    BLOCK TORSEP FLASH2
-        290        PARAM TEMP=250. PRES=1.
-        291
-        292    BLOCK PYHEAT HEATX
-        293        PARAM T-COLD=500.
-        294        FEEDS HOT=EXHAUST2 COLD=DRYWOOD
-        295        OUTLETS-HOT COLDFLU2
-        296        OUTLETS-COLD HOTPYFED
-        297        HOT-SIDE DPPARMOPT=NO
-        298        COLD-SIDE DPPARMOPT=NO
-        299        TQ-PARAM CURVE=NO
-        300
-        301    BLOCK TORHEAT HEATX
-        302        PARAM T-COLD=250. CALC-TYPE=DESIGN U-OPTION=PHASE  &
-        303            F-OPTION=CONSTANT CALC-METHOD=SHORTCUT
-        304        FEEDS HOT=EXHAUST1 COLD=WOOD
-        305        OUTLETS-HOT COLDFLU1
-        306        OUTLETS-COLD TORHOT
-        307        HOT-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
-        308        COLD-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
-        309        TQ-PARAM CURVE=YES
-        310
-        311    BLOCK BURNER1 RSTOIC
-        312        PARAM PRES=10. DUTY=0. COMBUSTION=YES
-        313        STOIC 1 MIXED C2H4 -1. / O2 -3. / CO2 2. / WATER 2.
-        314        STOIC 2 MIXED C2H6 -2. / O2 -7. / CO2 4. / WATER 6.
-        315        CONV 1 MIXED C2H4 1.
-        316        CONV 2 MIXED C2H6 1.
-        317
-        318    BLOCK DECOMP RYIELD
-        319        PARAM TEMP=25. PRES=1.
-        320        MASS-YIELD MIXED C 0.78 / H2 0.025 / O2 0.109 / N2  &
-        321            0.005 / WATER 0.01 / S 0.0002 / NCPSD ASH 0.0708
-        322        COMP-ATTR NCPSD ASH PROXANAL ( 0. 0. 0. 100. )
-        323        COMP-ATTR NCPSD ASH ULTANAL ( 100. 0. 0. 0. 0. 0. 0.  &
-        324            )
-        325
-        326    BLOCK PYROLYZE RYIELD
-        327        PARAM TEMP=350.0000000 PRES=1.000000000 OPT-PSD=SPEC
-        328        MASS-YIELD MIXED WATER 0.01 / ACETICAC 0.05 / PHENOL  &
-        329            0.05 / GUAIACOL 0.1 / ACETOL 0.21 / CO2 0.09 / CO  &
-        330            0.08 / CH4 0.04 / H2 0.03 / N2 0.01 / NCPSD CHAR  &
-        331            0.33
-        332        COMP-ATTR NCPSD CHAR PROXANAL ( 2. 75. 15. 8. )
-        333        COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
-        334            10.98 )
-        335        COMP-ATTR NCPSD CHAR SULFANAL ( 0. 0. 2. )
-        336        OVALL-ATTR PSDID=PSD VALUE=* * * * * 1. * * * *
-        337
-        338    BLOCK TORDRYER RYIELD
-        339        PARAM TEMP=250. PRES=1.
-        340        MASS-YIELD NCPSD DRYMUL 0.8008 / MIXED WATER 0.1992
-        341        COMP-ATTR NCPSD DRYMUL PROXANAL ( 0.1 17. 81.5 1.5 )
-        342        COMP-ATTR NCPSD DRYMUL ULTANAL ( 1.5 48. 6. 0.2 0.  &
-        343            0.02 44.28 )
-        344        COMP-ATTR NCPSD DRYMUL SULFANAL ( 0. 0. 0.02 )
-        345
-        346    BLOCK BURNER2 RGIBBS
-        347        PARAM PRES=10. CHEMEQ=YES TAPP=1. MAXIT=50 DUTY=0.
-        348        PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
-        349            V / HCL V
-        350
-        351    EO-CONV-OPTI
-        352
-        353    STREAM-REPOR MOLEFLOW
-        354
-        355    DISABLE
-        356        STREAM AIR1
+        266    BLOCK CHARSEP SEP
+        267        PARAM
+        268        FRAC STREAM=CHAR SUBSTREAM=NCPSD COMPS=CHAR FRACS=1.
+        269        FLASH-SPECS CHAR TEMP=350.0000000 PRES=1.000000000 NPHASE=1  &
+        270            FREE-WATER=NO PHASE=S
+        271        FLASH-SPECS VAPORS TEMP=350.0000000 PRES=1.000000000
+        272
+        273    BLOCK CHXSEP SEP
+        274        PARAM
+        275        FRAC STREAM=SPNTCHAR SUBSTREAM=NCPSD COMPS=CHAR FRACS=1.
+        276
+        277    BLOCK FBSEP SEP
+        278        PARAM
+        279        FRAC STREAM=CLEANH2O SUBSTREAM=MIXED COMPS=WATER CHX  &
+        280            FRACS=0.99999 0.
+        281
+        282    BLOCK CONDENSE FLASH2
+        283        PARAM TEMP=25.00000000 PRES=1.000000000
+        284
+        285    BLOCK TORSEP FLASH2
+        286        PARAM TEMP=250. PRES=1.
+        287
+        288    BLOCK PYHEAT HEATX
+        289        PARAM T-COLD=500.
+        290        FEEDS HOT=EXHAUST2 COLD=DRYWOOD
+        291        OUTLETS-HOT COLDFLU2
+        292        OUTLETS-COLD HOTPYFED
+        293        HOT-SIDE DPPARMOPT=NO
+        294        COLD-SIDE DPPARMOPT=NO
+        295        TQ-PARAM CURVE=NO
+        296
+        297    BLOCK TORHEAT HEATX
+        298        PARAM T-COLD=250. CALC-TYPE=DESIGN U-OPTION=PHASE  &
+        299            F-OPTION=CONSTANT CALC-METHOD=SHORTCUT
+        300        FEEDS HOT=EXHAUST1 COLD=WOOD
+        301        OUTLETS-HOT COLDFLU1
+        302        OUTLETS-COLD TORHOT
+        303        HOT-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
+        304        COLD-SIDE DP-OPTION=CONSTANT DPPARMOPT=NO
+        305        TQ-PARAM CURVE=YES
+        306
+        307    BLOCK BURNER1 RSTOIC
+        308        PARAM PRES=10. DUTY=0. COMBUSTION=YES
+        309        STOIC 1 MIXED C2H4 -1. / O2 -3. / CO2 2. / WATER 2.
+        310        STOIC 2 MIXED C2H6 -2. / O2 -7. / CO2 4. / WATER 6.
+        311        CONV 1 MIXED C2H4 1.
+        312        CONV 2 MIXED C2H6 1.
+        313
+        314    BLOCK DECOMP RYIELD
+        315        PARAM TEMP=25. PRES=1.
+        316        MASS-YIELD MIXED C 0.78 / H2 0.025 / O2 0.109 / N2  &
+        317            0.005 / WATER 0.01 / S 0.0002 / NCPSD ASH 0.0708
+        318        COMP-ATTR NCPSD ASH PROXANAL ( 0. 0. 0. 100. )
+        319        COMP-ATTR NCPSD ASH ULTANAL ( 100. 0. 0. 0. 0. 0. 0.  &
+        320            )
+        321        COMP-ATTR NCPSD ASH SULFANAL ( 0. 0. 0. )
+        322
+        323    BLOCK PYROLYZE RYIELD
+        324        PARAM TEMP=350.0000000 PRES=1.000000000 OPT-PSD=SPEC
+        325        MASS-YIELD MIXED WATER 0.01 / ACETICAC 0.05 / PHENOL  &
+        326            0.05 / GUAIACOL 0.1 / ACETOL 0.21 / CO2 0.09 / CO  &
+        327            0.08 / CH4 0.04 / H2 0.03 / N2 0.01 / NCPSD CHAR  &
+        328            0.33
+        329        COMP-ATTR NCPSD CHAR PROXANAL ( 2. 75. 15. 8. )
+        330        COMP-ATTR NCPSD CHAR ULTANAL ( 8. 78. 2.5 0.5 0. 0.02  &
+        331            10.98 )
+        332        COMP-ATTR NCPSD CHAR SULFANAL ( 0. 0. 2. )
+        333        OVALL-ATTR PSDID=PSD VALUE=* * * * * 1. * * * *
+        334
+        335    BLOCK TORDRYER RYIELD
+        336        PARAM TEMP=250. PRES=1.
+        337        MASS-YIELD NCPSD DRYMUL 0.8008 / MIXED WATER 0.1992
+        338        COMP-ATTR NCPSD DRYMUL PROXANAL ( 0.1 17. 81.5 1.5 )
+        339        COMP-ATTR NCPSD DRYMUL ULTANAL ( 1.5 48. 6. 0.2 0.  &
+        340            0.02 44.28 )
+        341        COMP-ATTR NCPSD DRYMUL SULFANAL ( 0. 0. 0.02 )
+        342
+        343    BLOCK BURNER2 RGIBBS
+        344        PARAM PRES=10. CHEMEQ=YES TAPP=1. MAXIT=50 DUTY=0.
+        345        PROD CO2 V / WATER V / N2 V / O2 V / CO V / SO2  &
+        346            V / HCL V
+        347
+        348    EO-CONV-OPTI
+        349
+        350    STREAM-REPOR MOLEFLOW
+        351
+        352    DISABLE
+        353        STREAM AIR1
+        354    ;
+        355    ;
+        356    ;
         357    ;
         358    ;
-        359    ;
-        360    ;
-        361    ;
 
    SIMULATION STARTED     MODULE USED: apmain  
    LOCATED IN:C:\Program Files\AspenTech\Aspen Plus V14.0\Engine\\xeq
